@@ -6,7 +6,7 @@ class Home extends React.Component {
     return (
       <div>
         <p>
-          Insert your components here...
+          Insert your components here
         </p>
       </div>
     );
