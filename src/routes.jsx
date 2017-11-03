@@ -24,6 +24,8 @@ const Routes = () => {
           <IndexRoute component={Home}/>
         </Route>
         <Route path="*" component={NotFound}/>
+        <Route path="/" component={Home}/>
+        <Route path="/cards/" component={JebacBartka}/>
       </Router>
     </Provider>
   );
