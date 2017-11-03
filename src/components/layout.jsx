@@ -1,7 +1,7 @@
 import React from 'react';
 import './layout.scss';
-import NavBar from './navBar';
 import {history} from '../prepare';
+import AppBar from 'material-ui/AppBar';
 
 let MediaQuery = require('react-responsive');
 
@@ -33,6 +33,7 @@ class Layout extends React.Component {
   };
 
   render() {
+    // _.map(places, (place) => console.log(place));
     let children = this.props.children;
     let shouldOpen = this.props.open;
     if (!this.props.isLogged) {
@@ -45,7 +46,10 @@ class Layout extends React.Component {
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
       <div className="container">
-        <NavBar/>
+        <AppBar
+    title="Title"
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  />
         <section className="content" style={{width: navWidth}}>
           {children}
         </section>
