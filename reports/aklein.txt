@@ -1,0 +1,3 @@
+- konfiguracja webpack
+- konfiguracja projektu (prepare, app)
+- pliki pomocnicze do komunikacji z api
