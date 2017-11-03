@@ -3,7 +3,7 @@ import { StatelessComponent } from 'react';
 
 const NotFound = () => {
   return (
-    <div>The page you request is not exist.</div>
+    <div>The page you requested does not exist.</div>
   );
 };
 
