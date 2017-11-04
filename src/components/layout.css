@@ -6,8 +6,11 @@
     position: fixed;
     width: 270px; }
     .container header a {
+      color: #39c;
       font-weight: bold;
       text-decoration: none; }
+      .container header a:hover {
+        color: #94c; }
   .container footer {
     bottom: 0;
     position: fixed;
@@ -16,5 +19,8 @@
     float: right;
     padding-bottom: 50px;
     width: 500px; }
+
+h1 {
+  text-align: center; }
 
 /*# sourceMappingURL=layout.css.map */
