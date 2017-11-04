@@ -6,8 +6,11 @@
     position: fixed;
     width: 270px; }
     .container header a {
+      color: #39c;
       font-weight: bold;
       text-decoration: none; }
+      .container header a:hover {
+        color: #94c; }
   .container footer {
     bottom: 0;
     position: fixed;
@@ -17,5 +20,12 @@
     padding-bottom: 50px;
     width: 500px; }
 
+h1 {
+  text-align: center; }
+
+.login-content {
+  display: flex; }
+  .login-content .content {
+    flex: 1; }
 
 /*# sourceMappingURL=layout.css.map */

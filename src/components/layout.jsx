@@ -1,7 +1,8 @@
 import React from 'react';
 import './layout.scss';
 import {history} from '../prepare';
-import AppBar from 'material-ui/AppBar';
+import NavBar from './navBar';
+import {AppBar} from './auth';
 
 let MediaQuery = require('react-responsive');
 
@@ -47,12 +48,10 @@ class Layout extends React.Component {
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
       <div className="container">
-        <AppBar
-    title="Title"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+       <AppBar/>
         <section className="content" style={{width: navWidth}}>
           {children}
+            <NavBar/>
         </section>
         <footer>
         </footer>

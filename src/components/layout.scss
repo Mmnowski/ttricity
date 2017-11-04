@@ -37,3 +37,10 @@ $linkhover: #94c;
 h1 {
   text-align: center;
 }
+
+.login-content{
+  display: flex;
+  .content{
+    flex: 1;
+  }
+}
