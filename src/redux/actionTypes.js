@@ -19,4 +19,7 @@ export const API_ACTIONS = {
   FIREBASE_LOGIN_FAIL:{
     action: 'firebase_login_fail',
   },
+  LOGOUT_USER:{
+    action: 'logout_user',
+  }
 };

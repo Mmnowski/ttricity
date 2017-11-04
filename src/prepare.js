@@ -24,7 +24,7 @@ const logger = createLogger({
 });
 
 /* Initial the store */
-function configureStore({}) {
+function configureStore(initialState) {
   // Init firebase connection
   const config = {
     apiKey: " FIREBASE_API_KEY",
@@ -37,7 +37,7 @@ function configureStore({}) {
   firebase.initializeApp(config);
   // Initial the redux devtools for Chrome
   // https://github.com/zalmoxisus/redux-devtools-extension/
-  const createdStore = createStore(reducer, {},
+  const createdStore = createStore(reducer, initialState,
     compose(
       applyMiddleware(logger, ReduxPromise, thunk),
       window.devToolsExtension ? window.devToolsExtension() : (f) => f)
@@ -59,7 +59,8 @@ function configureStore({}) {
 }
 
 // Default saves and read saved redux state from local storage
-const initialState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {};
+const previousState = localStorage.getItem('reduxState');
+const initialState = previousState ? JSON.parse(previousState) : {};
 
 export const store = configureStore(initialState);
 store.subscribe(() => {

@@ -19,16 +19,17 @@ export const auth = (state = initialState, action) => {
       };
     case API_ACTIONS.FIREBASE_LOGIN_SUCCESS:
       return {
-        ...state,
+        ...initialState,
         user: action.payload,
-        isFetching: false,
       };
     case API_ACTIONS.FIREBASE_LOGIN_FAIL:
       return {
         ...state,
-        error: 'Authentication Failed.',
+        error: action.payload.message,
         isFetching: false
       };
+    case API_ACTIONS.LOGOUT_USER:
+      return initialState;
     default:
       return state;
   }

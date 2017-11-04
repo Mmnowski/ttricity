@@ -1,9 +1,9 @@
 import {API_ACTIONS} from '../../actionTypes';
 import firebase from 'firebase';
 
-export const loginUser = ({ email, password }) => {
+export const loginUser = (email, password) => {
   return (dispatch) => {
-    dispatch({ type: API_ACTIONS.FIREBASE_LOGIN });
+    dispatch({type: API_ACTIONS.FIREBASE_LOGIN});
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
@@ -12,13 +12,16 @@ export const loginUser = ({ email, password }) => {
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(user => loginUserSuccess(dispatch, user))
-          .catch(() => loginUserFail(dispatch));
+          .catch((error) => loginUserFail(dispatch, error));
       });
   };
 };
 
-const loginUserFail = (dispatch) => {
-  dispatch({ type: API_ACTIONS.FIREBASE_LOGIN_FAIL });
+const loginUserFail = (dispatch, error) => {
+  dispatch({
+    type: API_ACTIONS.FIREBASE_LOGIN_FAIL,
+    payload: error,
+  });
 };
 
 const loginUserSuccess = (dispatch, user) => {
@@ -26,4 +29,8 @@ const loginUserSuccess = (dispatch, user) => {
     type: API_ACTIONS.FIREBASE_LOGIN_SUCCESS,
     payload: user
   });
+};
+
+export const logoutUser = () => {
+  return {type: API_ACTIONS.LOGOUT_USER}
 };
