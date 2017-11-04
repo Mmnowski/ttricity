@@ -2,6 +2,7 @@ import React from 'react';
 import './layout.scss';
 import {history} from '../prepare';
 import NavBar from './navBar';
+import {AppBar} from './auth';
 
 let MediaQuery = require('react-responsive');
 
@@ -46,6 +47,7 @@ class Layout extends React.Component {
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
       <div className="container">
+       <AppBar/>
         <section className="content" style={{width: navWidth}}>
           {children}
             <NavBar/>
