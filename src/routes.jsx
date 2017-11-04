@@ -24,6 +24,7 @@ const Routes = () => {
           <IndexRoute component={Home}/>
         </Route>
         <Route path="*" component={NotFound}/>
+        <Route path="/" component={Home}/>
       </Router>
     </Provider>
   );
