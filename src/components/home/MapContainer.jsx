@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import places from '../firebaseData.js';
+import {places} from '../firebaseData.js';
 
 
 export class MapContainer extends React.Component {
@@ -13,7 +13,7 @@ export class MapContainer extends React.Component {
             selectedPlace: {},
         }
 
-        // binding this to event-handler functions
+
         this.onMarkerClick = this.onMarkerClick.bind(this);
     }
 
@@ -21,14 +21,14 @@ export class MapContainer extends React.Component {
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
-            showingInfoWindow: true
+            showingInfoWindow: true,
         });
     }
 
 
 
     render(){
-        const style = { display: 'inline-block', margin: '0 16% 0 0', height:'600px' }
+        const style = { display: 'inline-block',width: '85%', height:'600px' }
 
         return (
             <Map style={style} google={this.props.google}
@@ -39,18 +39,14 @@ export class MapContainer extends React.Component {
                  zoom={10}
             >
 
+                <Marker name={places[1].name} onClick={this.onMarkerClick}
+                        position={{lat: places[1].lat, lng: places[1].lon}} />
 
-            <Marker name={'Muzeum miasta Gdyni'} onClick={this.onMarkerClick}
-                        position={{lat: 54.515825, lng: 18.5449753}} />
+            <Marker name={places[2].name} onClick={this.onMarkerClick}
+                        position={{lat: places[2].lat, lng: places[2].lon}} />
 
-
-                <Marker name={'Sea Towers'} onClick={this.onMarkerClick}
-                        position={{lat: 54.5222336, lng: 18.5515414}} />
-
-
-
-                <Marker name={'Okręt wojskowy ORP Błyskawica'} onClick={this.onMarkerClick}
-                        position={{lat: 54.5195615, lng: 18.5489877}} />
+                <Marker name={places[3].name} onClick={this.onMarkerClick}
+                        position={{lat: places[3].lat, lng: places[3].lon}} />
 
 
 
@@ -59,7 +55,7 @@ export class MapContainer extends React.Component {
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}>
                     <div>
-                        <h1>{this.state.selectedPlace.name}</h1>
+                        <h1>{this.state.selectedPlace.name} </h1>
                     </div>
                 </InfoWindow>
             </Map>
