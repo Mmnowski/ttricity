@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './home';
+import Home from './MapContainer';
 
 class HomeLayout extends React.Component {
   renderHome() {
