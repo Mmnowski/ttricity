@@ -1,6 +1,5 @@
 import React from 'react';
 import './layout.scss';
-import {history} from '../prepare';
 import NavBar from './navBar';
 import {AppBar} from './auth';
 
@@ -37,13 +36,13 @@ class Layout extends React.Component {
     // _.map(places, (place) => console.log(place));
     let children = this.props.children;
     let shouldOpen = this.props.open;
-    if (!this.props.isLogged) {
-      if (children.props.location.pathname !== '/') {
-        history.replace('/');
-        children = null;
-      }
-      shouldOpen = false;
-    }
+    // if (!this.props.isLogged) {
+    //   if (children.props.location.pathname !== '/') {
+    //     history.replace('/');
+    //     children = null;
+    //   }
+    //   shouldOpen = false;
+    // }
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
       <div className="container">
