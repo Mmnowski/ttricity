@@ -27,7 +27,7 @@ export class MapContainer extends React.Component {
 
 
 
-    render(){
+    renderMap(){
         const style = { display: 'inline-block',width: '85%', height:'600px' }
 
         return (
@@ -60,6 +60,15 @@ export class MapContainer extends React.Component {
                 </InfoWindow>
             </Map>
         )
+    }
+    render(){
+    return(
+        <div>
+         
+          {this.renderMap()}
+
+        </div>
+    );
     }
 }
 
