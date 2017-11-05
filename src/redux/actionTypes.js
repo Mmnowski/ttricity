@@ -13,6 +13,9 @@ export const API_ACTIONS = {
   FIREBASE_LOGIN:{
     action: 'firebase_login',
   },
+  FIREBASE_REGISTER:{
+    action: 'firebase_register',
+  },
   FIREBASE_LOGIN_SUCCESS:{
     action: 'firebase_login_success',
   },
