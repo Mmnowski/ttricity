@@ -12,8 +12,6 @@ export class MapContainer extends React.Component {
       selectedPlace: {},
     }
 
-
-    this.onMarkerClick = this.onMarkerClick.bind(this);
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -25,47 +23,37 @@ export class MapContainer extends React.Component {
   }
 
 
-  renderMap() {
-    const style = {display: 'inline-block', width: '74%', height: '600px'}
+  MarkerRender() {
 
-    return (
-      <Map style={style} google={this.props.google}
-           initialCenter={{
-             lat: 54.5039043,
-             lng: 18.3934396
-           }}
-           zoom={10}
-      >
-
-        <Marker name={places[1].name} onClick={this.onMarkerClick}
-                position={{lat: places[1].lat, lng: places[1].lon}}/>
-
-        <Marker name={places[2].name} onClick={this.onMarkerClick}
-                position={{lat: places[2].lat, lng: places[2].lon}}/>
-
-        <Marker name={places[3].name} onClick={this.onMarkerClick}
-                position={{lat: places[3].lat, lng: places[3].lon}}/>
-
-
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-          <div>
-            <h1>{this.state.selectedPlace.name} </h1>
-          </div>
-        </InfoWindow>
-      </Map>
-    )
+    return _.map(places, (place) => {
+      return (
+        <Marker key={place.name} name={place.name} onClick={this.onMarkerClick}
+                position={{lat: place.lat, lng: place.lon}}/>
+      )
+    });
   }
 
+
   render() {
+    const style = {display: 'inline-block', width: '74%', height: '600px'};
     return (
-      <div>
+        <Map style={style} google={this.props.google}
+             initialCenter={{
+               lat: 54.5039043,
+               lng: 18.3934396
+             }}
+             zoom={10}>
 
-        {_.map(places, (place) => console.log(place))}
-        {this.renderMap()}
+          {this.MarkerRender()}
 
-      </div>
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name} </h1>
+            </div>
+          </InfoWindow>
+        </Map>
     );
   }
 }
