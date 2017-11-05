@@ -1,6 +1,7 @@
 import React from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
 import {places} from '../firebaseData.js';
+import * as _ from "lodash";
 
 
 export class MapContainer extends React.Component {
@@ -20,17 +21,14 @@ export class MapContainer extends React.Component {
       activeMarker: marker,
       showingInfoWindow: true,
     });
-  }
+  };
 
 
-  MarkerRender() {
-
-    return _.map(places, (place) => {
-      return (
+  renderMarker(place) {
+    return(
         <Marker key={place.name} name={place.name} onClick={this.onMarkerClick}
                 position={{lat: place.lat, lng: place.lon}}/>
-      )
-    });
+      );
   }
 
 
@@ -44,7 +42,7 @@ export class MapContainer extends React.Component {
              }}
              zoom={10}>
 
-          {this.MarkerRender()}
+          {_.map(places, (place) => this.renderMarker(place))}
 
           <InfoWindow
             marker={this.state.activeMarker}
