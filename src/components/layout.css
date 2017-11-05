@@ -24,8 +24,9 @@ h1 {
   text-align: center; }
 
 .login-content {
-  display: flex; }
-  .login-content .content {
-    flex: 1; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 380px; }
 
 /*# sourceMappingURL=layout.css.map */

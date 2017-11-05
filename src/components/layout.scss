@@ -38,9 +38,9 @@ h1 {
   text-align: center;
 }
 
-.login-content{
+.login-content {
   display: flex;
-  .content{
-    flex: 1;
-  }
+  flex-direction: column;
+  align-items: center;
+  min-height: 380px;
 }

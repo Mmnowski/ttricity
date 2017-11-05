@@ -1,10 +1,12 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import {connect} from 'react-redux';
-import {loginUser, logoutUser} from "../../redux/modules/auth/actions";
+import {loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import {FlatButton, TextField} from "material-ui";
+import {Tab, Tabs} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 
 class BarLayout extends React.Component {
   constructor(props) {
@@ -12,7 +14,11 @@ class BarLayout extends React.Component {
     this.state = {
       popup: false,
       email: '',
+      email_register: '',
+      password1: '',
+      password2: '',
       password: '',
+      slideIndex: 0,
     };
   }
 
@@ -53,14 +59,29 @@ class BarLayout extends React.Component {
     const {email, password} = this.state;
     if (email && password) {
       this.props.loginUser(email, password);
-      this.setState({popup: false})
     }
     else {
       console.log("error");
     }
   };
 
+  validateRegister = () => {
+    const {email_register, password1, password2} = this.state;
+    if (email_register && password1 && password1 === password2) {
+      this.props.registerUser(email_register, password1);
+    }
+    else {
+      console.log("error");
+    }
+  };
+
+  handleSlide = (value) => {
+    this.setState({slideIndex: value});
+  };
+
+  // clean this up...
   render() {
+    const {error} = this.props;
     return (
       <div>
         <AppBar
@@ -72,19 +93,27 @@ class BarLayout extends React.Component {
           modal={false}
           open={this.state.popup && !this.props.user}
           onRequestClose={this.handleClose}
+          actionsContainerStyle={{height: 100}}
         >
-          <div className="login-content">
-            <div className="content">
-              <h1>Logowanie</h1>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                this.validateLogin()
-              }}>
+          <div>
+            <Tabs
+              onChange={this.handleSlide}
+              value={this.state.slideIndex}
+            >
+              <Tab label="Logowanie" value={0}/>
+              <Tab label="Rejestracja" value={1}/>
+            </Tabs>
+            <SwipeableViews
+              index={this.state.slideIndex}
+              onChangeIndex={this.handleSlide}
+            >
+              <div className="login-content">
                 <TextField
                   hintText="Podaj email"
                   floatingLabelText="Email"
                   onChange={(e, newValue) => this.setField(newValue, 'email')}
                 />
+                <br/>
                 <TextField
                   hintText="Podaj hasło"
                   floatingLabelText="Hasło"
@@ -93,13 +122,35 @@ class BarLayout extends React.Component {
                 />
                 <br/>
                 <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
-              </form>
-              <br/>
-              <p style={{color: 'red'}}>{this.props.error}</p>
-            </div>
-            <div className="content">
-              <h1>Rejestracja</h1>
-            </div>
+                <br/>
+                <p style={{color: 'red'}}>{error}</p>
+              </div>
+              <div className="login-content">
+                <TextField
+                  hintText="Podaj email"
+                  floatingLabelText="Email"
+                  onChange={(e, newValue) => this.setField(newValue, 'email_register')}
+                />
+                <br/>
+                <TextField
+                  hintText="Podaj hasło"
+                  floatingLabelText="Hasło"
+                  type="password"
+                  onChange={(e, newValue) => this.setField(newValue, 'password1')}
+                />
+                <br/>
+                <TextField
+                  hintText="Potwierdź hasło"
+                  floatingLabelText="Hasło"
+                  type="password"
+                  onChange={(e, newValue) => this.setField(newValue, 'password2')}
+                />
+                <br/>
+                <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
+                <br/>
+                <p style={{color: 'red'}}>{error}</p>
+              </div>
+            </SwipeableViews>
           </div>
         </Dialog>
       </div>
@@ -117,6 +168,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loginUser,
   logoutUser,
+  registerUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarLayout);
