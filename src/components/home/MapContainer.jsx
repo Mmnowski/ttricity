@@ -60,6 +60,15 @@ export class MapContainer extends React.Component {
             </Map>
         )
     }
+    render(){
+    return(
+        <div>
+         
+          {this.renderMap()}
+
+        </div>
+    );
+    }
 }
 
 
