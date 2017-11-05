@@ -1,6 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
 import {places} from '../firebaseData.js';
 
 
@@ -28,7 +27,7 @@ export class MapContainer extends React.Component {
 
 
     render(){
-        const style = { display: 'inline-block',width: '85%', height:'600px' }
+        const style = { display: 'inline-block',width: '74%', height:'600px' }
 
         return (
             <Map style={style} google={this.props.google}

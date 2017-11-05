@@ -1,9 +1,7 @@
 import React from 'react';
 import './layout.scss';
-import {Link} from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -15,16 +13,10 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
-              <RaisedButton
-                  label="Open menu"
-                  onClick={this.handleToggle}
-              />
-              <Drawer open={this.state.open}>
-                <MenuItem>Home</MenuItem>
-                <MenuItem>Cards</MenuItem>
-              </Drawer>
-            </div>
+            <Drawer open={this.state.open} containerStyle={{width: '17.6%', top: 8}}>
+              <MenuItem>Strona startowa</MenuItem>
+              <MenuItem>Lista atrakcji</MenuItem>
+            </Drawer>
         );
     }
 }

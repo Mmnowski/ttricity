@@ -47,10 +47,10 @@ class Layout extends React.Component {
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
       <div className="container">
-       <AppBar/>
-        <section className="content" style={{width: navWidth}}>
+        <NavBar/>
+        <section className="content" style={{width: '88.5%'}}>
+          <AppBar/>
           {children}
-            <NavBar/>
         </section>
         <footer>
         </footer>

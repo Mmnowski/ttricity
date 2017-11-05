@@ -64,7 +64,7 @@ class BarLayout extends React.Component {
     return (
       <div>
         <AppBar
-          title="Turystyczne Tri City"
+          title="TurystyczneTriCity"
           iconElementRight={this.loginButton()}
           iconStyleRight={{alignSelf: 'center', marginTop: 0}}
         />
