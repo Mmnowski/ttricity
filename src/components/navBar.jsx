@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router';
 import './layout.scss';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -16,22 +15,13 @@ class NavBar extends React.Component {
   render() {
     return (
       <Drawer open={this.state.open} containerStyle={{width: '17.6%', top: 8}}>
-        {/*  <MenuItem
+        <MenuItem
           containerElement={<Link to="/" />}
-          primaryText="Test"
+          primaryText="Strona główna"
         />
         <MenuItem
           containerElement={<Link to="/lista" />}
-          primaryText="Test2"
-        />
-       */}
-        <MenuItem
-          href="/#/"
-          primaryText="Strona glowna"
-        />
-        <MenuItem
-          href="/#/lista"
-          primaryText="Lista atrakcji"
+          primaryText="Lista lokacji"
         />
       </Drawer>
     );
