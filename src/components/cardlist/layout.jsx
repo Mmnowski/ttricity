@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardText, CardHeader} from 'material-ui/Card';
+import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';
 import {places} from '../firebaseData.js';
 import _ from 'lodash';
@@ -10,12 +11,16 @@ class PlaceList extends React.Component {
 
   element(place) {
     const link = "https://www.google.com/maps/?q="+place.lat+","+place.lon;
+    const style ={
+      width: "100px",
+      height: '100px'
+    }
     return (
       <div key={place.name}>
         <Card>
           <CardHeader
             title={place.name}
-            avatar={place.img}
+            avatar={<Avatar src={place.img} size={100}/>}
           />
           <CardActions>
             <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
