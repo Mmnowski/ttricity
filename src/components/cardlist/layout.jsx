@@ -1,27 +1,28 @@
 import React from 'react';
-import {Card, CardActions, CardText, CardHeader} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {places} from '../firebaseData.js';
 import _ from 'lodash';
+import {CardMedia} from "material-ui";
+
 class PlaceList extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
   element(place) {
-    const link = "https://www.google.com/maps/?q="+place.lat+","+place.lon;
-    const style ={
-      width: "100px",
-      height: '100px'
-    }
+    const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
     return (
       <div key={place.name}>
         <Card>
           <CardHeader
             title={place.name}
-            avatar={<Avatar src={place.img} size={100}/>}
           />
+          <CardMedia>
+            <div className="card-media">
+              <img style={{objectFit: 'contain'}} src={place.img} alt={place.name}/>
+            </div>
+          </CardMedia>
           <CardActions>
             <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
           </CardActions>
