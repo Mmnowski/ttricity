@@ -1,2 +1,3 @@
 - podstawowy moduł redux (action, reducer)
 - połączenie redux z react
+- komponent List (cardlist)
