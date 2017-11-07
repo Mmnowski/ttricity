@@ -4,7 +4,7 @@ export const places = {
     description: 'Nowoczesny drapacz chmur w Gdyni. Został wybudowany w 2009 roku i jest dwunastym najwyższym wierzowcem w Polsce. Widoki z samej góry zapierają dech w piersiach.',
     lat: '54.5222336',
     lon: '18.5515414',
-    img: 'https://t-ec.bstatic.com/images/hotel/max1024x768/474/47476014.jpg',
+    img: 'http://lh4.googleusercontent.com/-dy-19TxQRUk/UtHNbmTMSGI/AAAAAAAADXQ/tI2Mm6Ud7g4/s1024/%2528c%2529_sjs_2012_dsc_011567.jpg',
   },
   2: {
     name: 'Muzeum miasta Gdyni',
