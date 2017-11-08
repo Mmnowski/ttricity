@@ -29,4 +29,14 @@ h1 {
   align-items: center;
   min-height: 380px; }
 
+.card-media {
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; }
+  .card-media img {
+    object-fit: cover;
+    height: 100%;
+    min-width: 50%; }
+
 /*# sourceMappingURL=layout.css.map */
