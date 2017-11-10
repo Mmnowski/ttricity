@@ -1,5 +1,6 @@
 $linkhormal: #39c;
 $linkhover: #94c;
+$cardborder: #f4f4f4;
 
 .container {
   margin: 0 auto;
@@ -54,5 +55,61 @@ h1 {
     object-fit: cover;
     height: 100%;
     min-width: 50%;
+    float: left;
   }
 }
+
+.cardList {
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+  flex-direction: column;
+  border-style: solid;
+  margin-bottom: -3px;
+  border-color: $cardborder;
+  *{
+    padding: 10px;
+    flex: 1 100%;
+  }
+
+  h1{
+    border-bottom-style: solid;
+    border-color: $cardborder;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .cardImage{
+    width: 150px;
+    overflow: hidden;
+    img{
+      object-fit: contain;
+      max-height: 33vh;
+    }
+  }
+
+  .cardContainer{
+    display: flex;
+    height: 33%;
+    .cardImage, .pAndButtons{
+      width: 50%;
+      display: inline-flex;
+    }
+  }
+
+  .pAndButtons{
+    flex-direction: column;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+  }
+
+
+}
+
+

@@ -24,5 +24,8 @@ export const API_ACTIONS = {
   },
   LOGOUT_USER:{
     action: 'logout_user',
+  },
+  SELECT_PLACE:{
+    action: 'select_place',
   }
 };
