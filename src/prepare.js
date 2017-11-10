@@ -1,4 +1,6 @@
 import {auth} from './redux/modules/auth/reducers';
+import {cardList} from './redux/modules/cardlist/reducers';
+
 /* Redux */
 import {routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
@@ -17,6 +19,7 @@ import config from './config';
 const reducer = combineReducers({
   routing: routerReducer,
   auth,
+  cardList,
 });
 
 const logger = createLogger({
@@ -47,9 +50,11 @@ function configureStore(initialState) {
   if (hot) {
     hot.accept('./reducers', () => {
       const auth = require('./redux/modules/auth/reducers');
+      const cardList = require('./redux/modules/cardlist/reducers');
       const nextReducer = combineReducers({
         routing: routerReducer,
         auth,
+        cardList,
       });
       createdStore.replaceReducer(nextReducer);
     });
