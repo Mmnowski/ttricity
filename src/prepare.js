@@ -1,6 +1,5 @@
 import {auth} from './redux/modules/auth/reducers';
 import {cardList} from './redux/modules/cardlist/reducers';
-
 /* Redux */
 import {routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
@@ -29,17 +28,16 @@ const logger = createLogger({
 /* Initial the store */
 function configureStore(initialState) {
   // Init firebase connection
-  const config = {
-    apiKey: " FIREBASE_API_KEY",
-    authDomain: "turystycznetricity.firebaseapp.com",
-    databaseURL: "https://turystycznetricity.firebaseio.com",
-    projectId: "turystycznetricity",
-    storageBucket: "turystycznetricity.appspot.com",
-    messagingSenderId: "565617009011"
+  const firebaseConfig = {
+    apiKey: "FIREBASE_API_KEY",
+    authDomain: "turystycznetricity-8a97c.firebaseapp.com",
+    databaseURL: "https://turystycznetricity-8a97c.firebaseio.com",
+    projectId: "turystycznetricity-8a97c",
+    storageBucket: "",
+    messagingSenderId: "250882144902"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
   // Initial the redux devtools for Chrome
-  // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState,
     compose(
       applyMiddleware(logger, ReduxPromise, thunk),
