@@ -53,10 +53,10 @@ export class MapContainer extends React.Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div>
-            <div className='iw-title'>
+            <div className='title'>
               {this.state.selectedPlace.name}
             </div>
-            <div className='iw-description'>
+            <div className='description'>
               <div className='photo'>
                 <img src={this.state.selectedPlace.photo} width={'100%'} height={'100%'}/>
               </div>

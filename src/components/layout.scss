@@ -100,7 +100,7 @@ h1 {
   }
 }
 
-.iw-title {
+.title {
   font-size: 22px;
   font-weight: 400;
   padding: 10px;
@@ -110,10 +110,11 @@ h1 {
   border-radius: 2px 2px 0 0;
 }
 
-.iw-description {
+.description {
   display: flex;
   height: auto;
   margin: 1px;
+
   .photo {
     display: inline-block;
     width: 50%;
