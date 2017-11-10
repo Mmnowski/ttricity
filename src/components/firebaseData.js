@@ -16,8 +16,8 @@ export const places = {
     3: {
         name: 'Okręt wojskowy ORP Błyskawica',
         description: 'Okręt wojskowy, który został wykluczony ze służby. Jest świetnym miejsem dla fanatyków historii,rodzin z dziećmi - dla których to miejsce jest doskonałą atrakcją.',
-        lat: '54.5195615',
-        lon: '18.5489877',
+        lat: '54.5197081',
+        lon: '18.5505377',
         img: 'http://jollydiver.com/wp-content/uploads/2013/11/ORP-Blyskawica3.jpg',
     }
 };
