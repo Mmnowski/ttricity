@@ -45,9 +45,8 @@ h1 {
   font-weight: bold;
   text-align: center;
   flex-direction: column;
-  border-style: solid;
   margin-bottom: -3px;
-  border-color: #f4f4f4; }
+  border-color: solid #f4f4f4; }
   .cardList * {
     padding: 10px;
     flex: 1 100%; }
@@ -76,5 +75,29 @@ h1 {
     justify-content: center;
     width: 90%;
     margin: auto; }
+
+.iw-title {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 1px;
+  border-radius: 2px 2px 0 0; }
+
+.iw-description {
+  display: flex;
+  height: auto;
+  margin: 1px; }
+  .iw-description .photo {
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+    border-radius: 2px 2px 0 0; }
+  .iw-description .text {
+    display: inline-block;
+    font-size: 15px;
+    width: 50%;
+    height: 100%; }
 
 /*# sourceMappingURL=layout.css.map */

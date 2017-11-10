@@ -64,15 +64,14 @@ h1 {
   font-weight: bold;
   text-align: center;
   flex-direction: column;
-  border-style: solid;
   margin-bottom: -3px;
-  border-color: $cardborder;
-  *{
+  border-color: solid $cardborder;
+  * {
     padding: 10px;
     flex: 1 100%;
   }
 
-  h1{
+  h1 {
     border-bottom-style: solid;
     border-color: $cardborder;
     padding: 20px;
@@ -80,29 +79,29 @@ h1 {
     text-align: center;
   }
 
-  .cardImage{
+  .cardImage {
     width: 150px;
     overflow: hidden;
-    img{
+    img {
       object-fit: contain;
       max-height: 33vh;
     }
   }
 
-  .cardContainer{
+  .cardContainer {
     display: flex;
     height: 33%;
-    .cardImage, .pAndButtons{
+    .cardImage, .pAndButtons {
       width: 50%;
       display: inline-flex;
     }
   }
 
-  .pAndButtons{
+  .pAndButtons {
     flex-direction: column;
   }
 
-  .buttons{
+  .buttons {
     display: flex;
     justify-content: center;
     width: 90%;
@@ -121,21 +120,20 @@ h1 {
 }
 
 .iw-description {
-  display:block;
-  width:100%;
-  height:auto;
+  display: flex;
+  height: auto;
   margin: 1px;
-}
+  .photo {
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+    border-radius: 2px 2px 0 0;
+  }
 
-.photo{
-  display:inline-block;
-  width:50%;
-  height:50%;
-  border-radius: 2px 2px 0 0;
-}
-
-.text{
-  display:inline-block;
-  width:50%;
-  height:100%;
+  .text {
+    display: inline-block;
+    font-size: 15px;
+    width: 50%;
+    height: 100%;
+  }
 }

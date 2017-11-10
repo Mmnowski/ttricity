@@ -25,10 +25,14 @@ export class MapContainer extends React.Component {
 
 
   renderMarker(place) {
-    return(
-        <Marker key={place.name} name={place.name} description={place.description} photo={place.img} onClick={this.onMarkerClick}
-                position={{lat: place.lat, lng: place.lon}}/>
-      );
+    return (
+      <Marker key={place.name}
+              name={place.name}
+              description={place.description}
+              photo={place.img}
+              onClick={this.onMarkerClick}
+              position={{lat: place.lat, lng: place.lon}}/>
+    );
   }
 
 
@@ -36,46 +40,33 @@ export class MapContainer extends React.Component {
     const style = {display: 'inline-block', width: '74%', height: '600px'};
 
     return (
-        <Map style={style} google={this.props.google}
-             initialCenter={{
-               lat: 54.5039043,
-               lng: 18.3934396
-             }}
-             zoom={10}>
+      <Map style={style} google={this.props.google}
+           initialCenter={{
+             lat: 54.5039043,
+             lng: 18.3934396
+           }}
+           zoom={10}>
 
-          {_.map(places, (place) => this.renderMarker(place))}
+        {_.map(places, (place) => this.renderMarker(place))}
 
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
-            <div>
-              <div className='iw-title'>
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+          <div>
+            <div className='iw-title'>
               {this.state.selectedPlace.name}
-              </div>
-
-
-
-
-
-              <div className='iw-description'>
-
-                <div className='photo'>
-                <img src={this.state.selectedPlace.photo} width={'100%'} height={'100%'}/>
-                </div>
-
-                <div className='text'>
-                {this.state.selectedPlace.description}
-                </div>
-
-              </div>
-
-
-
-
             </div>
-
-          </InfoWindow>
-        </Map>
+            <div className='iw-description'>
+              <div className='photo'>
+                <img src={this.state.selectedPlace.photo} width={'100%'} height={'100%'}/>
+              </div>
+              <div className='text'>
+                {this.state.selectedPlace.description}
+              </div>
+            </div>
+          </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
