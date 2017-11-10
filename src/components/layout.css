@@ -11,10 +11,6 @@
       text-decoration: none; }
       .container header a:hover {
         color: #94c; }
-  .container footer {
-    bottom: 0;
-    position: fixed;
-    width: 100%; }
   .container .content {
     float: right;
     padding-bottom: 50px;
@@ -56,25 +52,25 @@ h1 {
     padding: 20px;
     margin: 5px;
     text-align: center; }
-  .cardList .cardImage {
-    width: 150px;
-    overflow: hidden; }
-    .cardList .cardImage img {
-      object-fit: contain;
-      max-height: 33vh; }
   .cardList .cardContainer {
     display: flex;
     height: 33%; }
     .cardList .cardContainer .cardImage, .cardList .cardContainer .pAndButtons {
       width: 50%;
       display: inline-flex; }
-  .cardList .pAndButtons {
-    flex-direction: column; }
-  .cardList .buttons {
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    margin: auto; }
+    .cardList .cardContainer .cardImage {
+      width: 150px;
+      overflow: hidden; }
+      .cardList .cardContainer .cardImage img {
+        object-fit: contain;
+        max-height: 33vh; }
+    .cardList .cardContainer .pAndButtons {
+      flex-direction: column; }
+    .cardList .cardContainer .buttons {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin: auto; }
 
 .iw-title {
   font-size: 22px;
@@ -95,8 +91,9 @@ h1 {
     height: 50%;
     border-radius: 2px 2px 0 0; }
   .iw-description .text {
+    margin: 10px auto auto 10px;
     display: inline-block;
-    font-size: 15px;
+    font-size: 18px;
     width: 50%;
     height: 100%; }
 

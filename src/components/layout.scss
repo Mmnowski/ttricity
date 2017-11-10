@@ -22,12 +22,6 @@ $cardborder: #f4f4f4;
     }
   }
 
-  footer {
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-  }
-
   .content {
     float: right;
     padding-bottom: 50px;
@@ -79,15 +73,6 @@ h1 {
     text-align: center;
   }
 
-  .cardImage {
-    width: 150px;
-    overflow: hidden;
-    img {
-      object-fit: contain;
-      max-height: 33vh;
-    }
-  }
-
   .cardContainer {
     display: flex;
     height: 33%;
@@ -95,17 +80,23 @@ h1 {
       width: 50%;
       display: inline-flex;
     }
-  }
-
-  .pAndButtons {
-    flex-direction: column;
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    margin: auto;
+    .cardImage {
+      width: 150px;
+      overflow: hidden;
+      img {
+        object-fit: contain;
+        max-height: 33vh;
+      }
+    }
+    .pAndButtons {
+      flex-direction: column;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin: auto;
+    }
   }
 }
 
@@ -129,10 +120,10 @@ h1 {
     height: 50%;
     border-radius: 2px 2px 0 0;
   }
-
   .text {
+    margin: 10px auto auto 10px;
     display: inline-block;
-    font-size: 15px;
+    font-size: 18px;
     width: 50%;
     height: 100%;
   }
