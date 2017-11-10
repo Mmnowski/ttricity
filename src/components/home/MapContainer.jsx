@@ -26,7 +26,7 @@ export class MapContainer extends React.Component {
 
   renderMarker(place) {
     return(
-        <Marker key={place.name} name={place.name} onClick={this.onMarkerClick}
+        <Marker key={place.name} name={place.name} description={place.description} photo={place.img} onClick={this.onMarkerClick}
                 position={{lat: place.lat, lng: place.lon}}/>
       );
   }
@@ -34,6 +34,7 @@ export class MapContainer extends React.Component {
 
   render() {
     const style = {display: 'inline-block', width: '74%', height: '600px'};
+
     return (
         <Map style={style} google={this.props.google}
              initialCenter={{
@@ -48,8 +49,31 @@ export class MapContainer extends React.Component {
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
             <div>
-              <h1>{this.state.selectedPlace.name} </h1>
+              <div className='iw-title'>
+              {this.state.selectedPlace.name}
+              </div>
+
+
+
+
+
+              <div className='iw-description'>
+
+                <div className='photo'>
+                <img src={this.state.selectedPlace.photo} width={'100%'} height={'100%'}/>
+                </div>
+
+                <div className='text'>
+                {this.state.selectedPlace.description}
+                </div>
+
+              </div>
+
+
+
+
             </div>
+
           </InfoWindow>
         </Map>
     );

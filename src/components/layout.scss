@@ -108,8 +108,34 @@ h1 {
     width: 90%;
     margin: auto;
   }
-
-
 }
 
+.iw-title {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 1px;
+  border-radius: 2px 2px 0 0;
+}
 
+.iw-description {
+  display:block;
+  width:100%;
+  height:auto;
+  margin: 1px;
+}
+
+.photo{
+  display:inline-block;
+  width:50%;
+  height:50%;
+  border-radius: 2px 2px 0 0;
+}
+
+.text{
+  display:inline-block;
+  width:50%;
+  height:100%;
+}
