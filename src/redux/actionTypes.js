@@ -30,5 +30,8 @@ export const API_ACTIONS = {
   },
   SELECT_PLACE:{
     action: 'select_place',
-  }
+  },
+  CLEAR_AUTH_ERROR:{
+    action: 'clear_auth_error',
+  },
 };

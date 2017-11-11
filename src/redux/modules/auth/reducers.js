@@ -45,6 +45,11 @@ export const auth = (state = initialState, action) => {
         email: !state.email,
         error: '',
       };
+    case API_ACTIONS.CLEAR_AUTH_ERROR:
+      return {
+        ...state,
+        error: '',
+      };
     default:
       return state;
   }

@@ -59,3 +59,7 @@ const loginUserSuccess = (dispatch, user) => {
 export const logoutUser = () => {
   return {type: API_ACTIONS.LOGOUT_USER}
 };
+
+export function clearAuthError() {
+  return {type: API_ACTIONS.CLEAR_AUTH_ERROR};
+}
