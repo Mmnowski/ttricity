@@ -17,7 +17,7 @@ export const registerUser = (email, password) => {
   return (dispatch) => {
     dispatch({type: API_ACTIONS.FIREBASE_REGISTER});
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user => loginUserSuccess(dispatch, user))
+      .then(user => verifyEmail(dispatch, user))
       .catch((error) => {
         loginUserFail(dispatch, error);
         console.log(error);
@@ -25,9 +25,26 @@ export const registerUser = (email, password) => {
   };
 };
 
+export const verifyEmail = (dispatch, user) => {
+  dispatch(
+    user.sendEmailVerification().then(() => {
+      return {type: API_ACTIONS.FIREBASE_EMAIL_SENT}
+    }).catch(function (error) {
+      console.log(error);
+    })
+  );
+};
+
 const loginUserFail = (dispatch, error) => {
   dispatch({
     type: API_ACTIONS.FIREBASE_LOGIN_FAIL,
+    payload: error,
+  });
+};
+
+const emailSent = (dispatch) => {
+  dispatch({
+    type: API_ACTIONS.FIREBASE_EMAIL_SENT,
     payload: error,
   });
 };

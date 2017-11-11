@@ -72,7 +72,7 @@ h1 {
       width: 90%;
       margin: auto; }
 
-.iw-title {
+.title {
   font-size: 22px;
   font-weight: 400;
   padding: 10px;
@@ -81,16 +81,16 @@ h1 {
   margin: 1px;
   border-radius: 2px 2px 0 0; }
 
-.iw-description {
+.description {
   display: flex;
   height: auto;
   margin: 1px; }
-  .iw-description .photo {
+  .description .photo {
     display: inline-block;
     width: 50%;
     height: 50%;
     border-radius: 2px 2px 0 0; }
-  .iw-description .text {
+  .description .text {
     margin: 10px auto auto 10px;
     display: inline-block;
     font-size: 18px;

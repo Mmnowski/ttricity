@@ -19,6 +19,9 @@ export const API_ACTIONS = {
   FIREBASE_LOGIN_SUCCESS:{
     action: 'firebase_login_success',
   },
+  FIREBASE_EMAIL_SENT:{
+    action: 'firebase_email_sent',
+  },
   FIREBASE_LOGIN_FAIL:{
     action: 'firebase_login_fail',
   },
