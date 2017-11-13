@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import {connect} from 'react-redux';
-import {loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
+import {clearAuthError, loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import {FlatButton, TextField} from "material-ui";
@@ -19,7 +19,12 @@ class BarLayout extends React.Component {
       password2: '',
       password: '',
       slideIndex: 0,
+      error: '',
     };
+  }
+
+  componentWillMount() {
+    this.props.clearAuthError();
   }
 
   handleOpen = () => {
@@ -37,7 +42,10 @@ class BarLayout extends React.Component {
           label="Wyloguj"
           className="login-button"
           backgroundColor="#a4c639"
-          onClick={this.props.logoutUser}
+          onClick={(e) => {
+            e.preventDefault();
+            this.props.logoutUser();
+          }}
         />
       )
     }
@@ -58,30 +66,102 @@ class BarLayout extends React.Component {
   validateLogin = () => {
     const {email, password} = this.state;
     if (email && password) {
+      this.setState({error: ''});
       this.props.loginUser(email, password);
     }
     else {
-      console.log("error");
+      this.props.clearAuthError();
+      this.setState({error: 'Podaj login i hasło.'});
     }
   };
 
   validateRegister = () => {
     const {email_register, password1, password2} = this.state;
     if (email_register && password1 && password1 === password2) {
-      this.props.registerUser(email_register, password1);
+      this.setState({error: ''});
+      return this.props.registerUser(email_register, password1);
+    }
+    this.props.clearAuthError();
+    if (!password1 || !password2 || !email_register) {
+      this.setState({error: 'Wszystkie pola są wymagane.'});
     }
     else {
-      console.log("error");
+      this.setState({error: 'Podane hasła są różne.'});
     }
   };
 
   handleSlide = (value) => {
-    this.setState({slideIndex: value});
+    this.setState({slideIndex: value, error: ''});
+    this.props.clearAuthError();
   };
 
-  // clean this up...
+  renderError() {
+    return <p style={{color: 'red'}}>{this.props.error}{this.state.error}</p>;
+  }
+
+  renderLogin() {
+    return (
+      <div className="login-content">
+        <TextField
+          hintText="Podaj email"
+          floatingLabelText="Email"
+          onChange={(e, newValue) => this.setField(newValue, 'email')}
+        />
+        <br/>
+        <TextField
+          hintText="Podaj hasło"
+          floatingLabelText="Hasło"
+          type="password"
+          onChange={(e, newValue) => this.setField(newValue, 'password')}
+        />
+        <br/>
+        <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
+        <br/>
+        {this.renderError()}
+      </div>
+    );
+  }
+
+  renderRegister() {
+    if (this.props.email) {
+      return (
+        <div style={{display: 'flex'}}>
+          <h1 style={{display: 'flex', justifyContent: 'center'}}>
+            Na Twój adres email został wysłany mail weryfikacyjny.
+          </h1>
+        </div>
+      );
+    }
+    return (
+      <div className="login-content">
+        <TextField
+          hintText="Podaj email"
+          floatingLabelText="Email"
+          onChange={(e, newValue) => this.setField(newValue, 'email_register')}
+        />
+        <br/>
+        <TextField
+          hintText="Podaj hasło"
+          floatingLabelText="Hasło"
+          type="password"
+          onChange={(e, newValue) => this.setField(newValue, 'password1')}
+        />
+        <br/>
+        <TextField
+          hintText="Potwierdź hasło"
+          floatingLabelText="Hasło"
+          type="password"
+          onChange={(e, newValue) => this.setField(newValue, 'password2')}
+        />
+        <br/>
+        <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
+        <br/>
+        {this.renderError()}
+      </div>
+    );
+  }
+
   render() {
-    const {error} = this.props;
     return (
       <div>
         <AppBar
@@ -107,49 +187,8 @@ class BarLayout extends React.Component {
               index={this.state.slideIndex}
               onChangeIndex={this.handleSlide}
             >
-              <div className="login-content">
-                <TextField
-                  hintText="Podaj email"
-                  floatingLabelText="Email"
-                  onChange={(e, newValue) => this.setField(newValue, 'email')}
-                />
-                <br/>
-                <TextField
-                  hintText="Podaj hasło"
-                  floatingLabelText="Hasło"
-                  type="password"
-                  onChange={(e, newValue) => this.setField(newValue, 'password')}
-                />
-                <br/>
-                <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
-                <br/>
-                <p style={{color: 'red'}}>{error}</p>
-              </div>
-              <div className="login-content">
-                <TextField
-                  hintText="Podaj email"
-                  floatingLabelText="Email"
-                  onChange={(e, newValue) => this.setField(newValue, 'email_register')}
-                />
-                <br/>
-                <TextField
-                  hintText="Podaj hasło"
-                  floatingLabelText="Hasło"
-                  type="password"
-                  onChange={(e, newValue) => this.setField(newValue, 'password1')}
-                />
-                <br/>
-                <TextField
-                  hintText="Potwierdź hasło"
-                  floatingLabelText="Hasło"
-                  type="password"
-                  onChange={(e, newValue) => this.setField(newValue, 'password2')}
-                />
-                <br/>
-                <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
-                <br/>
-                <p style={{color: 'red'}}>{error}</p>
-              </div>
+              {this.renderLogin()}
+              {this.renderRegister()}
             </SwipeableViews>
           </div>
         </Dialog>
@@ -162,10 +201,12 @@ const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
     error: state.auth.error,
+    email: state.auth.email,
   };
 };
 
 const mapDispatchToProps = {
+  clearAuthError,
   loginUser,
   logoutUser,
   registerUser,

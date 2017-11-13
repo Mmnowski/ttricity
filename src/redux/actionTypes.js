@@ -10,28 +10,28 @@ export const API_ACTIONS = {
     successRequest: 'sample_action/REQUEST_SUCCESS',
     failureRequest: 'sample_action/REQUEST_FAILURE',
   },
-  FIREBASE_LOGIN:{
+  FIREBASE_LOGIN: {
     action: 'firebase_login',
   },
-  FIREBASE_REGISTER:{
+  FIREBASE_REGISTER: {
     action: 'firebase_register',
   },
-  FIREBASE_LOGIN_SUCCESS:{
+  FIREBASE_LOGIN_SUCCESS: {
     action: 'firebase_login_success',
   },
-  FIREBASE_EMAIL_SENT:{
+  FIREBASE_EMAIL_SENT: {
     action: 'firebase_email_sent',
   },
-  FIREBASE_LOGIN_FAIL:{
+  FIREBASE_LOGIN_FAIL: {
     action: 'firebase_login_fail',
   },
-  LOGOUT_USER:{
+  LOGOUT_USER: {
     action: 'logout_user',
   },
-  SELECT_PLACE:{
+  SELECT_PLACE: {
     action: 'select_place',
   },
-  CLEAR_AUTH_ERROR:{
+  CLEAR_AUTH_ERROR: {
     action: 'clear_auth_error',
   },
 };

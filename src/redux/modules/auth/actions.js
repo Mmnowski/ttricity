@@ -42,13 +42,6 @@ const loginUserFail = (dispatch, error) => {
   });
 };
 
-const emailSent = (dispatch) => {
-  dispatch({
-    type: API_ACTIONS.FIREBASE_EMAIL_SENT,
-    payload: error,
-  });
-};
-
 const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: API_ACTIONS.FIREBASE_LOGIN_SUCCESS,
