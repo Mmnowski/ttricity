@@ -127,7 +127,7 @@ class BarLayout extends React.Component {
       return (
         <div style={{display: 'flex'}}>
           <h1 style={{display: 'flex', justifyContent: 'center'}}>
-            Na Twój adres email został wysłany mail weryfikacyjny.
+            Dziękujemy za rejestrację, wysłaliśmy email z potwierdzeniem.
           </h1>
         </div>
       );
