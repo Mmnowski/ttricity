@@ -7,7 +7,9 @@ import {CardMedia} from "material-ui";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 
-
+//Prosze nie popelniac mojego bledu i nie pisac w tej wersji layout, poniewaz nie doprowadzi to do niczego wartosciowego
+//Pozdrawiam
+//Mikolaj!
 
 class PlaceList extends React.Component {
 
@@ -30,7 +32,7 @@ class PlaceList extends React.Component {
           </CardMedia>
           <CardActions>
             <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
-            <FlatButton label="Wyswietl" onClick={() => this.props.selectPlace(place)} />
+            <FlatButton label="Wyswietl" onClick={() => this.props.selectPlace(place)}  />
           </CardActions>
           <CardText expandable={false}>
             {place.description}

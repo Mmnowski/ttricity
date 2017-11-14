@@ -4,6 +4,8 @@ import {places} from '../firebaseData.js';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
+import {bindActionCreators} from 'redux';
+
 
 
 
@@ -26,7 +28,12 @@ class PlaceList extends React.Component {
             <p>{place.description}</p>
             <div className="buttons">
               <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
-              <FlatButton label="Wyswietl" onClick={() => this.props.selectPlace(place)} />
+              <FlatButton label="Wyswietl"
+                          href={"/ "}
+                          onClick={() => {
+
+                this.props.selectPlace(place)
+              }} />
             </div>
           </div>
         </div>
