@@ -36,8 +36,17 @@ export class MapContainer extends React.Component {
     );
   }
 
+  test(){
+    if(!this.props.selectPlace){
+      return console.log('Nic nie wybrales.');
+    }
+    return(console.log('W zakladce Lista atrakcji wybrales : ' + this.props.selectPlace.name));
+
+  }
+
 
   render() {
+    this.test()
     const style = {display: 'inline-block', width: '74%', height: '600px'};
 
     return (
@@ -56,6 +65,7 @@ export class MapContainer extends React.Component {
           visible={this.state.showingInfoWindow}>
 
           <div>
+
             <div className='title'>
               {this.state.selectedPlace.name}
             </div>
@@ -69,15 +79,22 @@ export class MapContainer extends React.Component {
             </div>
           </div>
         </InfoWindow>
+
       </Map>
     );
   }
 }
 
+function mapStateToProps(state){
+  return{
+    selectPlace:state.cardList.activePlace
+  };
+}
 
-
-
-export default GoogleApiWrapper({
+const MapWrapper = GoogleApiWrapper({
   apiKey: ' GOOGLE_API_KEY'
-})(MapContainer)
+})(MapContainer);
+
+export default connect(mapStateToProps)(MapWrapper);
+
 
