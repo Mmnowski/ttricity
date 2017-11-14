@@ -4,6 +4,7 @@ import {places} from '../firebaseData.js';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
+import './layoutv2.scss';
 
 
 class PlaceList extends React.Component {
