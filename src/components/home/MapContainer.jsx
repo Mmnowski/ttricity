@@ -37,7 +37,7 @@ export class MapContainer extends React.Component {
 
 
   render() {
-    const style = {display: 'inline-block', width: '74%', height: '600px'};
+    const style = {display: 'inline-block', width: '100%', height: '100%'};
 
     return (
       <Map style={style} google={this.props.google}

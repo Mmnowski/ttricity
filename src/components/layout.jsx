@@ -1,7 +1,6 @@
 import React from 'react';
 import './layout.scss';
 import NavBar from './navBar';
-import {AppBar} from './auth';
 
 let MediaQuery = require('react-responsive');
 
@@ -12,7 +11,6 @@ class Layout extends React.Component {
       mobile: false,
     };
   }
-  //iudshgudshgdsuighui
 
   mediaCheck() {
     return (
@@ -46,14 +44,14 @@ class Layout extends React.Component {
     // }
     let navWidth = shouldOpen && !this.state.mobile ? '88.5%' : '100%';
     return (
-      <div className="container">
-        <NavBar/>
-        <section className="content" style={{width: '88.5%'}}>
-          <AppBar/>
+      <div className="main-container">
+        <section className="content-container">
           {children}
         </section>
-        <footer>
-        </footer>
+        <div className="navbar-container">
+          <NavBar/>
+        </div>
+
         {/*{this.mediaCheck()}*/}
       </div>
     );

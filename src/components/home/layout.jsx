@@ -1,12 +1,11 @@
 import React from 'react';
-import Home from './MapContainer';
+import Map from './MapContainer';
 
 class HomeLayout extends React.Component {
   renderHome() {
     return (
-      <div>
-        <h1>Witamy na TurystyczneTriCity!</h1>
-        <Home/>
+      <div className="map-container">
+        <Map/>
       </div>
     );
   };
