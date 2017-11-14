@@ -2,6 +2,7 @@ import React from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
 import {places} from '../firebaseData.js';
 import * as _ from "lodash";
+import {connect} from 'react-redux';
 
 
 export class MapContainer extends React.Component {
@@ -40,6 +41,7 @@ export class MapContainer extends React.Component {
     const style = {display: 'inline-block', width: '74%', height: '600px'};
 
     return (
+
       <Map style={style} google={this.props.google}
            initialCenter={{
              lat: 54.5039043,
@@ -52,6 +54,7 @@ export class MapContainer extends React.Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
+
           <div>
             <div className='title'>
               {this.state.selectedPlace.name}
@@ -70,6 +73,8 @@ export class MapContainer extends React.Component {
     );
   }
 }
+
+
 
 
 export default GoogleApiWrapper({

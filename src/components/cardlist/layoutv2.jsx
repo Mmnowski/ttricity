@@ -26,7 +26,12 @@ class PlaceList extends React.Component {
             <p>{place.description}</p>
             <div className="buttons">
               <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
-              <FlatButton label="Wyswietl" onClick={() => this.props.selectPlace(place)} />
+              <FlatButton label="Wyswietl"
+                          href={"/ "}
+                          onClick={() => {
+
+                this.props.selectPlace(place)
+              }} />
             </div>
           </div>
         </div>
