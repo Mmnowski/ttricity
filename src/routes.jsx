@@ -9,7 +9,7 @@ import {history, store} from './prepare';
 import config from './config';
 /* Components */
 import {Layout, NotFound} from './components';
-import {Home} from './components/home';
+import {Home} from './components/map';
 import {List} from './components/cardlist/index';
 
 /* Routes */

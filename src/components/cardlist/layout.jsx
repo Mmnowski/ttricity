@@ -1,15 +1,11 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {places} from '../firebaseData.js';
 import _ from 'lodash';
-import {CardMedia} from "material-ui";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
+import {history} from '../../prepare';
 
-//Prosze nie popelniac mojego bledu i nie pisac w tej wersji layout, poniewaz nie doprowadzi to do niczego wartosciowego
-//Pozdrawiam
-//Mikolaj!
 
 class PlaceList extends React.Component {
 
@@ -20,24 +16,26 @@ class PlaceList extends React.Component {
   element(place) {
     const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
     return (
-      <div key={place.name}>
-        <Card>
-          <CardHeader
-            title={place.name}
-          />
-          <CardMedia>
-            <div className="card-media">
+      <div className="cards" key={place.name}>
+        <div className="cardList">
+          <h1>{place.name}</h1>
+          <div className="cardContainer">
+            <div className="cardImage">
               <img src={place.img} alt={place.name}/>
             </div>
-          </CardMedia>
-          <CardActions>
-            <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
-            <FlatButton label="Wyswietl" onClick={() => this.props.selectPlace(place)}  />
-          </CardActions>
-          <CardText expandable={false}>
-            {place.description}
-          </CardText>
-        </Card>
+            <div className="pAndButtons">
+              <p>{place.description}</p>
+              <div className="buttons">
+                <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
+                <FlatButton label="Wyswietl" onClick={() =>
+                {
+                  history.push('/');
+                  this.props.selectPlace(place);
+                }}/>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

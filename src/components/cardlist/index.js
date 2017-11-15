@@ -1,3 +1,3 @@
-import List from './layoutv2';
+import List from './layout';
 
 export {List};

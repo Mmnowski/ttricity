@@ -23,17 +23,17 @@ $cardborder: #f4f4f4;
     }
   }
 
-  .navbar-container{
+  .navbar-container {
     position: relative;
     height: 100%;
     width: 12%;
     float: left;
 
-    .logo{
-      position: absolute;
+    .logo {
+      position: fixed;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 12%;
       height: 30vh;
       float: bottom;
     }
@@ -49,8 +49,7 @@ $cardborder: #f4f4f4;
   }
 }
 
-html,
-body{
+html, body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -155,4 +154,10 @@ h1 {
     width: 50%;
     height: 100%;
   }
+}
+
+.cards{
+  width: 60%;
+  float: right;
+  padding-right: 8.8%;
 }

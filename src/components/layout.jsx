@@ -51,7 +51,6 @@ class Layout extends React.Component {
         <div className="navbar-container">
           <NavBar/>
         </div>
-
         {/*{this.mediaCheck()}*/}
       </div>
     );
