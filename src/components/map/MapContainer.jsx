@@ -62,10 +62,10 @@ export class MapContainer extends React.Component {
     return (
       <Map style={style} google={this.props.google}
            initialCenter={{
-             lat: 54.5039043,
-             lng: 18.3934396
+             lat: 54.439444,
+             lng: 18.5721789,
            }}
-           zoom={10}>
+           zoom={11}>
         {_.map(places, (place) => this.renderMarker(place))}
         <InfoWindow
           marker={this.state.activeMarker}
