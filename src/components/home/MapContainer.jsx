@@ -2,6 +2,7 @@ import React from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
 import {places} from '../firebaseData.js';
 import * as _ from "lodash";
+import {connect} from 'react-redux';
 
 
 export class MapContainer extends React.Component {
@@ -35,11 +36,21 @@ export class MapContainer extends React.Component {
     );
   }
 
+  test(){
+    if(!this.props.selectPlace){
+      return console.log('Nic nie wybrales.');
+    }
+    return(console.log('W zakladce Lista atrakcji wybrales : ' + this.props.selectPlace.name));
+
+  }
+
 
   render() {
+    this.test()
     const style = {display: 'inline-block', width: '100%', height: '100%'};
 
     return (
+
       <Map style={style} google={this.props.google}
            initialCenter={{
              lat: 54.5039043,
@@ -52,7 +63,9 @@ export class MapContainer extends React.Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
+
           <div>
+
             <div className='title'>
               {this.state.selectedPlace.name}
             </div>
@@ -66,13 +79,22 @@ export class MapContainer extends React.Component {
             </div>
           </div>
         </InfoWindow>
+
       </Map>
     );
   }
 }
 
+function mapStateToProps(state){
+  return{
+    selectPlace:state.cardList.activePlace
+  };
+}
 
-export default GoogleApiWrapper({
+const MapWrapper = GoogleApiWrapper({
   apiKey: ' GOOGLE_API_KEY'
-})(MapContainer)
+})(MapContainer);
+
+export default connect(mapStateToProps)(MapWrapper);
+
 
