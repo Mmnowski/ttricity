@@ -85,7 +85,7 @@ h1 {
   text-align: center;
   flex-direction: column;
   margin-bottom: -3px;
-  border-color: solid $cardborder;
+  border: solid $cardborder;
   * {
     padding: 10px;
     flex: 1 100%;
@@ -122,6 +122,9 @@ h1 {
       justify-content: center;
       width: 90%;
       margin: auto;
+      div {
+        line-height: normal;
+      }
     }
   }
 }

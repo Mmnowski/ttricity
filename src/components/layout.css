@@ -13,15 +13,16 @@
       .main-container header a:hover {
         color: #94c; }
   .main-container .navbar-container {
-    position: relative;
-    height: 100%;
+    position: fixed;
+    height: 30vh;
     width: 12%;
-    float: left; }
+    float: left;
+    bottom: 0; }
     .main-container .navbar-container .logo {
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 12%;
       height: 30vh;
       float: bottom; }
   .main-container .content-container {
@@ -32,8 +33,7 @@
     width: 100%;
     align-self: flex-end; }
 
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0; }
@@ -64,7 +64,7 @@ h1 {
   text-align: center;
   flex-direction: column;
   margin-bottom: -3px;
-  border-color: solid #f4f4f4; }
+  border: solid #f4f4f4; }
   .cardList * {
     padding: 10px;
     flex: 1 100%; }
@@ -93,6 +93,8 @@ h1 {
       justify-content: center;
       width: 90%;
       margin: auto; }
+      .cardList .cardContainer .buttons div {
+        line-height: normal; }
 
 .title {
   font-size: 22px;
@@ -118,5 +120,10 @@ h1 {
     font-size: 18px;
     width: 50%;
     height: 100%; }
+
+.cards {
+  width: 60%;
+  float: right;
+  padding-right: 8.8%; }
 
 /*# sourceMappingURL=layout.css.map */
