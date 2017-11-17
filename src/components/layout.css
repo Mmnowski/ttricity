@@ -13,15 +13,16 @@
       .main-container header a:hover {
         color: #94c; }
   .main-container .navbar-container {
-    position: relative;
-    height: 100%;
+    position: fixed;
+    height: 30vh;
     width: 12%;
-    float: left; }
+    float: left;
+    bottom: 0; }
     .main-container .navbar-container .logo {
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 12%;
       height: 30vh;
       float: bottom; }
   .main-container .content-container {
@@ -32,8 +33,7 @@
     width: 100%;
     align-self: flex-end; }
 
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0; }
@@ -59,19 +59,21 @@ h1 {
     float: left; }
 
 .cardList {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  border-radius: 2px;
+  margin: 10px auto;
   display: flex;
   font-weight: bold;
   text-align: center;
   flex-direction: column;
-  margin-bottom: -3px;
-  border-color: solid #f4f4f4; }
+  border: solid #f4f4f4; }
   .cardList * {
     padding: 10px;
     flex: 1 100%; }
   .cardList h1 {
-    border-bottom-style: solid;
-    border-color: #f4f4f4;
-    padding: 20px;
+    border-bottom: solid #f4f4f4;
+    padding: 20px 0 5px 0;
     margin: 5px;
     text-align: center; }
   .cardList .cardContainer {
@@ -82,7 +84,8 @@ h1 {
       display: inline-flex; }
     .cardList .cardContainer .cardImage {
       width: 150px;
-      overflow: hidden; }
+      overflow: hidden;
+      justify-content: center; }
       .cardList .cardContainer .cardImage img {
         object-fit: contain;
         max-height: 33vh; }
@@ -118,5 +121,10 @@ h1 {
     font-size: 18px;
     width: 50%;
     height: 100%; }
+
+.cards {
+  width: 60%;
+  float: right;
+  padding-right: 8.8%; }
 
 /*# sourceMappingURL=layout.css.map */
