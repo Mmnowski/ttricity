@@ -26,8 +26,8 @@ class PlaceList extends React.Component {
             <div className="pAndButtons">
               <p>{place.description}</p>
               <div className="buttons">
-                <FlatButton label="Zobacz na mapie" href={link} target="blank"/>
-                <FlatButton label="Wyswietl" onClick={() =>
+                <FlatButton className="cardButton" label="Zobacz na mapie" href={link} target="blank"/>
+                <FlatButton className="cardButton" label="Wyswietl" onClick={() =>
                 {
                   history.push('/');
                   this.props.selectPlace(place);
