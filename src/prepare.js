@@ -1,5 +1,6 @@
 import {auth} from './redux/modules/auth/reducers';
 import {cardList} from './redux/modules/cardlist/reducers';
+import {map} from './redux/modules/map/reducers';
 /* Redux */
 import {routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   routing: routerReducer,
   auth,
   cardList,
+  map,
 });
 
 const logger = createLogger({
@@ -43,21 +45,21 @@ function configureStore(initialState) {
       applyMiddleware(logger, ReduxPromise, thunk),
       window.devToolsExtension ? window.devToolsExtension() : (f) => f)
   );
-
   const {hot} = module;
   if (hot) {
     hot.accept('./reducers', () => {
       const auth = require('./redux/modules/auth/reducers');
       const cardList = require('./redux/modules/cardlist/reducers');
+      const map = require('./redux/modules/map/reducers');
       const nextReducer = combineReducers({
         routing: routerReducer,
         auth,
         cardList,
+        map,
       });
       createdStore.replaceReducer(nextReducer);
     });
   }
-
   return createdStore;
 }
 
@@ -67,7 +69,8 @@ const initialState = previousState ? JSON.parse(previousState) : {};
 
 export const store = configureStore(initialState);
 store.subscribe(() => {
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+  //TODO Marker stringify causes exception here
+  // localStorage.setItem('reduxState', JSON.stringify(store.getState()));
 });
 /* Initial history */
 let routerHistory;

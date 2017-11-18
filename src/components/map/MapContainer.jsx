@@ -4,6 +4,7 @@ import {places} from '../firebaseData.js';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
+import {saveMarker} from '../../redux/modules/map/actions';
 
 
 export class MapContainer extends React.Component {
@@ -18,17 +19,21 @@ export class MapContainer extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.selectedPlace) {
-      // this.setState({
-      //   selectedPlace: newProps.selectedPlace,
-      //   activeMarker: marker,
-      //   showingInfoWindow: true,
-      // });
+      let marker = newProps.marker;
+      marker.position.lat = () => newProps.selectedPlace.lat;
+      marker.position.lng = () => newProps.selectedPlace.lon;
+      this.setState({
+        selectedPlace: newProps.selectedPlace,
+        activeMarker: newProps.marker,
+        showingInfoWindow: true,
+      });
       this.props.selectPlace(null);
     }
   }
 
   onMarkerClick = (props, marker, e) => {
     console.log(marker);
+    this.props.saveMarker(marker);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -42,7 +47,7 @@ export class MapContainer extends React.Component {
       <Marker key={place.name}
               name={place.name}
               description={place.description}
-              photo={place.img}
+              img={place.img}
               onClick={this.onMarkerClick}
               position={{lat: place.lat, lng: place.lon}}/>
     );
@@ -58,6 +63,7 @@ export class MapContainer extends React.Component {
 
   render() {
     this.test();
+    const {activeMarker, selectedPlace, showingInfoWindow} = this.state;
     const style = {display: 'inline-block', width: '100%', height: '100%'};
     return (
       <Map style={style} google={this.props.google}
@@ -68,18 +74,18 @@ export class MapContainer extends React.Component {
            zoom={11}>
         {_.map(places, (place) => this.renderMarker(place))}
         <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
+          marker={activeMarker}
+          visible={showingInfoWindow}>
           <div>
             <div className='title'>
-              {this.state.selectedPlace.name}
+              {selectedPlace.name}
             </div>
             <div className='description'>
               <div className='photo'>
-                <img src={this.state.selectedPlace.photo} width={'100%'} height={'100%'}/>
+                <img alt="obrazek" src={selectedPlace.img} width={'100%'} height={'100%'}/>
               </div>
               <div className='text'>
-                {this.state.selectedPlace.description}
+                {selectedPlace.description}
               </div>
             </div>
           </div>
@@ -91,18 +97,18 @@ export class MapContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    selectedPlace: state.cardList.activePlace
+    selectedPlace: state.cardList.activePlace,
+    marker: state.map.marker,
   };
 }
 
 const mapDispatchToProps = {
   selectPlace,
+  saveMarker,
 };
 
 const MapWrapper = GoogleApiWrapper({
-  apiKey: ' GOOGLE_API_KEY'
+  apiKey: 'GOOGLE_API_KEY'
 })(MapContainer);
 
-export default connect(mapStateToProps,mapDispatchToProps)(MapWrapper);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
