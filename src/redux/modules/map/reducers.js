@@ -1,15 +1,15 @@
 import {API_ACTIONS} from '../../actionTypes';
 
 const initialState = {
-  activePlace: null,
+  marker: null,
 };
 
-export const cardList = (state = initialState, action) => {
+export const map = (state = initialState, action) => {
   switch (action.type) {
-    case API_ACTIONS.SELECT_PLACE:
+    case API_ACTIONS.SAVE_MARKER:
       return {
         ...state,
-        activePlace: action.payload.place
+        marker: action.payload.marker,
       };
     default:
       return state;

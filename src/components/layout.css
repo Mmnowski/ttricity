@@ -59,6 +59,10 @@ h1 {
     float: left; }
 
 .cardList {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  border-radius: 2px;
+  margin: 10px auto;
   display: flex;
   font-weight: bold;
   text-align: center;
@@ -69,9 +73,8 @@ h1 {
     padding: 10px;
     flex: 1 100%; }
   .cardList h1 {
-    border-bottom-style: solid;
-    border-color: #f4f4f4;
-    padding: 20px;
+    border-bottom: solid #f4f4f4;
+    padding: 20px 0 5px 0;
     margin: 5px;
     text-align: center; }
   .cardList .cardContainer {
@@ -82,7 +85,8 @@ h1 {
       display: inline-flex; }
     .cardList .cardContainer .cardImage {
       width: 150px;
-      overflow: hidden; }
+      overflow: hidden;
+      justify-content: center; }
       .cardList .cardContainer .cardImage img {
         object-fit: contain;
         max-height: 33vh; }

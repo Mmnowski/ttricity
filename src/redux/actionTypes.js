@@ -34,4 +34,7 @@ export const API_ACTIONS = {
   CLEAR_AUTH_ERROR: {
     action: 'clear_auth_error',
   },
+  SAVE_MARKER: {
+    action: 'save_marker',
+  },
 };

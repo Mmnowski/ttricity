@@ -165,9 +165,16 @@ class NavBar extends React.Component {
   handleToggle = () => this.setState({open: !this.state.open});
 
   render() {
+    const {open} = this.state;
     return (
-      <div>
-        <Drawer open={this.state.open} containerStyle={{width: '12%', height: '60vh', top: '10vh'}}>
+      <div className="nav-bar-container">
+        <Drawer open={open} containerStyle={{
+          display: open ? 'block' : 'none',
+          width: '100%',
+          height: '60vh',
+          position: 'unset',
+          top: '10vh'
+        }}>
           <MenuItem
             containerElement={<Link to="/"/>}
             primaryText="Strona główna"
@@ -176,7 +183,7 @@ class NavBar extends React.Component {
             containerElement={<Link to="/lista"/>}
             primaryText="Lista lokacji"
           />
-            {this.loginButton()}
+          {this.loginButton()}
         </Drawer>
         <Dialog
           modal={false}
