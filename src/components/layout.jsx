@@ -1,6 +1,8 @@
 import React from 'react';
 import './layout.scss';
 import NavBar from './navBar';
+import {connect} from 'react-redux';
+import {fetchPlaces} from '../redux/modules/map/actions';
 
 let MediaQuery = require('react-responsive');
 
@@ -10,6 +12,10 @@ class Layout extends React.Component {
     this.state = {
       mobile: false,
     };
+  }
+
+  componentWillMount() {
+    this.props.fetchPlaces();
   }
 
   mediaCheck() {
@@ -57,4 +63,8 @@ class Layout extends React.Component {
   };
 }
 
-export default Layout;
+const mapDispatchToProps = {
+  fetchPlaces,
+};
+
+export default connect(null, mapDispatchToProps)(Layout);

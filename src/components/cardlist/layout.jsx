@@ -1,6 +1,5 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
-import {places} from '../firebaseData.js';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
@@ -41,18 +40,27 @@ class PlaceList extends React.Component {
   }
 
   renderList() {
-    return _.map(places, (place) => this.element(place));
+    return _.map(this.props.places, (place) => this.element(place));
   }
 
   render() {
+    if (!this.props.places) {
+      return <h1>Pobieranie danych...</h1>
+    }
     return (<div>
       {this.renderList()}
     </div>);
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    places: state.map.places,
+  };
+}
+
 const mapDispatchToProps = {
   selectPlace,
 };
 
-export default connect(null, mapDispatchToProps)(PlaceList);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);

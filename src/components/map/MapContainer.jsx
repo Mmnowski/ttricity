@@ -1,6 +1,5 @@
 import React from 'react';
 import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
-import {places} from '../firebaseData.js';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
@@ -62,7 +61,11 @@ export class MapContainer extends React.Component {
 
 
   render() {
-    this.test();
+    // console.log(JSON.stringify(places));
+    // this.test();
+    if (!this.props.places) {
+      return <h1>Pobieranie danych...</h1>
+    }
     const {activeMarker, selectedPlace, showingInfoWindow} = this.state;
     const style = {display: 'inline-block', width: '100%', height: '100%'};
     return (
@@ -72,7 +75,7 @@ export class MapContainer extends React.Component {
              lng: 18.5721789,
            }}
            zoom={11}>
-        {_.map(places, (place) => this.renderMarker(place))}
+        {_.map(this.props.places, (place) => this.renderMarker(place))}
         <InfoWindow
           marker={activeMarker}
           visible={showingInfoWindow}>
@@ -99,6 +102,7 @@ function mapStateToProps(state) {
   return {
     selectedPlace: state.cardList.activePlace,
     marker: state.map.marker,
+    places: state.map.places,
   };
 }
 

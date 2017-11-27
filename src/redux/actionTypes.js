@@ -37,4 +37,7 @@ export const API_ACTIONS = {
   SAVE_MARKER: {
     action: 'save_marker',
   },
+  PLACE_FETCH_SUCCESS: {
+    action: 'place_fetch_success'
+  }
 };
