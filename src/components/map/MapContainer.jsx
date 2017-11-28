@@ -1,5 +1,5 @@
 import React from 'react';
-import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
+import {InfoWindow, Map, Marker} from 'google-maps-react';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
@@ -69,7 +69,7 @@ export class MapContainer extends React.Component {
     const {activeMarker, selectedPlace, showingInfoWindow} = this.state;
     const style = {display: 'inline-block', width: '100%', height: '100%'};
     return (
-      <Map style={style} google={this.props.google}
+      <Map style={style} google={window.google}
            initialCenter={{
              lat: 54.439444,
              lng: 18.5721789,
@@ -111,8 +111,4 @@ const mapDispatchToProps = {
   saveMarker,
 };
 
-const MapWrapper = GoogleApiWrapper({
-  apiKey: 'GOOGLE_API_KEY'
-})(MapContainer);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MapWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

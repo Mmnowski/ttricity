@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export const map = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case API_ACTIONS.SAVE_MARKER:
       return {
