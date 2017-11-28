@@ -2,3 +2,4 @@
 - połączenie redux z react
 - komponent List (cardlist)
 - naprawa przyciskow
+- dodanie do cardlist autocomplete z google + css

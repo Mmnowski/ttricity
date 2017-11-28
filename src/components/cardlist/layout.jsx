@@ -4,7 +4,7 @@ import _ from 'lodash';
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
-
+import Autocomplete from 'react-google-autocomplete';
 
 class PlaceList extends React.Component {
 
@@ -43,11 +43,27 @@ class PlaceList extends React.Component {
     return _.map(this.props.places, (place) => this.element(place));
   }
 
+  renderSearchBar(){
+    return(
+      <form className="cards">
+        <Autocomplete
+          onPlaceSelected={(place) => {
+            console.log(place);
+          }}
+          types={['(regions)']}
+          componentRestrictions={{country: "pl"}}
+          placeholder="Szukaj"
+        />
+      </form>
+    );
+  }
+
   render() {
     if (!this.props.places) {
       return <h1>Pobieranie danych...</h1>
     }
     return (<div>
+      {this.renderSearchBar()}
       {this.renderList()}
     </div>);
   }
