@@ -64,7 +64,8 @@ function configureStore(initialState) {
 }
 
 // Default saves and read saved redux state from local storage
-const previousState = localStorage.getItem('reduxState');
+// const previousState = localStorage.getItem('reduxState');
+const previousState = null;
 const initialState = previousState ? JSON.parse(previousState) : {};
 
 export const store = configureStore(initialState);

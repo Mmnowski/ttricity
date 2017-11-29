@@ -5,6 +5,10 @@ const initialState = {
   places: null,
 };
 
+const validatePlace = (place) => {
+  return place.name && place.img && place.description && place.lat && place.lon;
+};
+
 export const map = (state = initialState, action) => {
   switch (action.type) {
     case API_ACTIONS.SAVE_MARKER:
@@ -13,9 +17,18 @@ export const map = (state = initialState, action) => {
         marker: action.payload.marker,
       };
     case API_ACTIONS.PLACE_FETCH_SUCCESS:
-      return{
+      const {places} = action.payload;
+      let copy = [];
+      if (places) {
+        places.forEach((place) => {
+          if (validatePlace(place)) {
+            copy.push(place);
+          }
+        });
+      }
+      return {
         ...state,
-        places: action.payload.places,
+        places: copy,
       };
     default:
       return state;
