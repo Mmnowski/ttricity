@@ -1,5 +1,5 @@
 import React from 'react';
-import {GoogleApiWrapper, InfoWindow, Map, Marker} from 'google-maps-react';
+import {InfoWindow, Map, Marker} from 'google-maps-react';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
@@ -112,8 +112,6 @@ const mapDispatchToProps = {
 };
 
 // Doubles but just for now
-const Wrapper = GoogleApiWrapper({
-  apiKey: 'GOOGLE_API_KEY',
-})(MapContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Wrapper);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

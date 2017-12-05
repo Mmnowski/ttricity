@@ -3,6 +3,7 @@ import './layout.scss';
 import NavBar from './navBar';
 import {connect} from 'react-redux';
 import {fetchPlaces} from '../redux/modules/map/actions';
+import {GoogleApiWrapper} from 'google-maps-react';
 
 let MediaQuery = require('react-responsive');
 
@@ -67,4 +68,8 @@ const mapDispatchToProps = {
   fetchPlaces,
 };
 
-export default connect(null, mapDispatchToProps)(Layout);
+const LayoutAPI = GoogleApiWrapper({
+  apiKey: 'GOOGLE_API_KEY',
+})(Layout);
+
+export default connect(null, mapDispatchToProps)(LayoutAPI);
