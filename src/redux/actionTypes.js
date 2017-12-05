@@ -31,6 +31,9 @@ export const API_ACTIONS = {
   SELECT_PLACE: {
     action: 'select_place',
   },
+  SEARCH_FOR_PLACE: {
+    action: 'search_for_place',
+  },
   CLEAR_AUTH_ERROR: {
     action: 'clear_auth_error',
   },

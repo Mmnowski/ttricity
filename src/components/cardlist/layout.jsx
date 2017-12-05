@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {selectPlace} from '../../redux/modules/cardlist/actions';
+import {selectPlace, findPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 
@@ -47,10 +47,10 @@ class PlaceList extends React.Component {
     return(
       <form className="cards">
         <Autocomplete
-          onPlaceSelected={(place) => {
-            console.log(place);
+          onPlaceSelected={(placeToFind) => {
+            this.props.findPlace(placeToFind);
           }}
-          types={['(regions)']}
+          types={['geocode']}
           componentRestrictions={{country: "pl"}}
           placeholder="Szukaj"
         />
@@ -77,6 +77,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   selectPlace,
+  findPlace,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);
