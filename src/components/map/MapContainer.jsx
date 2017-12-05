@@ -1,5 +1,5 @@
 import React from 'react';
-import {InfoWindow, Map, Marker} from 'google-maps-react';
+import {InfoWindow, Map, Marker, } from 'google-maps-react';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';

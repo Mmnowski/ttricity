@@ -8,6 +8,13 @@ export function selectPlace(place) {
   };
 }
 
+export function findPlace(placeToFind) {
+  return {
+    payload: {placeToFind},
+    type: API_ACTIONS.SEARCH_FOR_PLACE
+  }
+}
+
 export function test() {
   const action = API_ACTIONS.SAMPLE_ACTION;
   const postData = {};

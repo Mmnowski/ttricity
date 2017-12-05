@@ -2,6 +2,7 @@ import {API_ACTIONS} from '../../actionTypes';
 
 const initialState = {
   activePlace: null,
+  queryPlace: null,
 };
 
 export const cardList = (state = initialState, action) => {
@@ -9,7 +10,15 @@ export const cardList = (state = initialState, action) => {
     case API_ACTIONS.SELECT_PLACE:
       return {
         ...state,
-        activePlace: action.payload.place
+        activePlace: action.payload.place,
+      };
+    case API_ACTIONS.SEARCH_FOR_PLACE:
+      return{
+        ...state,
+        queryPlace: {
+         lat: action.payload.placeToFind.geometry.location.lat(),
+         lng: action.payload.placeToFind.geometry.location.lng()
+        },
       };
     default:
       return state;
