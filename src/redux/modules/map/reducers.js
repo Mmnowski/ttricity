@@ -17,10 +17,9 @@ export const map = (state = initialState, action) => {
         marker: action.payload.marker,
       };
     case API_ACTIONS.PLACE_FETCH_SUCCESS:
-      const {places} = action.payload;
       let copy = [];
-      if (places) {
-        places.forEach((place) => {
+      if (action.payload) {
+        action.payload.forEach((place) => {
           if (validatePlace(place)) {
             copy.push(place);
           }

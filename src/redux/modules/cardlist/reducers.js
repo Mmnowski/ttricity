@@ -17,7 +17,7 @@ export const cardList = (state = initialState, action) => {
         ...state,
         queryPlace: {
          lat: action.payload.placeToFind.geometry.location.lat(),
-         lng: action.payload.placeToFind.geometry.location.lng()
+         lon: action.payload.placeToFind.geometry.location.lng()
         },
       };
     default:

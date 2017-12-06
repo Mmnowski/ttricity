@@ -31,15 +31,15 @@ export class MapContainer extends React.Component {
         }
     }
 
-    onMarkerClick = (props, marker, e) => {
-        console.log(marker);
-        this.props.saveMarker(marker);
-        this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true,
-        });
-    };
+  onMarkerClick = (props, marker, e) => {
+    // console.log(marker);
+    this.props.saveMarker(marker);
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+  };
 
 
     renderMarker(place) {
