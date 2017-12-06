@@ -2,9 +2,11 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {selectPlace, findPlace} from '../../redux/modules/cardlist/actions';
+import {findPlace, selectPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
+import {calculateDistance} from '../utils';
+
 
 class PlaceList extends React.Component {
 
@@ -26,12 +28,12 @@ class PlaceList extends React.Component {
               <p>{place.description}</p>
               <div className="buttons">
                 <FlatButton className="cardButton" label="Zobacz na mapie" href={link} target="blank"/>
-                <FlatButton className="cardButton" label="Wyswietl" onClick={() =>
-                {
+                <FlatButton className="cardButton" label="Wyswietl" onClick={() => {
                   history.push('/');
                   this.props.selectPlace(place);
                 }}/>
               </div>
+              {place.distance && <p>{place.distance.toFixed(2)} km</p>}
             </div>
           </div>
         </div>
@@ -40,11 +42,19 @@ class PlaceList extends React.Component {
   }
 
   renderList() {
-    return _.map(this.props.places, (place) => this.element(place));
+    const {places, queryPlace} = this.props;
+    if (queryPlace) {
+      _.forEach(places, (place, index) => {
+          return places[index] = {...place, distance: calculateDistance(queryPlace, {lat: place.lat, lon: place.lon})}
+        }
+      );
+      _.sortBy(places, ['distance']);
+    }
+    return _.map(places, (place) => this.element(place));
   }
 
-  renderSearchBar(){
-    return(
+  renderSearchBar() {
+    return (
       <form className="cards">
         <Autocomplete
           onPlaceSelected={(placeToFind) => {
@@ -72,6 +82,7 @@ class PlaceList extends React.Component {
 function mapStateToProps(state) {
   return {
     places: state.map.places,
+    queryPlace: state.cardList.queryPlace,
   };
 }
 
