@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
-
+//test do commita
 
 export class MapContainer extends React.Component {
     constructor(props) {
