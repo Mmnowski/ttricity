@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {selectPlace, findPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 
 class PlaceList extends React.Component {
 
@@ -59,8 +60,25 @@ class PlaceList extends React.Component {
   }
 
   render() {
+      const style = {
+          container: {
+              position: 'relative',
+          },
+          refresh: {
+              display: 'inline-block',
+              position: 'relative',
+              margin: '18% 0 0 45%',
+          },
+      };
     if (!this.props.places) {
-      return <h1>Pobieranie danych...</h1>
+      return <RefreshIndicator
+          size={100}
+          left={70}
+          top={0}
+          loadingColor="black"
+          status="loading"
+          style={style.refresh}
+      />
     }
     return (<div>
       {this.renderSearchBar()}
