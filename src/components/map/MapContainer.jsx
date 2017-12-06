@@ -1,5 +1,5 @@
 import React from 'react';
-import {InfoWindow, Map, Marker, } from 'google-maps-react';
+import {InfoWindow, Map, Marker,} from 'google-maps-react';
 import * as _ from "lodash";
 import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
@@ -31,7 +31,7 @@ export class MapContainer extends React.Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    console.log(marker);
+    // console.log(marker);
     this.props.saveMarker(marker);
     this.setState({
       selectedPlace: props,

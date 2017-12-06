@@ -43,14 +43,18 @@ class PlaceList extends React.Component {
 
   renderList() {
     const {places, queryPlace} = this.props;
+    let placesToRender = [...places];
     if (queryPlace) {
-      _.forEach(places, (place, index) => {
-          return places[index] = {...place, distance: calculateDistance(queryPlace, {lat: place.lat, lon: place.lon})}
+      _.forEach(placesToRender, (place, index) => {
+          return placesToRender[index] = {
+            ...place,
+            distance: calculateDistance(queryPlace, {lat: place.lat, lon: place.lon})
+          }
         }
       );
-      _.sortBy(places, ['distance']);
+      placesToRender.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance))
     }
-    return _.map(places, (place) => this.element(place));
+    return _.map(placesToRender, (place) => this.element(place));
   }
 
   renderSearchBar() {
