@@ -42,5 +42,8 @@ export const API_ACTIONS = {
   },
   PLACE_FETCH_SUCCESS: {
     action: 'place_fetch_success'
-  }
+  },
+  COMMENT_FETCH_SUCCESS: {
+    action: 'comment_fetch_success'
+  },
 };

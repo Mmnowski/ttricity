@@ -73,24 +73,24 @@ class PlaceList extends React.Component {
   }
 
   render() {
-      const style = {
-          container: {
-              position: 'relative',
-          },
-          refresh: {
-              display: 'inline-block',
-              position: 'relative',
-              margin: '18% 0 0 45%',
-          },
-      };
+    const style = {
+      container: {
+        position: 'relative',
+      },
+      refresh: {
+        display: 'inline-block',
+        position: 'relative',
+        margin: '18% 0 0 45%',
+      },
+    };
     if (!this.props.places) {
       return <RefreshIndicator
-          size={100}
-          left={70}
-          top={0}
-          loadingColor="black"
-          status="loading"
-          style={style.refresh}
+        size={100}
+        left={70}
+        top={0}
+        loadingColor="black"
+        status="loading"
+        style={style.refresh}
       />
     }
     return (<div>
