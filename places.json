@@ -20,6 +20,55 @@
       "lat": "54.5195615",
       "lon": "18.5511764",
       "img": "http://jollydiver.com/wp-content/uploads/2013/11/ORP-Blyskawica3.jpg"
+    },
+    {
+      "name": "Punkt widokowy na Kamiennej Górze",
+      "description": "Piękna panorama całego miasta, widać zarówno piękny urok morza jak i Gdynię od strony nowoczesnej. Świetne miejsce na spędzenie czasu z rodziną.",
+      "lat": "54.5154402",
+      "lon": "18.54414",
+      "img": "http://bywajtu.pl/media/dynamic/pictures/SppuewFQWSSa.1200x1200.jpg"
+    },
+    {
+      "name": "Akwarium Gdyńskie",
+      "description": "Niezwykła atrakcja dla rodzin z dziećmi. Doskonałe połączenie rozrywki z elementami edukacyjnymi.",
+      "lat": "54.518265",
+      "lon": "18.5572207",
+      "img": "http://zielonalekcja.pl/wp-content/archiwum/zdjecia_duze/2011/08/20110822113735_budynek%20AG%20MIR.jpg"
+    },
+    {
+      "name": "Jaskinia Goryla",
+      "description": "Jaskinia znajduje się w lesie między Gdynią Centrum a Gdynią Redłowem.",
+      "lat": "54.494737",
+      "lon": "18.5631381",
+      "img": "https://mw2.google.com/mw-panoramio/photos/medium/79540477.jpg"
+    },
+    {
+      "name": "Klif Redłowski",
+      "description": "Wspaniałe miejsce w którym możemy zobaczyć pozostałości wojenne oraz odetchnąć świeżym leśnym powietrzem.",
+      "lat": "54.4852941",
+      "lon": "18.5688796",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipPwadpEfhyxbfGkJcQgwR1Wrkb6VZoH3eBEGMxL=w408-h229-k-no"
+    },
+    {
+      "name": "Park Rady Europy",
+      "description": "Doskonałe miejsce na spokojny spacer z dziećmi i rodziną. Róznorodna roślinność urozmaica klimat, który możemy poczuć.",
+      "lat": "54.5177338",
+      "lon": "18.5467408",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipMwalL3efTgrO7ARz8JW5ICqBitFMLD5XmGPY7n=w408-h306-k-no"
+    },
+    {
+      "name": "Gdyńskie Muzeum Motoryzacji",
+      "description": "Każdy fanatyk motoryzacji powinien odwiedzić to miejsce.",
+      "lat": "54.547132",
+      "lon": "18.4573057",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipNNzD6r_d1p-t51dhfylozY-LyvnZYoJr8Gp7Oe=w408-h306-k-no"
+    },
+    {
+      "name": "Wieża widokowa Śródmieście",
+      "description": "Wieża widokowa z panoramą na całe śródmieście Gdyni. Znajduje się w obiekcie InfoBox.",
+      "lat": "54.5192122",
+      "lon": "18.5416476",
+      "img": "https://lh5.googleusercontent.com/p/AF1QipMWCPkAJDxPPf_L2EYV6QX-MKfjNMWAqFfoi4SN=w408-h229-k-no"
     }
   ]
 }
