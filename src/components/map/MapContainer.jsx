@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
+import {places as Temp} from '../firebaseData.js';
 //test do commita
 
 export class MapContainer extends React.Component {
@@ -62,7 +63,7 @@ export class MapContainer extends React.Component {
 
 
     render() {
-        // console.log(JSON.stringify(places));
+        console.log(JSON.stringify(Temp));
         // this.test();
         const style1 = {
             container: {
