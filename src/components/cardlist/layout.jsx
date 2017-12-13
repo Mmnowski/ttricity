@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {findPlace, selectPlace} from '../../redux/modules/cardlist/actions';
+import {findPlace, selectPlace, test} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -14,17 +14,20 @@ class PlaceList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      commentToShow: {},
+      commentToShow: null,
     }
   }
 
+  componentWillMount() {
+    this.props.test();
+  }
+
   handleOpen = (place) => {
-    this.setState({open: true, commentToShow: place});
+    this.setState({commentToShow: place});
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({commentToShow: null});
   };
 
   element(place) {
@@ -48,14 +51,6 @@ class PlaceList extends React.Component {
                 <FlatButton className="cardButton" label="Komentarze" onClick={() => {
                   this.handleOpen(place);
                 }}/>
-                <Dialog
-                  title="Komentarze"
-                  modal={false}
-                  open={this.state.open}
-                  onRequestClose={this.handleClose}
-                >
-                  {this.renderComments(this.state.commentToShow.id)}
-                </Dialog>
               </div>
               {place.distance && <p>{place.distance.toFixed(2)} km</p>}
             </div>
@@ -65,17 +60,20 @@ class PlaceList extends React.Component {
     );
   }
 
-  renderComments(placeID){
+  renderComments(placeID) {
     const {comments} = this.props;
-    return(
+    if (!comments[placeID]) {
+      return <h1>Brak komentarzy</h1>;
+    }
+    return (
       <div>
         {_.map(comments[placeID], (comment) => this.renderComment(comment))}
       </div>
     );
   }
 
-  renderComment(comment){
-    return(
+  renderComment(comment) {
+    return (
       <div key={comment.title}>
         <h1>{comment.title}</h1>
         {/*tutaj hardcoded username*/}
@@ -116,6 +114,20 @@ class PlaceList extends React.Component {
     );
   }
 
+  renderDialog() {
+    const {commentToShow} = this.state;
+    return (
+      <Dialog
+        title={`Komentarze dla ${commentToShow.name}`}
+        modal={false}
+        open={true}
+        onRequestClose={this.handleClose}
+      >
+        {this.renderComments(commentToShow.id)}
+      </Dialog>
+    );
+  }
+
   render() {
     const style = {
       container: {
@@ -138,6 +150,7 @@ class PlaceList extends React.Component {
       />
     }
     return (<div>
+      {this.state.commentToShow && this.renderDialog()}
       {this.renderSearchBar()}
       {this.renderList()}
     </div>);
@@ -155,6 +168,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   selectPlace,
   findPlace,
+  test,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);

@@ -8,6 +8,11 @@ const initialState = {
 
 export const cardList = (state = initialState, action) => {
   switch (action.type) {
+    case API_ACTIONS.SAMPLE_ACTION.startRequest:
+      console.log(action.res);
+      return{
+        ...state,
+      };
     case API_ACTIONS.SELECT_PLACE:
       return {
         ...state,
