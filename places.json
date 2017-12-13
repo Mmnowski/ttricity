@@ -70,5 +70,22 @@
       "lon": "18.5416476",
       "img": "https://lh5.googleusercontent.com/p/AF1QipMWCPkAJDxPPf_L2EYV6QX-MKfjNMWAqFfoi4SN=w408-h229-k-no"
     }
+  ],
+  "comments": [
+    {
+      "content": "Wartościowy komentarz",
+      "place_id": 0,
+      "title": "Komentarz1"
+    },
+    {
+      "content": "Kolejny komenarz",
+      "place_id": 0,
+      "title": "Komentarz2"
+    },
+    {
+      "content": "Treść",
+      "place_id": 2,
+      "title": "Ostatni komentarz"
+    }
   ]
 }
