@@ -16,7 +16,6 @@ export function findPlace(placeToFind) {
   }
 }
 
-
 export const fetchComments = () => {
   return (dispatch) => {
     firebase.database().ref(`/comments/`)
@@ -25,7 +24,6 @@ export const fetchComments = () => {
       });
   };
 };
-
 
 export function test() {
   const action = API_ACTIONS.SAMPLE_ACTION;
