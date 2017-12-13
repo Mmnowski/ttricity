@@ -3,6 +3,7 @@ import './layout.scss';
 import NavBar from './navBar';
 import {connect} from 'react-redux';
 import {fetchPlaces} from '../redux/modules/map/actions';
+import {fetchComments} from '../redux/modules/cardlist/actions';
 import {GoogleApiWrapper} from 'google-maps-react';
 
 let MediaQuery = require('react-responsive');
@@ -17,6 +18,7 @@ class Layout extends React.Component {
 
   componentWillMount() {
     this.props.fetchPlaces();
+    this.props.fetchComments();
   }
 
   mediaCheck() {
@@ -66,6 +68,7 @@ class Layout extends React.Component {
 
 const mapDispatchToProps = {
   fetchPlaces,
+  fetchComments,
 };
 
 const LayoutAPI = GoogleApiWrapper({
