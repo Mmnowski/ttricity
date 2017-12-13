@@ -7,12 +7,25 @@ import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
+import {Dialog} from "material-ui";
 
 class PlaceList extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      open: false,
+      commentToShow: {},
+    }
   }
+
+  handleOpen = (place) => {
+    this.setState({open: true, commentToShow: place});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
 
   element(place) {
     const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
@@ -32,11 +45,42 @@ class PlaceList extends React.Component {
                   history.push('/');
                   this.props.selectPlace(place);
                 }}/>
+                <FlatButton className="cardButton" label="Komentarze" onClick={() => {
+                  this.handleOpen(place);
+                }}/>
+                <Dialog
+                  title="Komentarze"
+                  modal={false}
+                  open={this.state.open}
+                  onRequestClose={this.handleClose}
+                >
+                  {this.renderComments(this.state.commentToShow.id)}
+                </Dialog>
               </div>
               {place.distance && <p>{place.distance.toFixed(2)} km</p>}
             </div>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  renderComments(placeID){
+    const {comments} = this.props;
+    return(
+      <div>
+        {_.map(comments[placeID], (comment) => this.renderComment(comment))}
+      </div>
+    );
+  }
+
+  renderComment(comment){
+    return(
+      <div key={comment.title}>
+        <h1>{comment.title}</h1>
+        {/*tutaj hardcoded username*/}
+        <p>Username</p>
+        <p>{comment.content}</p>
       </div>
     );
   }
@@ -104,6 +148,7 @@ function mapStateToProps(state) {
   return {
     places: state.map.places,
     queryPlace: state.cardList.queryPlace,
+    comments: state.cardList.comments,
   };
 }
 
