@@ -95,6 +95,39 @@ h1 {
       .cardList .cardContainer .buttons div {
         line-height: normal; }
 
+.commentDialog {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  border-radius: 2px;
+  margin: 10px auto;
+  font-weight: bold; }
+  .commentDialog .commentBox {
+    padding: 10px;
+    margin: 5px; }
+    .commentDialog .commentBox .addCommentButton {
+      background: #a3f4b7 !important;
+      display: inline-block !important; }
+  .commentDialog h3 {
+    border-bottom: solid #f4f4f4;
+    padding: 5px;
+    margin: 5px;
+    text-align: center; }
+  .commentDialog .comment {
+    padding: 5px;
+    margin: 10px;
+    border: solid #f4f4f4; }
+    .commentDialog .comment .username {
+      text-align: right;
+      padding: 5px; }
+    .commentDialog .comment p {
+      padding: 5px; }
+    .commentDialog .comment h1 {
+      border-bottom: solid #f4f4f4;
+      border-left: solid #f4f4f4;
+      border-right: solid #f4f4f4;
+      font-size: inherit;
+      text-align: center; }
+
 .title {
   font-size: 22px;
   font-weight: 400;

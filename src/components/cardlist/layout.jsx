@@ -63,7 +63,11 @@ class PlaceList extends React.Component {
   renderComments(placeID) {
     const {comments} = this.props;
     if (!comments[placeID]) {
-      return <h1>Brak komentarzy</h1>;
+      return (
+        <div className="comment">
+          <h3>Brak komentarzy</h3>
+        </div>
+      );
     }
     return (
       <div>
@@ -74,13 +78,17 @@ class PlaceList extends React.Component {
 
   renderComment(comment) {
     return (
-      <div key={comment.title}>
-        <h1>{comment.title}</h1>
+      <div key={comment.title} className="comment">
+        <h3>{comment.title}</h3>
         {/*tutaj hardcoded username*/}
-        <p>Username</p>
+        <p className="username">Username</p>
         <p>{comment.content}</p>
       </div>
     );
+  }
+
+    addComment(){
+          console.log("Dodaje komentarz");
   }
 
   renderList() {
@@ -118,10 +126,19 @@ class PlaceList extends React.Component {
     const {commentToShow} = this.state;
     return (
       <Dialog
-        title={`Komentarze dla ${commentToShow.name}`}
+        title={
+        <div className="commentBox">
+          <h1 className="commentTitle">
+            Komentarze dla {commentToShow.name}
+          </h1>
+          <FlatButton className="addCommentButton" label="Dodaj komentarz" onClick={this.addComment}/>
+        </div>
+        }
         modal={false}
         open={true}
         onRequestClose={this.handleClose}
+        autoScrollBodyContent={true}
+        className="commentDialog"
       >
         {this.renderComments(commentToShow.id)}
       </Dialog>
