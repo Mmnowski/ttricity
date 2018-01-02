@@ -7,7 +7,7 @@ import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
-import {Dialog} from "material-ui";
+import {Dialog, TextField} from "material-ui";
 
 class PlaceList extends React.Component {
 
@@ -15,6 +15,9 @@ class PlaceList extends React.Component {
     super(props);
     this.state = {
       commentToShow: null,
+      add: false,
+      title: '',
+      description: '',
     }
   }
 
@@ -69,14 +72,40 @@ class PlaceList extends React.Component {
         </div>
       );
     }
+    let commentsToShow = {...comments};
+    if (this.state.add) {
+      commentsToShow['add'] = {add: true};
+    }
     return (
       <div>
-        {_.map(comments[placeID], (comment) => this.renderComment(comment))}
+        {_.map(commentsToShow, (comment) => this.renderComment(comment))}
       </div>
     );
   }
 
   renderComment(comment) {
+    if (comment.add) {
+      return (
+        <div key="add" className="comment">
+          <h3>
+            <TextField
+              hintText="Tytuł"
+              floatingLabelText="Tytuł"
+              floatingLabelFixed={true}
+              value={this.state.title}
+            />
+          </h3>
+          <p>
+            <TextField
+              hintText="Opis"
+              floatingLabelText="Opis"
+              floatingLabelFixed={true}
+              value={this.state.description}
+            />
+          </p>
+        </div>
+      );
+    }
     return (
       <div key={comment.title} className="comment">
         <h3>{comment.title}</h3>
@@ -87,9 +116,9 @@ class PlaceList extends React.Component {
     );
   }
 
-    addComment(){
-          console.log("Dodaje komentarz");
-  }
+  addComment = () => {
+    this.setState({add: true});
+  };
 
   renderList() {
     const {places, queryPlace} = this.props;
@@ -127,12 +156,12 @@ class PlaceList extends React.Component {
     return (
       <Dialog
         title={
-        <div className="commentBox">
-          <h1 className="commentTitle">
-            Komentarze dla {commentToShow.name}
-          </h1>
-          <FlatButton className="addCommentButton" label="Dodaj komentarz" onClick={this.addComment}/>
-        </div>
+          <div className="commentBox">
+            <h1 className="commentTitle">
+              Komentarze dla {commentToShow.name}
+            </h1>
+            <FlatButton className="addCommentButton" label="Dodaj komentarz" onClick={this.addComment}/>
+          </div>
         }
         modal={false}
         open={true}
