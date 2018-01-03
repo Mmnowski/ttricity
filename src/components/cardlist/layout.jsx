@@ -139,8 +139,9 @@ class PlaceList extends React.Component {
 
   addComment = () => {
     if (this.props.user) {
-      this.setState({add: true});
+      return this.setState({add: true});
     }
+    alert('Zaloguj się')
   };
 
   renderList() {
@@ -183,8 +184,7 @@ class PlaceList extends React.Component {
             <h1 className="commentTitle">
               Komentarze dla {commentToShow.name}
             </h1>
-            <FlatButton className="addCommentButton" label={this.props.user ? "Dodaj komentarz" : "Zaloguj się"}
-                        onClick={this.addComment}/>
+            <FlatButton className="addCommentButton" label={"Dodaj komentarz"} onClick={this.addComment}/>
           </div>
         }
         modal={false}
