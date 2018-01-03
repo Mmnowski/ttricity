@@ -121,10 +121,12 @@ h1 {
     .buttons {
       display: flex;
       justify-content: center;
-      width: 90%;
+      flex-direction: column;
       margin: auto;
       div {
         line-height: normal;
+        text-align: center;
+        padding: 5px;
       }
     }
   }

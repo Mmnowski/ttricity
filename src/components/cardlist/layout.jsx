@@ -9,6 +9,7 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
 import StarRatingComponent from 'react-star-rating-component';
 import {Dialog, TextField} from "material-ui";
+import {LoginRegisterDialog} from "../login_register/index"
 
 class PlaceList extends React.Component {
 
@@ -141,7 +142,9 @@ class PlaceList extends React.Component {
     if (this.props.user) {
       return this.setState({add: true});
     }
-    alert('Zaloguj się')
+    return(
+      <LoginRegisterDialog/>
+    );
   };
 
   renderList() {

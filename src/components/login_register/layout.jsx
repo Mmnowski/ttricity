@@ -1,20 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import {connect} from 'react-redux';
-import {clearAuthError, loginUser, logoutUser, registerUser} from "../redux/modules/auth/actions";
+import {clearAuthError, loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
 import Dialog from 'material-ui/Dialog';
 import {FlatButton, TextField} from "material-ui";
 import {Tab, Tabs} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import './layout.scss';
+import '../layout.scss';
 
-class NavBar extends React.Component {
+class LoginRegisterDialog extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      popup: false,
+      popup: props.popup,
       email: '',
       email_register: '',
       password1: '',
@@ -37,28 +34,6 @@ class NavBar extends React.Component {
   handleClose = () => {
     this.setState({popup: false});
   };
-
-  loginButton() {
-    if (this.props.user) {
-      return (
-        <MenuItem
-          onClick={(e) => {
-            e.preventDefault();
-            this.props.logoutUser();
-          }}
-        >
-          Wyloguj
-        </MenuItem>
-      )
-    }
-    return (
-      <MenuItem
-        onClick={this.handleOpen}
-      >
-        Logowanie
-      </MenuItem>
-    );
-  }
 
   setField = (value, name) => {
     this.setState({[name]: value});
@@ -162,48 +137,31 @@ class NavBar extends React.Component {
     );
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
-
-  render() {
-    return (
+  render(){
+    return(
+      <Dialog
+      modal={false}
+      open={this.state.popup && !this.props.user}
+      onRequestClose={this.handleClose}
+      actionsContainerStyle={{height: 100}}
+    >
       <div>
-        <Drawer open={this.state.open} containerStyle={{width: '12%', height: '60vh', top: '10vh'}}>
-          <MenuItem
-            containerElement={<Link to="/"/>}
-            primaryText="Strona główna"
-          />
-          <MenuItem
-            containerElement={<Link to="/lista"/>}
-            primaryText="Lista lokacji"
-          />
-            {this.loginButton()}
-        </Drawer>
-        <Dialog
-          modal={false}
-          open={this.state.popup && !this.props.user}
-          onRequestClose={this.handleClose}
-          actionsContainerStyle={{height: 100}}
+        <Tabs
+          onChange={this.handleSlide}
+          value={this.state.slideIndex}
         >
-          <div>
-            <Tabs
-              onChange={this.handleSlide}
-              value={this.state.slideIndex}
-            >
-              <Tab label="Logowanie" value={0}/>
-              <Tab label="Rejestracja" value={1}/>
-            </Tabs>
-            <SwipeableViews
-              index={this.state.slideIndex}
-              onChangeIndex={this.handleSlide}
-            >
-              {this.renderLogin()}
-              {this.renderRegister()}
-            </SwipeableViews>
-          </div>
-        </Dialog>
-        <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
+          <Tab label="Logowanie" value={0}/>
+          <Tab label="Rejestracja" value={1}/>
+        </Tabs>
+        <SwipeableViews
+          index={this.state.slideIndex}
+          onChangeIndex={this.handleSlide}
+        >
+          {this.renderLogin()}
+          {this.renderRegister()}
+        </SwipeableViews>
       </div>
-    );
+    </Dialog>);
   }
 }
 
@@ -222,4 +180,4 @@ const mapDispatchToProps = {
   registerUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterDialog);
