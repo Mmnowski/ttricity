@@ -7,6 +7,7 @@ import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
+import StarRatingComponent from 'react-star-rating-component';
 import {Dialog, TextField} from "material-ui";
 
 class PlaceList extends React.Component {
@@ -58,6 +59,14 @@ class PlaceList extends React.Component {
               {place.distance && <p>{place.distance.toFixed(2)} km</p>}
             </div>
           </div>
+          <div>
+            <StarRatingComponent
+              name="rate1"
+              starCount={5}
+              value={2}
+              onStarClick={() => null}
+            />
+          </div>
         </div>
       </div>
     );
@@ -90,22 +99,22 @@ class PlaceList extends React.Component {
         <div key="add" className="comment">
           <h3 style={{border: 0}}>
             <TextField
-hintText="Tytuł"
+              hintText="Tytuł"
 
-onChange={(e) => this.setState({title: e.target.value})}
+              onChange={(e) => this.setState({title: e.target.value})}
               value={this.state.title}
-inputStyle={{width: '100%', textAlign: 'center'}}
-hintStyle={{width: '100%', textAlign: 'center'}}
-                style={{width: '100%'}}
+              inputStyle={{width: '100%', textAlign: 'center'}}
+              hintStyle={{width: '100%', textAlign: 'center'}}
+              style={{width: '100%'}}
             />
           </h3>
           <p style={{display: 'flex', justifyContent: 'center'}}>
             <TextField
-                hintText="Treść"
-                inputStyle={{width: '100%', textAlign: 'center'}}
-                hintStyle={{width: '100%', textAlign: 'center'}}
-                style={{width: '100%', textAlign: 'center'}}
-                onChange={(e) => this.setState({description: e.target.value})}
+              hintText="Treść"
+              inputStyle={{width: '100%', textAlign: 'center'}}
+              hintStyle={{width: '100%', textAlign: 'center'}}
+              style={{width: '100%', textAlign: 'center'}}
+              onChange={(e) => this.setState({description: e.target.value})}
               value={this.state.description}
             />
           </p>
@@ -129,9 +138,9 @@ hintStyle={{width: '100%', textAlign: 'center'}}
   };
 
   addComment = () => {
-    if(!this.props.user){
+    if (!this.props.user) {
 
-        this.setState({add: true});
+      this.setState({add: true});
     }
   };
 
@@ -175,7 +184,8 @@ hintStyle={{width: '100%', textAlign: 'center'}}
             <h1 className="commentTitle">
               Komentarze dla {commentToShow.name}
             </h1>
-            <FlatButton className="addCommentButton" label={this.props.user ? "Dodaj komentarz" : "Zaloguj się"} onClick={this.addComment}/>
+            <FlatButton className="addCommentButton" label={this.props.user ? "Dodaj komentarz" : "Zaloguj się"}
+                        onClick={this.addComment}/>
           </div>
         }
         modal={false}
@@ -231,7 +241,7 @@ const mapDispatchToProps = {
   selectPlace,
   findPlace,
   test,
-    createComment,
+  createComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);
