@@ -138,8 +138,7 @@ class PlaceList extends React.Component {
   };
 
   addComment = () => {
-    if (!this.props.user) {
-
+    if (this.props.user) {
       this.setState({add: true});
     }
   };
