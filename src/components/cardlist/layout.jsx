@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {findPlace, selectPlace, test} from '../../redux/modules/cardlist/actions';
+import {findPlace, selectPlace, test, createComment} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -72,9 +72,9 @@ class PlaceList extends React.Component {
         </div>
       );
     }
-    let commentsToShow = {...comments};
+    let commentsToShow = [...comments[placeID]];
     if (this.state.add) {
-      commentsToShow['add'] = {add: true};
+      commentsToShow.push({add: true});
     }
     return (
       <div>
@@ -84,25 +84,32 @@ class PlaceList extends React.Component {
   }
 
   renderComment(comment) {
+    console.log(comment)
     if (comment.add) {
       return (
         <div key="add" className="comment">
-          <h3>
+          <h3 style={{border: 0}}>
             <TextField
-              hintText="Tytuł"
-              floatingLabelText="Tytuł"
-              floatingLabelFixed={true}
+hintText="Tytuł"
+
+onChange={(e) => this.setState({title: e.target.value})}
               value={this.state.title}
+inputStyle={{width: '100%', textAlign: 'center'}}
+hintStyle={{width: '100%', textAlign: 'center'}}
+                style={{width: '100%'}}
             />
           </h3>
-          <p>
+          <p style={{display: 'flex', justifyContent: 'center'}}>
             <TextField
-              hintText="Opis"
-              floatingLabelText="Opis"
-              floatingLabelFixed={true}
+                hintText="Treść"
+                inputStyle={{width: '100%', textAlign: 'center'}}
+                hintStyle={{width: '100%', textAlign: 'center'}}
+                style={{width: '100%', textAlign: 'center'}}
+                onChange={(e) => this.setState({description: e.target.value})}
               value={this.state.description}
             />
           </p>
+          <FlatButton style={{width: '100%'}} onClick={this.sendComment}>ADD</FlatButton>
         </div>
       );
     }
@@ -116,8 +123,16 @@ class PlaceList extends React.Component {
     );
   }
 
+  sendComment = () => {
+    this.setState({add: false});
+    this.props.createComment(this.state.title, this.state.description, this.state.commentToShow.id);
+  };
+
   addComment = () => {
-    this.setState({add: true});
+    if(!this.props.user){
+
+        this.setState({add: true});
+    }
   };
 
   renderList() {
@@ -160,7 +175,7 @@ class PlaceList extends React.Component {
             <h1 className="commentTitle">
               Komentarze dla {commentToShow.name}
             </h1>
-            <FlatButton className="addCommentButton" label="Dodaj komentarz" onClick={this.addComment}/>
+            <FlatButton className="addCommentButton" label={this.props.user ? "Dodaj komentarz" : "Zaloguj się"} onClick={this.addComment}/>
           </div>
         }
         modal={false}
@@ -205,6 +220,7 @@ class PlaceList extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    user: state.auth.user,
     places: state.map.places,
     queryPlace: state.cardList.queryPlace,
     comments: state.cardList.comments,
@@ -215,6 +231,7 @@ const mapDispatchToProps = {
   selectPlace,
   findPlace,
   test,
+    createComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);

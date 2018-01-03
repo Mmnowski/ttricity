@@ -32,3 +32,14 @@ export function test() {
   const params = {key: 'GOOGLE_API_KEY'};
   return startRequest({}, action, attrs, params, 'POST', postData);
 }
+
+export function createComment(title, description, placeId) {
+  const { currentUser } = firebase.auth();
+  return (dispatch) => {
+    firebase.database().ref(`/comments/6`)
+      .set({ title, content: description, place_id: placeId })
+      .then(() => {
+        dispatch({ type: "temp" });
+      });
+  };
+}
