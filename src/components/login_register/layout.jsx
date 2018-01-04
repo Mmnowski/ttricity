@@ -11,7 +11,6 @@ class LoginRegisterDialog extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      popup: props.popup,
       email: '',
       email_register: '',
       password1: '',
@@ -19,21 +18,12 @@ class LoginRegisterDialog extends React.Component{
       password: '',
       slideIndex: 0,
       error: '',
-      open: true,
     };
   }
 
   componentWillMount() {
     this.props.clearAuthError();
   }
-
-  handleOpen = () => {
-    this.setState({popup: true});
-  };
-
-  handleClose = () => {
-    this.setState({popup: false});
-  };
 
   setField = (value, name) => {
     this.setState({[name]: value});
@@ -141,9 +131,10 @@ class LoginRegisterDialog extends React.Component{
     return(
       <Dialog
       modal={false}
-      open={this.state.popup && !this.props.user}
-      onRequestClose={this.handleClose}
+      open={this.props.popup && !this.props.user}
+      onRequestClose={this.props.callback}
       actionsContainerStyle={{height: 100}}
+      style = {{zIndex: 9999}}
     >
       <div>
         <Tabs
