@@ -9,6 +9,7 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
 import StarRatingComponent from 'react-star-rating-component';
 import {Dialog, TextField} from "material-ui";
+import {LoginRegisterDialog} from "../login_register/index"
 
 class PlaceList extends React.Component {
 
@@ -19,12 +20,15 @@ class PlaceList extends React.Component {
       add: false,
       title: '',
       description: '',
+      popup: false,
     }
   }
 
   componentWillMount() {
     this.props.test();
   }
+
+  handlePopup = () => this.setState({popup: !this.state.popup});
 
   handleOpen = (place) => {
     this.setState({commentToShow: place});
@@ -93,7 +97,6 @@ class PlaceList extends React.Component {
   }
 
   renderComment(comment) {
-    console.log(comment)
     if (comment.add) {
       return (
         <div key="add" className="comment">
@@ -141,7 +144,7 @@ class PlaceList extends React.Component {
     if (this.props.user) {
       return this.setState({add: true});
     }
-    alert('Zaloguj się')
+    this.handlePopup();
   };
 
   renderList() {
@@ -223,6 +226,7 @@ class PlaceList extends React.Component {
       {this.state.commentToShow && this.renderDialog()}
       {this.renderSearchBar()}
       {this.renderList()}
+      <LoginRegisterDialog popup = {this.state.popup} callback = {this.handlePopup} />
     </div>);
   }
 }
