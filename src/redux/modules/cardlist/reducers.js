@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import {API_ACTIONS} from '../../actionTypes';
 
 const initialState = {
@@ -31,12 +32,12 @@ export const cardList = (state = initialState, action) => {
         return state;
       }
       let comments = {};
-      action.payload.forEach((comment) => {
+      _.forEach(action.payload, (comment, index) => {
         if (!comments[comment.place_id]){
-          comments[comment.place_id] = [comment];
+          comments[comment.place_id] = [{...comment, id: index}];
         }
         else {
-          comments[comment.place_id].push(comment);
+          comments[comment.place_id].push({...comment, id: index});
         }
       });
       return {

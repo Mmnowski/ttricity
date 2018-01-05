@@ -34,12 +34,9 @@ export function test() {
 }
 
 export function createComment(title, description, placeId) {
-  const { currentUser } = firebase.auth();
   return (dispatch) => {
-    firebase.database().ref(`/comments/6`)
-      .set({ title, content: description, place_id: placeId })
-      .then(() => {
-        dispatch({ type: "temp" });
-      });
+    firebase.database().ref(`/comments/`)
+      .push({ title, content: description, place_id: placeId })
+      .catch((e) => console.log(e));
   };
 }

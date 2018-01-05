@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import _ from 'lodash';
 import {connect} from 'react-redux';
-import {findPlace, selectPlace, test, createComment} from '../../redux/modules/cardlist/actions';
+import {createComment, findPlace, selectPlace, test} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -30,13 +30,9 @@ class PlaceList extends React.Component {
 
   handlePopup = () => this.setState({popup: !this.state.popup});
 
-  handleOpen = (place) => {
-    this.setState({commentToShow: place});
-  };
+  handleOpen = (place) => this.setState({commentToShow: place});
 
-  handleClose = () => {
-    this.setState({commentToShow: null});
-  };
+  handleClose = () => this.setState({commentToShow: null, title: '', description: '', add: false});
 
   element(place) {
     const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
@@ -78,20 +74,17 @@ class PlaceList extends React.Component {
 
   renderComments(placeID) {
     const {comments} = this.props;
-    if (!comments[placeID]) {
-      return (
-        <div className="comment">
-          <h3>Brak komentarzy</h3>
-        </div>
-      );
-    }
-    let commentsToShow = [...comments[placeID]];
+    let commentsToShow = comments[placeID] ? [...comments[placeID]] : [];
     if (this.state.add) {
       commentsToShow.push({add: true});
     }
     return (
       <div>
-        {_.map(commentsToShow, (comment) => this.renderComment(comment))}
+        {!comments[placeID] &&
+        <div className="comment">
+          <h3>Brak komentarzy</h3>
+        </div>}
+        {commentsToShow.length > 0 && _.map(commentsToShow, (comment) => this.renderComment(comment))}
       </div>
     );
   }
@@ -100,6 +93,7 @@ class PlaceList extends React.Component {
     if (comment.add) {
       return (
         <div key="add" className="comment">
+          <h1>Nowy komentarz</h1>
           <h3 style={{border: 0}}>
             <TextField
               hintText="Tytuł"
@@ -121,12 +115,12 @@ class PlaceList extends React.Component {
               value={this.state.description}
             />
           </p>
-          <FlatButton style={{width: '100%'}} onClick={this.sendComment}>ADD</FlatButton>
+          <FlatButton style={{width: '100%'}} onClick={this.sendComment}>Dodaj</FlatButton>
         </div>
       );
     }
     return (
-      <div key={comment.title} className="comment">
+      <div key={comment.id} className="comment">
         <h3>{comment.title}</h3>
         {/*tutaj hardcoded username*/}
         <p className="username">Username</p>
@@ -136,7 +130,7 @@ class PlaceList extends React.Component {
   }
 
   sendComment = () => {
-    this.setState({add: false});
+    this.setState({add: false, title: '', description: ''});
     this.props.createComment(this.state.title, this.state.description, this.state.commentToShow.id);
   };
 
@@ -190,6 +184,7 @@ class PlaceList extends React.Component {
             <FlatButton className="addCommentButton" label={"Dodaj komentarz"} onClick={this.addComment}/>
           </div>
         }
+        style={{height: '100%'}}
         modal={false}
         open={true}
         onRequestClose={this.handleClose}
@@ -226,7 +221,7 @@ class PlaceList extends React.Component {
       {this.state.commentToShow && this.renderDialog()}
       {this.renderSearchBar()}
       {this.renderList()}
-      <LoginRegisterDialog popup = {this.state.popup} callback = {this.handlePopup} />
+      <LoginRegisterDialog popup={this.state.popup} callback={this.handlePopup}/>
     </div>);
   }
 }
