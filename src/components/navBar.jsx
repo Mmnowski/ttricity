@@ -4,10 +4,6 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {connect} from 'react-redux';
 import {clearAuthError, loginUser, logoutUser, registerUser} from "../redux/modules/auth/actions";
-import Dialog from 'material-ui/Dialog';
-import {FlatButton, TextField} from "material-ui";
-import {Tab, Tabs} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
 import './layout.scss';
 import {LoginRegisterDialog} from "../components/login_register/index";
 
@@ -45,9 +41,7 @@ class NavBar extends React.Component {
       )
     }
     return (
-      <MenuItem
-        onClick={this.handlePopup}
-      >
+      <MenuItem onClick={this.handlePopup}>
         Logowanie
       </MenuItem>
     );
@@ -56,6 +50,19 @@ class NavBar extends React.Component {
   handleToggle = () => this.setState({open: !this.state.open});
 
   handlePopup = () => this.setState({popup: !this.state.popup});
+
+  createButton = () => {
+    const {user, admins} = this.props;
+    if (!user || !admins || !admins[user.uid]) {
+      return null;
+    }
+    return (
+      <MenuItem
+        containerElement={<Link to="/create_place"/>}
+        primaryText="Utwórz miejsce"
+      />
+    )
+  };
 
   render() {
     return (
@@ -67,11 +74,12 @@ class NavBar extends React.Component {
           />
           <MenuItem
             containerElement={<Link to="/lista"/>}
-            primaryText="Lista lokacji"
+            primaryText="Lista miejsc"
           />
-            {this.loginButton()}
+          {this.createButton()}
+          {this.loginButton()}
         </Drawer>
-        <LoginRegisterDialog popup = {this.state.popup} callback = {this.handlePopup}/>
+        <LoginRegisterDialog popup={this.state.popup} callback={this.handlePopup}/>
         <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
       </div>
     );
@@ -81,6 +89,7 @@ class NavBar extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    admins: state.auth.admins,
     error: state.auth.error,
     email: state.auth.email,
   };

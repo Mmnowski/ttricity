@@ -2,6 +2,7 @@ import React from 'react';
 import './layout.scss';
 import NavBar from './navBar';
 import {connect} from 'react-redux';
+import {fetchAdmins} from '../redux/modules/auth/actions';
 import {fetchPlaces} from '../redux/modules/map/actions';
 import {fetchComments} from '../redux/modules/cardlist/actions';
 import {GoogleApiWrapper} from 'google-maps-react';
@@ -19,6 +20,12 @@ class Layout extends React.Component {
   componentWillMount() {
     this.props.fetchPlaces();
     this.props.fetchComments();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.user && this.props.user !== newProps.user) {
+      this.props.fetchAdmins();
+    }
   }
 
   mediaCheck() {
@@ -66,13 +73,18 @@ class Layout extends React.Component {
   };
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user,
+  };
+}
+
 const mapDispatchToProps = {
   fetchPlaces,
   fetchComments,
+  fetchAdmins,
 };
 
-const LayoutAPI = GoogleApiWrapper({
-  apiKey: 'GOOGLE_API_KEY',
-})(Layout);
+const LayoutAPI = GoogleApiWrapper({apiKey: 'GOOGLE_API_KEY'})(Layout);
 
-export default connect(null, mapDispatchToProps)(LayoutAPI);
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutAPI);

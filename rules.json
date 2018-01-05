@@ -1,0 +1,14 @@
+{
+  "rules": {
+    ".read": true,
+    "comments": {
+      ".write": "auth != null"
+    },
+    "places": {
+      ".write": "root.child('admins/'+auth.uid).exists()"
+    },
+    "admins": {
+      ".write": "false"
+    }
+  }
+}

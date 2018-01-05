@@ -5,6 +5,7 @@ const initialState = {
   error: '',
   user: null,
   email: false,
+  admins: null,
 };
 
 export const codeToMsgMap = {
@@ -60,6 +61,11 @@ export const auth = (state = initialState, action) => {
         ...state,
         error: '',
         email: false,
+      };
+    case API_ACTIONS.ADMIN_FETCH_SUCCESS:
+      return{
+        ...state,
+        admins: action.payload,
       };
     default:
       return state;

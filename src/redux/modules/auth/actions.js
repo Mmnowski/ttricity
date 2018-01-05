@@ -27,11 +27,11 @@ export const registerUser = (email, password) => {
 
 export const verifyEmail = (dispatch, user) => {
   dispatch(
-    user.sendEmailVerification().then(() => {
+    user.sendEmailVerification()
+      .then(() => {
       return {type: API_ACTIONS.FIREBASE_EMAIL_SENT}
-    }).catch(function (error) {
-      console.log(error);
     })
+      .catch((error) => console.log(error))
   );
 };
 
@@ -56,3 +56,12 @@ export const logoutUser = () => {
 export function clearAuthError() {
   return {type: API_ACTIONS.CLEAR_AUTH_ERROR};
 }
+
+export const fetchAdmins = () => {
+  return (dispatch) => {
+    firebase.database().ref(`/admins/`)
+      .on('value', snapshot => {
+        dispatch({type: API_ACTIONS.ADMIN_FETCH_SUCCESS, payload: snapshot.val()});
+      });
+  };
+};
