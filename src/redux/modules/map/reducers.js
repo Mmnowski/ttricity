@@ -1,4 +1,5 @@
 import {API_ACTIONS} from '../../actionTypes';
+import * as _ from 'lodash';
 
 const initialState = {
   marker: null,
@@ -19,7 +20,7 @@ export const map = (state = initialState, action) => {
     case API_ACTIONS.PLACE_FETCH_SUCCESS:
       let copy = [];
       if (action.payload) {
-        action.payload.forEach((place, index) => {
+        _.forEach(action.payload,(place, index) => {
           if (validatePlace(place)) {
             copy.push({...place, id: index});
           }
