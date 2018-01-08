@@ -58,7 +58,7 @@ class NavBar extends React.Component {
     }
     return (
       <MenuItem
-        containerElement={<Link to="/create_place"/>}
+        containerElement={<Link to="/dodaj_miejsce"/>}
         primaryText="Utwórz miejsce"
       />
     )

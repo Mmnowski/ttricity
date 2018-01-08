@@ -97,7 +97,6 @@ class PlaceList extends React.Component {
           <h3 style={{border: 0}}>
             <TextField
               hintText="Tytuł"
-
               onChange={(e) => this.setState({title: e.target.value})}
               value={this.state.title}
               inputStyle={{width: '100%', textAlign: 'center'}}

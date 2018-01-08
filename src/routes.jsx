@@ -11,6 +11,7 @@ import config from './config';
 import {Layout, NotFound} from './components';
 import {Home} from './components/map';
 import {List} from './components/cardlist/index';
+import {PlacesForm} from './components/places_form/index'
 
 /* Routes */
 const {urlPrefix} = config;
@@ -20,6 +21,9 @@ const Routes = () => {
       <Router history={history}>
         <Route path="/lista" component={Layout}>
           <IndexRoute component={List}/>
+        </Route>
+        <Route path="/dodaj_miejsce" component={Layout}>
+          <IndexRoute component={PlacesForm}/>
         </Route>
         <Route path={urlPrefix} component={Layout}>
           <IndexRoute component={Home}/>
