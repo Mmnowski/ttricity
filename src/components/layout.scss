@@ -47,6 +47,13 @@ $addcomment: #a3f4b7;
   }
 }
 
+input {
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
+  }
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -132,18 +139,18 @@ h1 {
   }
 }
 
-.commentDialog{
+.commentDialog {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
   border-radius: 2px;
   margin: 10px auto;
   font-weight: bold;
 
-  .commentBox{
+  .commentBox {
     padding: 10px;
     margin: 5px;
 
-    .addCommentButton{
+    .addCommentButton {
       background: $addcomment !important;
       display: inline-block !important;
     }
@@ -157,28 +164,27 @@ h1 {
     text-align: center;
   }
 
-  .comment{
+  .comment {
     padding: 5px;
     margin: 10px;
     border: solid $cardborder;
-    .username{
+    .username {
       text-align: right;
       padding: 5px;
     }
-    p{
+    p {
       padding: 5px;
     }
 
-    h1{
+    h1 {
       border-bottom: solid $cardborder;
       border-left: solid $cardborder;
       border-right: solid $cardborder;
-      font-size : inherit;
+      font-size: inherit;
       text-align: center;
     }
   }
 }
-
 
 .title {
   font-size: 22px;
@@ -215,7 +221,7 @@ h1 {
   float: right;
   padding-right: 8.8%;
 
-  input{
+  input {
     width: 99.5%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
@@ -239,7 +245,7 @@ h1 {
   width: 40%;
 }
 
-.nav-bar-container{
+.nav-bar-container {
   display: flex;
   flex-direction: column;
   min-width: 200px;

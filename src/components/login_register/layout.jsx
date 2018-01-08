@@ -7,7 +7,7 @@ import {Tab, Tabs} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import '../layout.scss';
 
-class LoginRegisterDialog extends React.Component{
+class LoginRegisterDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,21 +68,23 @@ class LoginRegisterDialog extends React.Component{
   renderLogin() {
     return (
       <div className="login-content">
-        <TextField
-          hintText="Podaj email"
-          floatingLabelText="Email"
-          onChange={(e, newValue) => this.setField(newValue, 'email')}
-        />
-        <br/>
-        <TextField
-          hintText="Podaj hasło"
-          floatingLabelText="Hasło"
-          type="password"
-          onChange={(e, newValue) => this.setField(newValue, 'password')}
-        />
-        <br/>
-        <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
-        <br/>
+        <form onSubmit={this.validateLogin}>
+          <TextField
+            hintText="Podaj email"
+            floatingLabelText="Email"
+            onChange={(e, newValue) => this.setField(newValue, 'email')}
+          />
+          <br/>
+          <TextField
+            hintText="Podaj hasło"
+            floatingLabelText="Hasło"
+            type="password"
+            onChange={(e, newValue) => this.setField(newValue, 'password')}
+          />
+          <br/>
+          <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
+          <br/>
+        </form>
         {this.renderError()}
       </div>
     );
@@ -100,59 +102,61 @@ class LoginRegisterDialog extends React.Component{
     }
     return (
       <div className="login-content">
-        <TextField
-          hintText="Podaj email"
-          floatingLabelText="Email"
-          onChange={(e, newValue) => this.setField(newValue, 'email_register')}
-        />
-        <br/>
-        <TextField
-          hintText="Podaj hasło"
-          floatingLabelText="Hasło"
-          type="password"
-          onChange={(e, newValue) => this.setField(newValue, 'password1')}
-        />
-        <br/>
-        <TextField
-          hintText="Potwierdź hasło"
-          floatingLabelText="Hasło"
-          type="password"
-          onChange={(e, newValue) => this.setField(newValue, 'password2')}
-        />
-        <br/>
-        <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
-        <br/>
+        <form onSubmit={this.validateRegister}>
+          <TextField
+            hintText="Podaj email"
+            floatingLabelText="Email"
+            onChange={(e, newValue) => this.setField(newValue, 'email_register')}
+          />
+          <br/>
+          <TextField
+            hintText="Podaj hasło"
+            floatingLabelText="Hasło"
+            type="password"
+            onChange={(e, newValue) => this.setField(newValue, 'password1')}
+          />
+          <br/>
+          <TextField
+            hintText="Potwierdź hasło"
+            floatingLabelText="Hasło"
+            type="password"
+            onChange={(e, newValue) => this.setField(newValue, 'password2')}
+          />
+          <br/>
+          <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
+          <br/>
+        </form>
         {this.renderError()}
       </div>
     );
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Dialog
-      modal={false}
-      open={this.props.popup && !this.props.user}
-      onRequestClose={this.props.callback}
-      actionsContainerStyle={{height: 100}}
-      style = {{zIndex: 9999}}
-    >
-      <div>
-        <Tabs
-          onChange={this.handleSlide}
-          value={this.state.slideIndex}
-        >
-          <Tab label="Logowanie" value={0}/>
-          <Tab label="Rejestracja" value={1}/>
-        </Tabs>
-        <SwipeableViews
-          index={this.state.slideIndex}
-          onChangeIndex={this.handleSlide}
-        >
-          {this.renderLogin()}
-          {this.renderRegister()}
-        </SwipeableViews>
-      </div>
-    </Dialog>);
+        modal={false}
+        open={this.props.popup && !this.props.user}
+        onRequestClose={this.props.callback}
+        actionsContainerStyle={{height: 100}}
+        style={{zIndex: 9999}}
+      >
+        <div>
+          <Tabs
+            onChange={this.handleSlide}
+            value={this.state.slideIndex}
+          >
+            <Tab label="Logowanie" value={0}/>
+            <Tab label="Rejestracja" value={1}/>
+          </Tabs>
+          <SwipeableViews
+            index={this.state.slideIndex}
+            onChangeIndex={this.handleSlide}
+          >
+            {this.renderLogin()}
+            {this.renderRegister()}
+          </SwipeableViews>
+        </div>
+      </Dialog>);
   }
 }
 

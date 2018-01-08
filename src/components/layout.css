@@ -29,6 +29,10 @@
     width: 100%;
     align-self: flex-end; }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important; }
+
 html, body {
   height: 100%;
   width: 100%;
