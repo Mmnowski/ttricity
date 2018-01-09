@@ -26,7 +26,7 @@ export const fetchComments = () => {
 };
 
 export function test() {
-  const action = API_ACTIONS.SAMPLE_ACTION;
+  const action = API_ACTIONS.GEOLOCATE;
   const postData = {};
   const attrs = {};
   const params = {key: 'GOOGLE_API_KEY'};

@@ -3,12 +3,12 @@ import config from '../config/index';
 export const ROOT_URL = config.apiRootUrl;
 
 export const API_ACTIONS = {
-  SAMPLE_ACTION: {
-    action: 'sample_action',
+  GEOLOCATE: {
+    action: 'geolocate',
     url: `https://www.googleapis.com/geolocation/v1/geolocate`,
-    startRequest: 'sample_action/REQUEST_STARTED',
-    successRequest: 'sample_action/REQUEST_SUCCESS',
-    failureRequest: 'sample_action/REQUEST_FAILURE',
+    startRequest: 'geolocate/REQUEST_STARTED',
+    successRequest: 'geolocate/REQUEST_SUCCESS',
+    failureRequest: 'geolocate/REQUEST_FAILURE',
   },
   FIREBASE_LOGIN: {
     action: 'firebase_login',
