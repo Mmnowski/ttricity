@@ -127,7 +127,7 @@ class PlaceList extends React.Component {
   }
 
   deleteComment = (comment) => {
-    return null; // TODO remove comments
+    return null; // remove comments wip
     if (confirm(`Napewno usunąć ten komentarz?`)) {
       this.props.removeComment(comment);
     }
