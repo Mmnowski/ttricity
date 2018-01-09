@@ -1,7 +1,7 @@
 import config from '../config/index';
 
 export const ROOT_URL = config.apiRootUrl;
-
+//do commita
 export const API_ACTIONS = {
   GEOLOCATE: {
     action: 'geolocate',

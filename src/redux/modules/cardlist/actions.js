@@ -1,7 +1,7 @@
 import {API_ACTIONS} from '../../actionTypes';
 import {startRequest} from '../../api';
 import firebase from "firebase/index";
-
+//do commita
 export function selectPlace(place) {
   return {
     payload: {place},
