@@ -4,7 +4,7 @@ import NavBar from './navBar';
 import {connect} from 'react-redux';
 import {fetchAdmins} from '../redux/modules/auth/actions';
 import {fetchPlaces} from '../redux/modules/map/actions';
-import {fetchComments} from '../redux/modules/cardlist/actions';
+import {fetchComments, fetchRatings} from '../redux/modules/cardlist/actions';
 import {GoogleApiWrapper} from 'google-maps-react';
 
 let MediaQuery = require('react-responsive');
@@ -20,6 +20,7 @@ class Layout extends React.Component {
   componentWillMount() {
     this.props.fetchPlaces();
     this.props.fetchComments();
+    this.props.fetchRatings();
   }
 
   componentWillReceiveProps(newProps) {
@@ -82,6 +83,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   fetchPlaces,
   fetchComments,
+  fetchRatings,
   fetchAdmins,
 };
 

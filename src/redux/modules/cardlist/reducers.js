@@ -6,6 +6,7 @@ const initialState = {
   queryPlace: null,
   comments: null,
   geolocate: null,
+  ratings: null,
 };
 
 export const cardList = (state = initialState, action) => {
@@ -15,7 +16,7 @@ export const cardList = (state = initialState, action) => {
         ...state,
         geolocate: {
           lat: action.res.location.lat,
-          lon: action.res.location.lng
+          lon: action.res.location.lng,
         },
       };
     case API_ACTIONS.SELECT_PLACE:
@@ -30,6 +31,11 @@ export const cardList = (state = initialState, action) => {
           lat: action.payload.placeToFind.geometry.location.lat(),
           lon: action.payload.placeToFind.geometry.location.lng()
         },
+      };
+    case API_ACTIONS.RATINGS_FETCH_SUCCESS:
+      return {
+        ...state,
+        ratings: action.payload,
       };
     case API_ACTIONS.COMMENT_FETCH_SUCCESS:
       if (action.payload.length === 0) {

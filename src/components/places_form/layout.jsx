@@ -1,7 +1,7 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
-import {TextField} from "material-ui";
+import {Dialog, TextField} from 'material-ui';
 import {history} from '../../prepare';
 import {createPlace} from "../../redux/modules/places_form/actions";
 
@@ -10,16 +10,17 @@ class PlacesForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      desc: "",
-      img: "",
-      lat: "",
-      lon: "",
-      name: "",
-      descErrorText: "",
-      imgErrorText: "",
-      latErrorText: "",
-      lonErrorText: "",
-      nameErrorText: "",
+      desc: '',
+      img: '',
+      lat: '',
+      lon: '',
+      name: '',
+      descErrorText: '',
+      imgErrorText: '',
+      latErrorText: '',
+      lonErrorText: '',
+      nameErrorText: '',
+      info: '',
     }
   }
 
@@ -33,35 +34,59 @@ class PlacesForm extends React.Component {
     let check = 0;
     const {desc, img, lat, lon, name} = this.state;
 
-    if (desc === "") {
+    if (desc.length === 0) {
       check++;
       this.setState({descErrorText: "To pole jest obowiazkowe"});
     }
-    if (img === "") {
+    if (img.length === 0) {
       check++;
       this.setState({imgErrorText: "To pole jest obowiazkowe"});
     }
-    if (lat === "") {
+    if (img.length !== 0 && !img.includes('https') && !img.includes('http')) {
+      check++;
+      this.setState({imgErrorText: "Niepoprawny link do zdjęcia"});
+    }
+    if (lat.length === 0) {
       check++;
       this.setState({latErrorText: "To pole jest obowiazkowe"});
     }
-    if (lon === "") {
+    if (lon.length === 0) {
       check++;
       this.setState({lonErrorText: "To pole jest obowiazkowe"});
     }
-    if (name === "") {
+    if (lat.length !== 0 && isNaN(parseFloat(lat))) {
+      this.setState({latErrorText: "Niepoprawny lat"});
+    }
+    if (lon.length !== 0 && isNaN(parseFloat(lon))) {
+      this.setState({latErrorText: "Niepoprawny lon"});
+    }
+    if (name.length === 0) {
       check++;
       this.setState({nameErrorText: "To pole jest obowiazkowe"});
     }
     if (check === 0) {
       this.props.createPlace(desc, img, lat, lon, name);
-      this.setState({desc: "", img: "", lat: "", lon: "", name: ""});
+      console.log(name);
+      this.setState({info: name, desc: '', img: '', lat: '', lon: '', name: ''});
     }
+  };
+
+  closePopup = () => {
+    this.setState({info: ''});
   };
 
   render() {
     return (
       <div className="formBox">
+        <div className="field">
+          <TextField
+            name="name"
+            value={this.state.name}
+            hintText="Nazwa"
+            errorText={this.state.nameErrorText}
+            onChange={(e) => this.setState({name: e.target.value, nameErrorText: ""})}
+          />
+        </div>
         <div className="field">
           <TextField
             name="desc"
@@ -98,18 +123,19 @@ class PlacesForm extends React.Component {
             onChange={(e) => this.setState({lon: e.target.value, lonErrorText: ""})}
           />
         </div>
-        <div className="field">
-          <TextField
-            name="name"
-            value={this.state.name}
-            hintText="Nazwa"
-            errorText={this.state.nameErrorText}
-            onChange={(e) => this.setState({name: e.target.value, nameErrorText: ""})}
-          />
-        </div>
         <div className="sendButton">
           <FlatButton className="cardButton" label="Dodaj" onClick={this.sendPlace}/>
         </div>
+        <Dialog
+          modal={false}
+          open={this.state.info.length > 0}
+          onRequestClose={this.closePopup}
+          actionsContainerStyle={{height: 100}}
+          style={{zIndex: 9999}}
+        >
+          <h1>Dodano {this.state.info}</h1>
+          <FlatButton style={{width: '100%'}} onClick={this.closePopup}>OK</FlatButton>
+        </Dialog>
       </div>
     );
   }
