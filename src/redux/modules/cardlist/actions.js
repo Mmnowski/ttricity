@@ -50,6 +50,14 @@ export function createComment(title, description, placeId) {
   };
 }
 
+export function removePlace(place) {
+  return (dispatch) => {
+    firebase.database().ref(`/places/${place.id}`)
+      .remove()
+      .catch((e) => console.log(e));
+  };
+}
+
 export function rate(rating, place) {
   const user = firebase.auth().currentUser;
   if (!user) {

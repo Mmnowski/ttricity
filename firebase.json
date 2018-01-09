@@ -2,7 +2,8 @@
   "admins": {
     "L25nfT76yFQWmW6dJ0e4M4tLoLa2": true,
     "NQJlAoMfRNfwMw5K8lF0ZXcDHBN2": true,
-    "Wpsr4rgEKcMSa5xo0ZciiTcFjnt1": true
+    "Wpsr4rgEKcMSa5xo0ZciiTcFjnt1": true,
+    "qTmKnxkswYcFGYkAOUkSAsGcZVq1": true
   },
   "comments": [
     {
@@ -125,8 +126,21 @@
     "0": {
       "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 3
     },
+    "2": {
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 4
+    },
+    "4": {
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 5
+    },
+    "7": {
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 4
+    },
+    "9": {
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 5,
+      "qTmKnxkswYcFGYkAOUkSAsGcZVq1": 3
+    },
     "-L2Q3h2ECXNDlNYuIuey": {
-      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 3,
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 1,
       "NQJlAoMfRNfwMw5K8lF0ZXcDHBN2": 1,
       "Wpsr4rgEKcMSa5xo0ZciiTcFjnt1": 4.5
     }

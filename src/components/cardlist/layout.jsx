@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import * as _ from 'lodash';
 import {connect} from 'react-redux';
-import {createComment, fetchGeo, findPlace, rate, selectPlace} from '../../redux/modules/cardlist/actions';
+import {createComment, fetchGeo, findPlace, rate, removePlace, selectPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -10,6 +10,7 @@ import {calculateDistance} from '../utils';
 import StarRatings from 'react-star-ratings';
 import {Dialog, TextField} from "material-ui";
 import {LoginRegisterDialog} from "../login_register/index"
+import CancelIcon from 'material-ui/svg-icons/navigation/cancel';
 
 class PlaceList extends React.Component {
 
@@ -47,14 +48,26 @@ class PlaceList extends React.Component {
     this.props.rate(rating, place);
   };
 
+  deletePlace = (place) => {
+    if(confirm(`Napewno usunąć ${place.name}?`)){
+      this.props.removePlace(place);
+    }
+  };
+
   renderPlace(place) {
     const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
     const placeRating = this.calculateRating(place).toFixed(2);
-    const {ratings, user} = this.props;
+    const {ratings, user, admins} = this.props;
     return (
       <div className="cards" key={place.name}>
         <div className="cardList">
-          <h1>{place.name}</h1>
+          <div style={{display: 'flex'}}>
+            <h1>{place.name}</h1>
+            {admins && user && admins[user.uid] &&
+            <div style={{flex: 1, cursor: 'pointer'}} onClick={() => this.deletePlace(place)}>
+              <CancelIcon color="red"/>
+            </div>}
+          </div>
           <div className="cardContainer">
             <div className="cardImage">
               <img src={place.img} alt={place.name}/>
@@ -257,6 +270,7 @@ class PlaceList extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.auth.user,
+    admins: state.auth.admins,
     places: state.map.places,
     queryPlace: state.cardList.queryPlace,
     geolocate: state.cardList.geolocate,
@@ -271,6 +285,7 @@ const mapDispatchToProps = {
   fetchGeo,
   rate,
   createComment,
+  removePlace,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);

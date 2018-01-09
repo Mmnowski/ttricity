@@ -9,6 +9,9 @@
     },
     "admins": {
       ".write": "false"
+    },
+    "ratings": {
+      ".write": "auth != null"
     }
   }
 }
