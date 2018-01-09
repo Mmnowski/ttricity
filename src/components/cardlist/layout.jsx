@@ -2,7 +2,10 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import * as _ from 'lodash';
 import {connect} from 'react-redux';
-import {createComment, fetchGeo, findPlace, rate, removePlace, selectPlace} from '../../redux/modules/cardlist/actions';
+import {
+  createComment, fetchGeo, findPlace, rate, removeComment, removePlace,
+  selectPlace,
+} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -49,7 +52,7 @@ class PlaceList extends React.Component {
   };
 
   deletePlace = (place) => {
-    if(confirm(`Napewno usunąć ${place.name}?`)){
+    if (confirm(`Napewno usunąć ${place.name}?`)) {
       this.props.removePlace(place);
     }
   };
@@ -87,7 +90,8 @@ class PlaceList extends React.Component {
               {place.distance && <p>Odległość: {place.distance.toFixed(2)} km</p>}
             </div>
           </div>
-          <h3 style={{marginBottom: 0}}>{placeRating !== '0.00' ? `Ocena użytkowników: ${placeRating}` : 'Brak ocen'}</h3>
+          <h3
+            style={{marginBottom: 0}}>{placeRating !== '0.00' ? `Ocena użytkowników: ${placeRating}` : 'Brak ocen'}</h3>
           {user && <h3 style={{margin: '0 auto'}}>Twoja ocena:</h3>}
           {user && <div>
             <StarRatings
@@ -122,6 +126,13 @@ class PlaceList extends React.Component {
     );
   }
 
+  deleteComment = (comment) => {
+    return null; // TODO remove comments
+    if (confirm(`Napewno usunąć ten komentarz?`)) {
+      this.props.removeComment(comment);
+    }
+  };
+
   renderComment(comment) {
     if (comment.add) {
       return (
@@ -151,9 +162,16 @@ class PlaceList extends React.Component {
         </div>
       );
     }
+    const {admins, user} = this.props;
     return (
       <div key={comment.id} className="comment">
-        <h3>{comment.title}</h3>
+        <div style={{display: 'flex'}}>
+          <h1 style={{flex: 28}}>{comment.title}</h1>
+          {admins && user && admins[user.uid] &&
+          <div style={{flex: 1, cursor: 'pointer'}} onClick={() => this.deleteComment(comment)}>
+            <CancelIcon color="red"/>
+          </div>}
+        </div>
         {/*<p className="username">Username</p>*/}
         <p>{comment.content}</p>
       </div>
@@ -286,6 +304,7 @@ const mapDispatchToProps = {
   rate,
   createComment,
   removePlace,
+  removeComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);

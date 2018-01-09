@@ -58,6 +58,14 @@ export function removePlace(place) {
   };
 }
 
+export function removeComment(comment) {
+  return (dispatch) => {
+    firebase.database().ref(`/comments/${comment.id}`)
+      .remove()
+      .catch((e) => console.log(e));
+  };
+}
+
 export function rate(rating, place) {
   const user = firebase.auth().currentUser;
   if (!user) {
