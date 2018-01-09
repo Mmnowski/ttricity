@@ -172,7 +172,7 @@ class PlaceList extends React.Component {
       );
       placesToRender.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance))
     }
-    if (geolocate) {
+    else if (geolocate) {
       _.forEach(placesToRender, (place, index) => {
           return placesToRender[index] = {
             ...place,
