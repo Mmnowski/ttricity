@@ -1,7 +1,7 @@
 import {API_ACTIONS} from '../../actionTypes';
 import {startRequest} from '../../api';
 import firebase from "firebase/index";
-//do commita
+
 export function selectPlace(place) {
   return {
     payload: {place},
@@ -36,7 +36,7 @@ export function test() {
 export function createComment(title, description, placeId) {
   return (dispatch) => {
     firebase.database().ref(`/comments/`)
-      .push({ title, content: description, place_id: placeId })
+      .push({title, content: description, place_id: placeId})
       .catch((e) => console.log(e));
   };
 }

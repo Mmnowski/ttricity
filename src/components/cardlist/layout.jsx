@@ -11,7 +11,6 @@ import StarRatingComponent from 'react-star-rating-component';
 import {Dialog, TextField} from "material-ui";
 import {LoginRegisterDialog} from "../login_register/index"
 
-
 class PlaceList extends React.Component {
 
   constructor(props) {
