@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import {API_ACTIONS} from '../../actionTypes';
-//do commita
+
 const initialState = {
     activePlace: null,
     queryPlace: null,
