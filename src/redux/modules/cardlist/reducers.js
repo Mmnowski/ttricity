@@ -5,15 +5,19 @@ const initialState = {
   activePlace: null,
   queryPlace: null,
   comments: null,
+  geolocate: null,
   ratings: null,
 };
 
 export const cardList = (state = initialState, action) => {
   switch (action.type) {
-    case API_ACTIONS.SAMPLE_ACTION.startRequest:
-      console.log(action.res);
+    case API_ACTIONS.GEOLOCATE.successRequest:
       return {
         ...state,
+        geolocate: {
+          lat: action.res.location.lat,
+          lon: action.res.location.lng,
+        },
       };
     case API_ACTIONS.SELECT_PLACE:
       return {

@@ -160,13 +160,23 @@ class PlaceList extends React.Component {
   };
 
   renderList() {
-    const {places, queryPlace} = this.props;
+    const {places, queryPlace, geolocate} = this.props;
     let placesToRender = [...places];
     if (queryPlace) {
       _.forEach(placesToRender, (place, index) => {
           return placesToRender[index] = {
             ...place,
             distance: calculateDistance(queryPlace, {lat: place.lat, lon: place.lon})
+          }
+        }
+      );
+      placesToRender.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance))
+    }
+    else {
+      _.forEach(placesToRender, (place, index) => {
+          return placesToRender[index] = {
+            ...place,
+            distance: calculateDistance(geolocate, {lat: place.lat, lon: place.lon})
           }
         }
       );
@@ -249,6 +259,7 @@ function mapStateToProps(state) {
     user: state.auth.user,
     places: state.map.places,
     queryPlace: state.cardList.queryPlace,
+    geolocate: state.cardList.geolocate,
     comments: state.cardList.comments,
     ratings: state.cardList.ratings,
   };
