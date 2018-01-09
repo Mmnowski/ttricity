@@ -68,8 +68,9 @@ class LoginRegisterDialog extends React.Component {
   renderLogin() {
     return (
       <div className="login-content">
-        <form onSubmit={this.validateLogin}>
+        <form onSubmit={this.validateLogin} className="flex-center">
           <TextField
+            style={{backgroundColor: 'white'}}
             hintText="Podaj email"
             floatingLabelText="Email"
             onChange={(e, newValue) => this.setField(newValue, 'email')}
@@ -102,7 +103,7 @@ class LoginRegisterDialog extends React.Component {
     }
     return (
       <div className="login-content">
-        <form onSubmit={this.validateRegister}>
+        <form onSubmit={this.validateRegister} className="flex-center">
           <TextField
             hintText="Podaj email"
             floatingLabelText="Email"

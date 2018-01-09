@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import * as _ from 'lodash';
 import {connect} from 'react-redux';
-import {createComment, findPlace, selectPlace, test, rate} from '../../redux/modules/cardlist/actions';
+import {createComment, findPlace, rate, selectPlace, test} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -141,8 +141,7 @@ class PlaceList extends React.Component {
     return (
       <div key={comment.id} className="comment">
         <h3>{comment.title}</h3>
-        {/*tutaj hardcoded username*/}
-        <p className="username">Username</p>
+        {/*<p className="username">Username</p>*/}
         <p>{comment.content}</p>
       </div>
     );

@@ -4,6 +4,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {connect} from 'react-redux';
 import {clearAuthError, loginUser, logoutUser, registerUser} from "../redux/modules/auth/actions";
+import LogoutIcon from 'material-ui/svg-icons/action/power-settings-new';
 import './layout.scss';
 import {LoginRegisterDialog} from "../components/login_register/index";
 
@@ -33,10 +34,12 @@ class NavBar extends React.Component {
         <MenuItem
           onClick={(e) => {
             e.preventDefault();
+            this.setState({popup: false});
             this.props.logoutUser();
           }}
+          innerDivStyle={{display: 'flex', alignItems: 'center'}}
         >
-          Wyloguj
+          Wyloguj&nbsp;<LogoutIcon/>
         </MenuItem>
       )
     }

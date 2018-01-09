@@ -30,8 +30,16 @@
     align-self: flex-end; }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px white inset;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important; }
+  -webkit-box-shadow: 0 0 0 130px white inset !important;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
+  background-color: white !important;
+  color: rgba(0, 0, 0, 0.87) !important; }
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 html, body {
   height: 100%;
