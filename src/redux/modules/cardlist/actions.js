@@ -34,7 +34,7 @@ export const fetchRatings = () => {
   };
 };
 
-export function test() {
+export function fetchGeo() {
   const action = API_ACTIONS.GEOLOCATE;
   const postData = {};
   const attrs = {};

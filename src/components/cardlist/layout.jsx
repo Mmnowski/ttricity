@@ -2,7 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import * as _ from 'lodash';
 import {connect} from 'react-redux';
-import {createComment, findPlace, rate, selectPlace, test} from '../../redux/modules/cardlist/actions';
+import {createComment, fetchGeo, findPlace, rate, selectPlace} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
@@ -25,7 +25,7 @@ class PlaceList extends React.Component {
   }
 
   componentWillMount() {
-    this.props.test();
+    this.props.fetchGeo();
   }
 
   handlePopup = () => this.setState({popup: !this.state.popup});
@@ -172,7 +172,7 @@ class PlaceList extends React.Component {
       );
       placesToRender.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance))
     }
-    else {
+    if (geolocate) {
       _.forEach(placesToRender, (place, index) => {
           return placesToRender[index] = {
             ...place,
@@ -268,7 +268,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   selectPlace,
   findPlace,
-  test,
+  fetchGeo,
   rate,
   createComment,
 };
