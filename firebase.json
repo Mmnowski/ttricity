@@ -122,8 +122,13 @@
     }
   },
   "ratings": {
+    "0": {
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 3
+    },
     "-L2Q3h2ECXNDlNYuIuey": {
-      "Wpsr4rgEKcMSa5xo0ZciiTcFjnt1": 4
+      "L25nfT76yFQWmW6dJ0e4M4tLoLa2": 3,
+      "NQJlAoMfRNfwMw5K8lF0ZXcDHBN2": 1,
+      "Wpsr4rgEKcMSa5xo0ZciiTcFjnt1": 4.5
     }
   }
 }
