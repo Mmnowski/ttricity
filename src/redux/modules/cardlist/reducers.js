@@ -10,11 +10,6 @@ const initialState = {
 
 export const cardList = (state = initialState, action) => {
   switch (action.type) {
-    case API_ACTIONS.GEOLOCATE.startRequest:
-      console.log(action.res);
-      return {
-        ...state,
-      };
     case API_ACTIONS.GEOLOCATE.successRequest:
       return {
         ...state,
