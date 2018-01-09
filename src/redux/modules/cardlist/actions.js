@@ -25,6 +25,15 @@ export const fetchComments = () => {
   };
 };
 
+export const fetchRatings = () => {
+  return (dispatch) => {
+    firebase.database().ref(`/ratings/`)
+      .on('value', snapshot => {
+        dispatch({type: API_ACTIONS.RATINGS_FETCH_SUCCESS, payload: snapshot.val()});
+      });
+  };
+};
+
 export function test() {
   const action = API_ACTIONS.SAMPLE_ACTION;
   const postData = {};
@@ -36,7 +45,19 @@ export function test() {
 export function createComment(title, description, placeId) {
   return (dispatch) => {
     firebase.database().ref(`/comments/`)
-      .push({ title, content: description, place_id: placeId })
+      .push({title, content: description, place_id: placeId})
+      .catch((e) => console.log(e));
+  };
+}
+
+export function rate(rating, place) {
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    return {type: 'error'}
+  }
+  return (dispatch) => {
+    firebase.database().ref(`/ratings/${place.id}/${user.uid}`)
+      .set(rating)
       .catch((e) => console.log(e));
   };
 }

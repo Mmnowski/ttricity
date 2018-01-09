@@ -1,13 +1,13 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import {connect} from 'react-redux';
-import {createComment, findPlace, selectPlace, test} from '../../redux/modules/cardlist/actions';
+import {createComment, findPlace, selectPlace, test, rate} from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';
 import Autocomplete from 'react-google-autocomplete';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {calculateDistance} from '../utils';
-import StarRatingComponent from 'react-star-rating-component';
+import StarRatings from 'react-star-ratings';
 import {Dialog, TextField} from "material-ui";
 import {LoginRegisterDialog} from "../login_register/index"
 
@@ -34,8 +34,23 @@ class PlaceList extends React.Component {
 
   handleClose = () => this.setState({commentToShow: null, title: '', description: '', add: false});
 
-  element(place) {
+  calculateRating = (place) => {
+    const {ratings} = this.props;
+    if (!ratings || !ratings[place.id]) {
+      return 0;
+    }
+    const rates = _.map(ratings[place.id], (value) => value);
+    return rates.reduce((a, b) => a + b) / rates.length;
+  };
+
+  rate = (rating, place) => {
+    this.props.rate(rating, place);
+  };
+
+  renderPlace(place) {
     const link = "https://www.google.com/maps/?q=" + place.lat + "," + place.lon;
+    const placeRating = this.calculateRating(place).toFixed(2);
+    const {ratings, user} = this.props;
     return (
       <div className="cards" key={place.name}>
         <div className="cardList">
@@ -59,14 +74,19 @@ class PlaceList extends React.Component {
               {place.distance && <p>{place.distance.toFixed(2)} km</p>}
             </div>
           </div>
-          <div>
-            <StarRatingComponent
-              name="rate1"
-              starCount={5}
-              value={2}
-              onStarClick={() => null}
+          <h3 style={{marginBottom: 0}}>{placeRating !== '0.00' ? `Ocena użytkowników: ${placeRating}` : 'Brak ocen'}</h3>
+          {user && <h3 style={{margin: '0 auto'}}>Twoja ocena:</h3>}
+          {user && <div>
+            <StarRatings
+              rating={ratings[place.id] && ratings[place.id][user.uid] ? ratings[place.id][user.uid] : 0}
+              starRatedColor="#ebf21d"
+              starSelectingHoverColor="#00C1D8"
+              isSelectable={true}
+              isAggregateRating={false}
+              changeRating={(rating) => this.rate(rating, place)}
+              numOfStars={5}
             />
-          </div>
+          </div>}
         </div>
       </div>
     );
@@ -153,7 +173,7 @@ class PlaceList extends React.Component {
       );
       placesToRender.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance))
     }
-    return _.map(placesToRender, (place) => this.element(place));
+    return _.map(placesToRender, (place) => this.renderPlace(place));
   }
 
   renderSearchBar() {
@@ -206,7 +226,7 @@ class PlaceList extends React.Component {
         margin: '18% 0 0 45%',
       },
     };
-    if (!this.props.places) {
+    if (!this.props.places || !this.props.ratings) {
       return <RefreshIndicator
         size={100}
         left={70}
@@ -231,6 +251,7 @@ function mapStateToProps(state) {
     places: state.map.places,
     queryPlace: state.cardList.queryPlace,
     comments: state.cardList.comments,
+    ratings: state.cardList.ratings,
   };
 }
 
@@ -238,6 +259,7 @@ const mapDispatchToProps = {
   selectPlace,
   findPlace,
   test,
+  rate,
   createComment,
 };
 

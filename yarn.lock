@@ -1531,7 +1531,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.2.0:
+classnames@^2.2.1:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -5420,13 +5420,13 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react-star-rating-component@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-star-rating-component/-/react-star-rating-component-1.3.0.tgz#af6c98d6f40bdc6a21e141583578a9dbb10e65bb"
+react-star-ratings@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-star-ratings/-/react-star-ratings-1.4.1.tgz#96d304e8f3cb40d9cea85d100cf68ce50c61b2c1"
   dependencies:
-    classnames "^2.2.0"
-    prop-types "^15.5.8"
-    react "^15.4.2"
+    classnames "^2.2.1"
+    prop-types "^15.6.0"
+    react "^16.1.0"
 
 react-swipeable-views-core@^0.12.9:
   version "0.12.9"
@@ -5480,6 +5480,15 @@ react@^15.4.2:
     fbjs "^0.8.4"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react@^16.1.0:
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"

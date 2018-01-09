@@ -5,13 +5,14 @@ const initialState = {
   activePlace: null,
   queryPlace: null,
   comments: null,
+  ratings: null,
 };
 
 export const cardList = (state = initialState, action) => {
   switch (action.type) {
     case API_ACTIONS.SAMPLE_ACTION.startRequest:
       console.log(action.res);
-      return{
+      return {
         ...state,
       };
     case API_ACTIONS.SELECT_PLACE:
@@ -27,13 +28,18 @@ export const cardList = (state = initialState, action) => {
           lon: action.payload.placeToFind.geometry.location.lng()
         },
       };
+    case API_ACTIONS.RATINGS_FETCH_SUCCESS:
+      return {
+        ...state,
+        ratings: action.payload,
+      };
     case API_ACTIONS.COMMENT_FETCH_SUCCESS:
-      if (action.payload.length === 0){
+      if (action.payload.length === 0) {
         return state;
       }
       let comments = {};
       _.forEach(action.payload, (comment, index) => {
-        if (!comments[comment.place_id]){
+        if (!comments[comment.place_id]) {
           comments[comment.place_id] = [{...comment, id: index}];
         }
         else {

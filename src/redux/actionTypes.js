@@ -46,6 +46,9 @@ export const API_ACTIONS = {
   COMMENT_FETCH_SUCCESS: {
     action: 'comment_fetch_success',
   },
+  RATINGS_FETCH_SUCCESS: {
+    action: 'ratings_fetch_success',
+  },
   ADMIN_FETCH_SUCCESS: {
     action: 'admin_fetch_success',
   },
