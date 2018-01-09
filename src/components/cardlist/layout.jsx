@@ -71,7 +71,7 @@ class PlaceList extends React.Component {
                   this.handleOpen(place);
                 }}/>
               </div>
-              {place.distance && <p>{place.distance.toFixed(2)} km</p>}
+              {place.distance && <p>Odległość: {place.distance.toFixed(2)} km</p>}
             </div>
           </div>
           <h3 style={{marginBottom: 0}}>{placeRating !== '0.00' ? `Ocena użytkowników: ${placeRating}` : 'Brak ocen'}</h3>
