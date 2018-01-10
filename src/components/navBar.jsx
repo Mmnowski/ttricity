@@ -73,7 +73,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
-        <Drawer open={this.state.open} className="drawer" containerStyle={{width: '12%', height: '60vh', top: '10vh'}}>
+        <Drawer open={this.state.open} className="drawer" containerStyle={{width: '15%', height: '60vh', top: '13.2vh'}}>
           <MenuItem
             containerElement={<Link to="/"/>}
             primaryText="Strona główna"
