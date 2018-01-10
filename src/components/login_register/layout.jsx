@@ -70,14 +70,15 @@ class LoginRegisterDialog extends React.Component {
       <div className="login-content">
         <form onSubmit={this.validateLogin} className="flex-center">
           <TextField
-            style={{backgroundColor: 'white'}}
+              className="flex-login-email"
             hintText="Podaj email"
             floatingLabelText="Email"
             onChange={(e, newValue) => this.setField(newValue, 'email')}
           />
           <br/>
           <TextField
-            hintText="Podaj hasło"
+              className="flex-login-password"
+              hintText="Podaj hasło"
             floatingLabelText="Hasło"
             type="password"
             onChange={(e, newValue) => this.setField(newValue, 'password')}
@@ -105,12 +106,14 @@ class LoginRegisterDialog extends React.Component {
       <div className="login-content">
         <form onSubmit={this.validateRegister} className="flex-center">
           <TextField
+            className="flex-register-email"
             hintText="Podaj email"
             floatingLabelText="Email"
             onChange={(e, newValue) => this.setField(newValue, 'email_register')}
           />
           <br/>
           <TextField
+            className="flex-register-password"
             hintText="Podaj hasło"
             floatingLabelText="Hasło"
             type="password"
@@ -118,7 +121,8 @@ class LoginRegisterDialog extends React.Component {
           />
           <br/>
           <TextField
-            hintText="Potwierdź hasło"
+              className="flex-register-repassword"
+              hintText="Potwierdź hasło"
             floatingLabelText="Hasło"
             type="password"
             onChange={(e, newValue) => this.setField(newValue, 'password2')}
