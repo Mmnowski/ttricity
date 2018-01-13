@@ -69,6 +69,19 @@ class NavBar extends React.Component {
     )
   };
 
+  panelButton = () => {
+    const {user} = this.props;
+    if (!user) {
+      return null;
+    }
+    return (
+      <MenuItem
+        containerElement={<Link to="/panel"/>}
+        primaryText="Panel użytkownika"
+      />
+    )
+  };
+
   render() {
     return (
       <div>
@@ -83,6 +96,7 @@ class NavBar extends React.Component {
             primaryText="Lista miejsc"
           />
           {this.createButton()}
+          {/*{this.panelButton()}*/}
           {this.loginButton()}
         </Drawer>
         <LoginRegisterDialog popup={this.state.popup} callback={this.handlePopup}/>

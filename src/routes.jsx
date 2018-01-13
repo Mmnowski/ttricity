@@ -12,6 +12,7 @@ import {Layout, NotFound} from './components';
 import {Home} from './components/map';
 import {List} from './components/cardlist/index';
 import {PlacesForm} from './components/places_form/index'
+import {UserProfile} from './components/user_profile/index'
 
 /* Routes */
 const {urlPrefix} = config;
@@ -25,6 +26,9 @@ const Routes = () => {
         <Route path="/dodaj_miejsce" component={Layout}>
           <IndexRoute component={PlacesForm}/>
         </Route>
+        {/*<Route path="/panel" component={Layout}>*/}
+          {/*<IndexRoute component={UserProfile}/>*/}
+        {/*</Route>*/}
         <Route path={urlPrefix} component={Layout}>
           <IndexRoute component={Home}/>
         </Route>

@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuthError, loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
 import Dialog from 'material-ui/Dialog';
-import {FlatButton, TextField} from "material-ui";
+import {FlatButton, TextField, Snackbar} from "material-ui";
 import {Tab, Tabs} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import '../layout.scss';
+import {resetPassword} from "../../redux/modules/user_profile/actions";
 
 class LoginRegisterDialog extends React.Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class LoginRegisterDialog extends React.Component {
       password: '',
       slideIndex: 0,
       error: '',
+      email_forgot: '',
+      error_forgot: '',
+      open: false,
+      msg: '',
     };
   }
 
@@ -121,8 +126,8 @@ class LoginRegisterDialog extends React.Component {
           />
           <br/>
           <TextField
-              className="flex-register-repassword"
-              hintText="Potwierdź hasło"
+            className="flex-register-repassword"
+            hintText="Potwierdź hasło"
             floatingLabelText="Hasło"
             type="password"
             onChange={(e, newValue) => this.setField(newValue, 'password2')}
@@ -134,6 +139,33 @@ class LoginRegisterDialog extends React.Component {
         {this.renderError()}
       </div>
     );
+  }
+
+  renderForgotPassword(){
+    return(
+      <div className="login-content flex-center">
+        <TextField
+          className="flex-register-password"
+          hintText="Podaj e-mail"
+          floatingLabelText="E-mail"
+          onChange={(e, newValue) => this.setField(newValue, 'email_forgot')}
+          errorText={this.state.error_forgot}
+        />
+        <br/>
+        <FlatButton label="Wyślij" primary={true} onClick={() => this.sendEmail()}/>
+        <br/>
+      </div>
+    );
+  }
+
+  sendEmail(){
+    if(this.state.email_forgot === ""){
+      this.setState({error_forgot: "E-mail nie moze byc pusty!"});
+    }
+    else{
+      resetPassword(this.state.email_forgot);
+      this.setState({open: true, msg: "E-mail z potwierdzeniem został wysłany na podany adres", error_forgot: ''});
+    }
   }
 
   render() {
@@ -152,6 +184,7 @@ class LoginRegisterDialog extends React.Component {
           >
             <Tab label="Logowanie" value={0}/>
             <Tab label="Rejestracja" value={1}/>
+            <Tab label="Zapomniałeś hasła?" value={2}/>
           </Tabs>
           <SwipeableViews
             index={this.state.slideIndex}
@@ -159,7 +192,13 @@ class LoginRegisterDialog extends React.Component {
           >
             {this.renderLogin()}
             {this.renderRegister()}
+            {this.renderForgotPassword()}
           </SwipeableViews>
+          <Snackbar
+            open={this.state.open}
+            message={this.state.msg}
+            autoHideDuration={4000}
+          />
         </div>
       </Dialog>);
   }
