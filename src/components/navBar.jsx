@@ -8,7 +8,13 @@ import LogoutIcon from 'material-ui/svg-icons/action/power-settings-new';
 import './layout.scss';
 import {LoginRegisterDialog} from "../components/login_register/index";
 
-
+const drawerContainerStyle = {
+  width: '211.1px',
+  height: '60vh',
+  bottom: 'unset',
+  top: 'unset',
+  position: 'unset',
+};
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -71,9 +77,9 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{position: 'fixed', top: 0}}>
         <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
-        <Drawer open={this.state.open} className="drawer" containerStyle={{width: '211.1px', height: '60vh', bottom: '216.1px', top: 'unset'}}>
+        <Drawer open={this.state.open} className="drawer" containerStyle={drawerContainerStyle}>
           <MenuItem
             containerElement={<Link to="/"/>}
             primaryText="Strona główna"
