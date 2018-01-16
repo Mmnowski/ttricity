@@ -1,7 +1,7 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
-import {Dialog, TextField} from 'material-ui';
+import {Dialog, RaisedButton, TextField} from 'material-ui';
 import {history} from '../../prepare';
 import {createPlace} from "../../redux/modules/places_form/actions";
 
@@ -75,6 +75,13 @@ class PlacesForm extends React.Component {
     this.setState({info: ''});
   };
 
+  onKeyPress = (event) => {
+    if (event.charCode === 13) {
+      event.preventDefault();
+      this.sendPlace();
+    }
+  };
+
   render() {
     return (
       <div className="formBox">
@@ -83,6 +90,7 @@ class PlacesForm extends React.Component {
             name="name"
             value={this.state.name}
             hintText="Nazwa"
+            onKeyPress={(e) => this.onKeyPress(e)}
             errorText={this.state.nameErrorText}
             onChange={(e) => this.setState({name: e.target.value, nameErrorText: ""})}
           />
@@ -92,6 +100,7 @@ class PlacesForm extends React.Component {
             name="desc"
             value={this.state.desc}
             hintText="Opis"
+            onKeyPress={(e) => this.onKeyPress(e)}
             errorText={this.state.descErrorText}
             onChange={(e) => this.setState({desc: e.target.value, descErrorText: ""})}
           />
@@ -101,6 +110,7 @@ class PlacesForm extends React.Component {
             name="img"
             value={this.state.img}
             hintText="Link do zjęcia"
+            onKeyPress={(e) => this.onKeyPress(e)}
             errorText={this.state.imgErrorText}
             onChange={(e) => this.setState({img: e.target.value, imgErrorText: ""})}
           />
@@ -110,6 +120,7 @@ class PlacesForm extends React.Component {
             name="lat"
             value={this.state.lat}
             hintText="Lat"
+            onKeyPress={(e) => this.onKeyPress(e)}
             errorText={this.state.latErrorText}
             onChange={(e) => this.setState({lat: e.target.value, latErrorText: ""})}
           />
@@ -119,12 +130,13 @@ class PlacesForm extends React.Component {
             name="lon"
             value={this.state.lon}
             hintText="Lon"
+            onKeyPress={(e) => this.onKeyPress(e)}
             errorText={this.state.lonErrorText}
             onChange={(e) => this.setState({lon: e.target.value, lonErrorText: ""})}
           />
         </div>
         <div className="sendButton">
-          <FlatButton className="cardButton" label="Dodaj" onClick={this.sendPlace}/>
+          <RaisedButton primary className="cardButton" label="Dodaj" onClick={this.sendPlace}/>
         </div>
         <Dialog
           modal={false}

@@ -83,6 +83,18 @@ class LoginRegisterDialog extends React.Component {
     );
   }
 
+  onKeyPress = (event, type) => {
+    if (event.charCode === 13) {
+      event.preventDefault();
+      if (type === 'login'){
+        this.validateLogin();
+      }
+      else {
+        this.validateRegister();
+      }
+    }
+  };
+
   renderLogin() {
     if (this.props.email && this.props.resend.length > 0) {
       return (
@@ -101,6 +113,7 @@ class LoginRegisterDialog extends React.Component {
             className="flex-login-email"
             hintText="Podaj email"
             floatingLabelText="Email"
+            onKeyPress={(e) => this.onKeyPress(e, 'login')}
             onChange={(e, newValue) => this.setField(newValue, 'email')}
           />
           <br/>
@@ -108,6 +121,7 @@ class LoginRegisterDialog extends React.Component {
             className="flex-login-password"
             hintText="Podaj hasło"
             floatingLabelText="Hasło"
+            onKeyPress={(e) => this.onKeyPress(e, 'login')}
             type="password"
             onChange={(e, newValue) => this.setField(newValue, 'password')}
           />
@@ -138,6 +152,7 @@ class LoginRegisterDialog extends React.Component {
             className="flex-register-email"
             hintText="Podaj email"
             floatingLabelText="Email"
+            onKeyPress={(e) => this.onKeyPress(e, 'register')}
             onChange={(e, newValue) => this.setField(newValue, 'email_register')}
           />
           <br/>
@@ -146,6 +161,7 @@ class LoginRegisterDialog extends React.Component {
             hintText="Podaj hasło"
             floatingLabelText="Hasło"
             type="password"
+            onKeyPress={(e) => this.onKeyPress(e, 'register')}
             onChange={(e, newValue) => this.setField(newValue, 'password1')}
           />
           <br/>
@@ -154,6 +170,7 @@ class LoginRegisterDialog extends React.Component {
             hintText="Potwierdź hasło"
             floatingLabelText="Hasło"
             type="password"
+            onKeyPress={(e) => this.onKeyPress(e, 'register')}
             onChange={(e, newValue) => this.setField(newValue, 'password2')}
           />
           <br/>
