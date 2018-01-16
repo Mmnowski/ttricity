@@ -71,6 +71,7 @@ initState['map'] = initialState;
 export const store = configureStore(initState);
 store.subscribe(() => {
   let tempState = {...store.getState()};
+  tempState.map = initialState;
   tempState.cardList.activePlace = null;
   localStorage.setItem('reduxState', JSON.stringify(tempState));
 });
