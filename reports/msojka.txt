@@ -1,2 +1,0 @@
-- sass oraz konfiguracja sass watcher aby umożliwić autmomatyczną kompilację sass do pliku css
-- główny plik html

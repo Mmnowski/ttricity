@@ -1,7 +1,7 @@
 import {API_ACTIONS} from '../../actionTypes';
 import * as _ from 'lodash';
 
-const initialState = {
+export const initialState = {
   marker: null,
   places: null,
 };

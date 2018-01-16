@@ -44,7 +44,7 @@ module.exports = {
     rules: [
       {
         test: /.*\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,

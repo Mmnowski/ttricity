@@ -1,4 +1,0 @@
-- napisanie komponentu home
-- podstawowa struktura komponentów (index, layout)
-- komponent not-found
-- dabbing on the haters since 1996
