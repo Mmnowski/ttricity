@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
-const cycle = require('../cycle');
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -18,7 +17,6 @@ export class MapContainer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps.marker, 'MARKER');
     if (newProps.selectedPlace && newProps.marker) {
       let marker = newProps.marker;
       marker.position.lat = () => newProps.selectedPlace.lat;
@@ -35,6 +33,7 @@ export class MapContainer extends React.Component {
   onMarkerClick = (props, marker, e) => {
     // console.log(JSON.stringify(JSON.decycle(marker)));
     // console.log(marker);
+    // Need to click marker once...
     this.props.saveMarker(marker);
     this.setState({
       selectedPlace: props,
@@ -121,7 +120,7 @@ const mapDispatchToProps = {
   saveMarker,
 };
 
-// Doubles it's fine xD
+// Doubles it's fine
 const MapComponent = GoogleApiWrapper({
   apiKey: 'GOOGLE_API_KEY',
 })(MapContainer);

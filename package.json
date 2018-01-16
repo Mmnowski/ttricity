@@ -75,7 +75,6 @@
     "identity-obj-proxy": "^3.0.0",
     "imports-loader": "^0.7.0",
     "jest-cli": "^18.1.0",
-    "json-decycle": "^1.0.0",
     "material-ui": "^0.19.4",
     "minify": "^2.0.12",
     "node-sass": "^4.5.0",

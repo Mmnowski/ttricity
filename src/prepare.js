@@ -1,10 +1,6 @@
 import {auth} from './redux/modules/auth/reducers';
 import {cardList} from './redux/modules/cardlist/reducers';
-import {map} from './redux/modules/map/reducers';
-var cycle = require('./components/cycle');
-const marker = require('./marker.json');
-import {initialState} from './redux/modules/map/reducers';
-
+import {initialState, map} from './redux/modules/map/reducers';
 /* Redux */
 import {routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
@@ -72,15 +68,10 @@ const previousState = localStorage.getItem('reduxState');
 let initState = previousState ? JSON.parse(previousState) : {};
 initState['map'] = initialState;
 
-
-// initState.map.marker = JSON.parse(JSON.decycle(marker));
-// initState.map.marker = null;
-console.log(initState);
-
 export const store = configureStore(initState);
 store.subscribe(() => {
-  let tempState = store.getState();
-  tempState.map = {...tempState.map, marker: null};
+  let tempState = {...store.getState()};
+  tempState.cardList.activePlace = null;
   localStorage.setItem('reduxState', JSON.stringify(tempState));
 });
 /* Initial history */
