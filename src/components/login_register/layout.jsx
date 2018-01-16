@@ -7,7 +7,7 @@ import {Tab, Tabs} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import '../layout.scss';
 import {resetPassword} from "../../redux/modules/user_profile/actions";
-import {EMAIL_ERROR} from "../../redux/modules/auth/reducers";
+import {EMAIL_ERROR, PASSWORD_ERROR} from "../../redux/modules/auth/reducers";
 
 class LoginRegisterDialog extends React.Component {
   constructor(props) {
@@ -79,6 +79,9 @@ class LoginRegisterDialog extends React.Component {
                     onClick={() => this.props.resendVerifyEmail(this.props.tempUser)}>
           Wyślij ponownie mail aktywacyjny
         </FlatButton>}
+        {error === PASSWORD_ERROR && <FlatButton primary onClick={this.sendEmail}>
+          Zapomniałeś hasła?
+        </FlatButton>}
       </div>
     );
   }
@@ -86,7 +89,7 @@ class LoginRegisterDialog extends React.Component {
   onKeyPress = (event, type) => {
     if (event.charCode === 13) {
       event.preventDefault();
-      if (type === 'login'){
+      if (type === 'login') {
         this.validateLogin();
       }
       else {
@@ -193,21 +196,21 @@ class LoginRegisterDialog extends React.Component {
           errorText={this.state.error_forgot}
         />
         <br/>
-        <FlatButton label="Wyślij" primary onClick={() => this.sendEmail()}/>
+        <FlatButton label="Wyślij" primary onClick={this.sendEmail}/>
         <br/>
       </div>
     );
   }
 
-  sendEmail() {
-    if (this.state.email_forgot === "") {
+  sendEmail = () => {
+    if (this.state.email === "") {
       this.setState({error_forgot: "E-mail nie moze byc pusty!"});
     }
     else {
-      resetPassword(this.state.email_forgot);
+      resetPassword(this.state.email);
       this.setState({open: true, msg: "E-mail z potwierdzeniem został wysłany na podany adres", error_forgot: ''});
     }
-  }
+  };
 
   render() {
     return (
@@ -225,7 +228,6 @@ class LoginRegisterDialog extends React.Component {
           >
             <Tab label="Logowanie" value={0}/>
             <Tab label="Rejestracja" value={1}/>
-            <Tab label="Zapomniałeś hasła?" value={2}/>
           </Tabs>
           <SwipeableViews
             index={this.state.slideIndex}

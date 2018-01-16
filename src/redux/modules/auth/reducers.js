@@ -11,11 +11,12 @@ const initialState = {
 };
 
 export const EMAIL_ERROR = 'Potwierdź adres email.';
+export const PASSWORD_ERROR = 'Błedny adres email lub hasło.';
 
 export const codeToMsgMap = {
   'auth/invalid-email': 'Niepoprawny adres email.',
-  'auth/user-not-found': 'Błedny adres email lub hasło.',
-  'auth/wrong-password': 'Błedny adres email lub hasło.',
+  'auth/user-not-found': PASSWORD_ERROR,
+  'auth/wrong-password': PASSWORD_ERROR,
   'auth/email-already-in-use': 'Adres email jest już w użyciu.',
   'auth/network-request-failed': 'Błąd połączenia z internetem.',
   'auth/operation-not-allowed': 'Akcja niedozwolona.',
