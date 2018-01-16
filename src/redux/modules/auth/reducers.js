@@ -6,7 +6,11 @@ const initialState = {
   user: null,
   email: false,
   admins: null,
+  tempUser: null,
+  resend: '',
 };
+
+export const EMAIL_ERROR = 'Potwierdź adres email.';
 
 export const codeToMsgMap = {
   'auth/invalid-email': 'Niepoprawny adres email.',
@@ -20,27 +24,34 @@ export const codeToMsgMap = {
 
 export const auth = (state = initialState, action) => {
   switch (action.type) {
-    case API_ACTIONS.SAMPLE_ACTION:
-      return {
-        ...state,
-      };
     case API_ACTIONS.FIREBASE_LOGIN:
       return {
         ...state,
         isFetching: true,
         error: '',
+        tempUser: null,
+        resend: '',
       };
     case API_ACTIONS.FIREBASE_LOGIN_SUCCESS:
       const {emailVerified} = action.payload;
       if (!emailVerified) {
         return {
           ...state,
-          error: 'Potwierdź adres email.',
+          error: EMAIL_ERROR,
+          tempUser: action.payload,
         };
       }
       return {
         ...initialState,
         user: action.payload,
+        tempUser: null,
+      };
+    case API_ACTIONS.RESEND_MAIL:
+      return{
+        ...state,
+        resend: action.payload.email,
+        tempUser: null,
+        email: true,
       };
     case API_ACTIONS.FIREBASE_LOGIN_FAIL:
       return {
@@ -61,6 +72,8 @@ export const auth = (state = initialState, action) => {
         ...state,
         error: '',
         email: false,
+        tempUser: null,
+        resend: '',
       };
     case API_ACTIONS.ADMIN_FETCH_SUCCESS:
       return{

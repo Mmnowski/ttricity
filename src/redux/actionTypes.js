@@ -1,7 +1,6 @@
 import config from '../config/index';
 
 export const ROOT_URL = config.apiRootUrl;
-//do commita
 export const API_ACTIONS = {
   GEOLOCATE: {
     action: 'geolocate',
@@ -21,6 +20,9 @@ export const API_ACTIONS = {
   },
   FIREBASE_EMAIL_SENT: {
     action: 'firebase_email_sent',
+  },
+  RESEND_MAIL: {
+    action: 'resend_mail',
   },
   FIREBASE_LOGIN_FAIL: {
     action: 'firebase_login_fail',

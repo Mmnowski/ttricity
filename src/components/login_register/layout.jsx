@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearAuthError, loginUser, logoutUser, registerUser} from "../../redux/modules/auth/actions";
+import {clearAuthError, loginUser, logoutUser, registerUser, resendVerifyEmail} from "../../redux/modules/auth/actions";
 import Dialog from 'material-ui/Dialog';
-import {FlatButton, TextField, Snackbar} from "material-ui";
+import {FlatButton, Snackbar, TextField} from "material-ui";
 import {Tab, Tabs} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import '../layout.scss';
 import {resetPassword} from "../../redux/modules/user_profile/actions";
+import {EMAIL_ERROR} from "../../redux/modules/auth/reducers";
 
 class LoginRegisterDialog extends React.Component {
   constructor(props) {
@@ -67,29 +68,51 @@ class LoginRegisterDialog extends React.Component {
   };
 
   renderError() {
-    return <p style={{color: 'red'}}>{this.props.error}{this.state.error}</p>;
+    const {tempUser, error} = this.props;
+    return (
+      <div style={{textAlign: 'center'}}>
+        <p style={{color: 'red'}}>
+          {error}{this.state.error}
+        </p>
+        {tempUser && error === EMAIL_ERROR &&
+        <FlatButton primary
+                    onClick={() => this.props.resendVerifyEmail(this.props.tempUser)}>
+          Wyślij ponownie mail aktywacyjny
+        </FlatButton>}
+      </div>
+    );
   }
 
   renderLogin() {
+    if (this.props.email && this.props.resend.length > 0) {
+      return (
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+          <h1 style={{display: 'flex', justifyContent: 'center'}}>
+            Wysłaliśmy email z potwierdzeniem na {this.props.resend}.
+          </h1>
+          <FlatButton primary onClick={this.props.clearAuthError}>Powrót</FlatButton>
+        </div>
+      );
+    }
     return (
       <div className="login-content">
         <form onSubmit={this.validateLogin} className="flex-center">
           <TextField
-              className="flex-login-email"
+            className="flex-login-email"
             hintText="Podaj email"
             floatingLabelText="Email"
             onChange={(e, newValue) => this.setField(newValue, 'email')}
           />
           <br/>
           <TextField
-              className="flex-login-password"
-              hintText="Podaj hasło"
+            className="flex-login-password"
+            hintText="Podaj hasło"
             floatingLabelText="Hasło"
             type="password"
             onChange={(e, newValue) => this.setField(newValue, 'password')}
           />
           <br/>
-          <FlatButton label="Zaloguj" primary={true} onClick={this.validateLogin}/>
+          <FlatButton label="Zaloguj" primary onClick={this.validateLogin}/>
           <br/>
         </form>
         {this.renderError()}
@@ -100,10 +123,11 @@ class LoginRegisterDialog extends React.Component {
   renderRegister() {
     if (this.props.email) {
       return (
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
           <h1 style={{display: 'flex', justifyContent: 'center'}}>
             Dziękujemy za rejestrację, wysłaliśmy email z potwierdzeniem.
           </h1>
+          <FlatButton primary onClick={() => this.handleSlide(0)}>Powrót</FlatButton>
         </div>
       );
     }
@@ -133,7 +157,7 @@ class LoginRegisterDialog extends React.Component {
             onChange={(e, newValue) => this.setField(newValue, 'password2')}
           />
           <br/>
-          <FlatButton label="Zarejestruj" primary={true} onClick={this.validateRegister}/>
+          <FlatButton label="Zarejestruj" primary onClick={this.validateRegister}/>
           <br/>
         </form>
         {this.renderError()}
@@ -141,8 +165,8 @@ class LoginRegisterDialog extends React.Component {
     );
   }
 
-  renderForgotPassword(){
-    return(
+  renderForgotPassword() {
+    return (
       <div className="login-content flex-center">
         <TextField
           className="flex-register-password"
@@ -152,17 +176,17 @@ class LoginRegisterDialog extends React.Component {
           errorText={this.state.error_forgot}
         />
         <br/>
-        <FlatButton label="Wyślij" primary={true} onClick={() => this.sendEmail()}/>
+        <FlatButton label="Wyślij" primary onClick={() => this.sendEmail()}/>
         <br/>
       </div>
     );
   }
 
-  sendEmail(){
-    if(this.state.email_forgot === ""){
+  sendEmail() {
+    if (this.state.email_forgot === "") {
       this.setState({error_forgot: "E-mail nie moze byc pusty!"});
     }
-    else{
+    else {
       resetPassword(this.state.email_forgot);
       this.setState({open: true, msg: "E-mail z potwierdzeniem został wysłany na podany adres", error_forgot: ''});
     }
@@ -207,6 +231,8 @@ class LoginRegisterDialog extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
+    tempUser: state.auth.tempUser,
+    resend: state.auth.resend,
     error: state.auth.error,
     email: state.auth.email,
   };
@@ -217,6 +243,7 @@ const mapDispatchToProps = {
   loginUser,
   logoutUser,
   registerUser,
+  resendVerifyEmail,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginRegisterDialog);

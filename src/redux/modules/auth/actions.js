@@ -29,8 +29,8 @@ export const verifyEmail = (dispatch, user) => {
   dispatch(
     user.sendEmailVerification()
       .then(() => {
-      return {type: API_ACTIONS.FIREBASE_EMAIL_SENT}
-    })
+        return {type: API_ACTIONS.FIREBASE_EMAIL_SENT}
+      })
       .catch((error) => console.log(error))
   );
 };
@@ -64,4 +64,16 @@ export const fetchAdmins = () => {
         dispatch({type: API_ACTIONS.ADMIN_FETCH_SUCCESS, payload: snapshot.val()});
       });
   };
+};
+
+export const resendVerifyEmail = (user) => {
+  return (dispatch) =>
+    user.sendEmailVerification().then(() => callReduxResend(dispatch, user)).catch((e) => console.log(e))
+};
+
+export const callReduxResend = (dispatch, user) => {
+  dispatch({
+    type: API_ACTIONS.RESEND_MAIL,
+    payload: {email: user.email},
+  });
 };
