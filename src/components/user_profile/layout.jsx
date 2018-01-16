@@ -6,12 +6,12 @@ import {resetEmail, resetPassword} from "../../redux/modules/user_profile/action
 import {history} from "../../prepare";
 
 class UserProfile extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       disabled: true,
       button: "Zmień E-mail",
-      email: this.props.user.email,
+      email: "",
       error: "",
       open: false,
       msg: "",
@@ -20,37 +20,33 @@ class UserProfile extends React.Component {
 
   componentWillMount() {
     if (!this.props.user) {
-      history.push('/');
+      return history.push('/');
     }
+    this.setState({email: this.props.user.email});
   }
 
-  handleButtonEmail(){
-    if (this.state.button === "Zmień E-mail"){
+  handleButtonEmail() {
+    if (this.state.button === "Zmień E-mail") {
       this.setState({disabled: false, button: "Zatwierdź"});
     }
-    if (this.state.button === "Zatwierdź"){
-      if(this.state.email === ""){
+    if (this.state.button === "Zatwierdź") {
+      if (this.state.email === "") {
         this.setState({error: "Pole nie może być puste!"})
       }
-      else{
+      else {
         resetEmail(this.state.email);
-        this.setState({disabled: true, button: "Zmień E-mail", open:true, msg: "E-mail został zmieniony"});
+        this.setState({disabled: true, button: "Zmień E-mail", open: true, msg: "E-mail został zmieniony"});
       }
     }
   }
 
-  handleButtonPassword(){
-    if(this.state.email === ""){
-      this.setState({open: true, msg: "E-mail nie moze byc pusty!"});
-    }
-    else{
-      resetPassword(this.state.email);
-      this.setState({open: true, msg: "E-mail z potwierdzeniem został wysłany na podany adres"});
-    }
+  handleButtonPassword() {
+    resetPassword(this.props.email);
+    this.setState({open: true, msg: "E-mail z potwierdzeniem został wysłany na podany adres"});
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="panelBox">
         <p>Aktualny E-mail:</p>
         <TextField

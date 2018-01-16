@@ -127,7 +127,6 @@ class PlaceList extends React.Component {
   }
 
   deleteComment = (comment) => {
-    return null; // remove comments wip
     if (confirm(`Napewno usunąć ten komentarz?`)) {
       this.props.removeComment(comment);
     }
@@ -167,7 +166,7 @@ class PlaceList extends React.Component {
       <div key={comment.id} className="comment">
         <div style={{display: 'flex'}}>
           <h1 style={{flex: 28}}>{comment.title}</h1>
-          {admins && user && admins[user.uid] &&
+          {((admins && user && admins[user.uid]) || (user && comment.user && comment.user === user.uid)) &&
           <div style={{flex: 1, cursor: 'pointer'}} onClick={() => this.deleteComment(comment)}>
             <CancelIcon color="red"/>
           </div>}

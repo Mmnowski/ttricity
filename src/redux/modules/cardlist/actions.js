@@ -43,9 +43,10 @@ export function fetchGeo() {
 }
 
 export function createComment(title, description, placeId) {
+  const user = firebase.auth().currentUser;
   return (dispatch) => {
     firebase.database().ref(`/comments/`)
-      .push({title, content: description, place_id: placeId})
+      .push({title, content: description, place_id: placeId, user: user.uid})
       .catch((e) => console.log(e));
   };
 }

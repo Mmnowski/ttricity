@@ -26,9 +26,9 @@ const Routes = () => {
         <Route path="/dodaj_miejsce" component={Layout}>
           <IndexRoute component={PlacesForm}/>
         </Route>
-        {/*<Route path="/panel" component={Layout}>*/}
-          {/*<IndexRoute component={UserProfile}/>*/}
-        {/*</Route>*/}
+        <Route path="/panel" component={Layout}>
+          <IndexRoute component={UserProfile}/>
+        </Route>
         <Route path={urlPrefix} component={Layout}>
           <IndexRoute component={Home}/>
         </Route>
