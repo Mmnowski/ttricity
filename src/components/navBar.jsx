@@ -7,6 +7,7 @@ import {clearAuthError, loginUser, logoutUser, registerUser} from "../redux/modu
 import LogoutIcon from 'material-ui/svg-icons/action/power-settings-new';
 import './layout.scss';
 import {LoginRegisterDialog} from "../components/login_register/index";
+import {history} from "../prepare";
 
 const drawerContainerStyle = {
   width: '211.1px',
@@ -44,6 +45,7 @@ class NavBar extends React.Component {
             e.preventDefault();
             this.setState({popup: false});
             this.props.logoutUser();
+            history.push('/');
           }}
           innerDivStyle={{display: 'flex', alignItems: 'center'}}
         >
@@ -90,8 +92,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div style={{position: 'fixed', top: 0}}>
-        <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
+      <div className="navbar-contents">
         <Drawer open={this.state.open} className="drawer" containerStyle={drawerContainerStyle}>
           <MenuItem
             containerElement={<Link to="/"/>}
@@ -105,6 +106,7 @@ class NavBar extends React.Component {
           {/*{this.panelButton()}*/}
           {this.loginButton()}
         </Drawer>
+          <img src='imgs/templogo.png' className="logo" onClick={this.handleToggle}/>
         <LoginRegisterDialog popup={this.state.popup} callback={this.handlePopup}/>
       </div>
     );
