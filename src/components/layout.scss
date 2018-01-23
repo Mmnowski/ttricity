@@ -5,169 +5,56 @@ $commentline: #c2c2c2;
 $addcomment: #a3f4b7;
 $logosize: 1650;
 
-@media only screen and (min-width:960px){
-  /* styles for browsers larger than 960px; */
+@media only screen and (min-width:769px){
+  /* styles for browsers larger than 788px (larger than ipad resolution, standard version); */
   .main-container {
     margin: 0;
     height: 100vh;
     display: flex;
 
-    @media only screen and (min-width:960px){
-      /* styles for browsers larger than 960px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
+    header {
+      float: left;
+      position: fixed;
+      width: 270px;
 
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
+      a {
+        color: $linkhormal;
+        font-weight: bold;
+        text-decoration: none;
 
-          &:hover {
-            color: $linkhover;
-          }
+        &:hover {
+          color: $linkhover;
         }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
       }
     }
-    @media only screen and (min-width:1440px){
-      /* styles for browsers larger than 1440px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
 
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
+    .navbar-container {
+      position: fixed;
+      float: left;
+      bottom: -5px;
+      width: 180px;
+      .navbar-contents {
 
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
         .logo {
-          border-top-right-radius: 8px;
+          position: relative;
           bottom: 0;
           left: 0;
-          width: 22%;
+          width: 100%;
           height: auto;
+          padding-top: -1px;
+          box-shadow: 4px 2px 4px -4px rgba(0, 0, 0, 0.2), 8px 4px 8px -4px rgba(0, 0, 0, 0.19);
+          border-radius: 0 20px 0 0;
         }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
       }
     }
-    @media only screen and (max-device-width:480px){
-      /* styles for mobile browsers smaller than 480px; (iPhone) */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
 
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (max-device-width:768px){
-      /* default iPad screens */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
+    .content-container {
+      position: absolute;
+      top: 0;
+      margin: 0;
+      height: 100vh;
+      width: 100%;
+      align-self: flex-end;
     }
 
   }
@@ -203,14 +90,8 @@ $logosize: 1650;
     min-height: 380px;
   }
 
-  .drawer {
-
-
-    top: 0 !important;
-    bottom: $logosize*0.15 px !important;
-    width: 40% !important;
-
-
+  .drawer > div{
+    width: 160px !important;
   }
 
   .card-media {
@@ -250,7 +131,7 @@ $logosize: 1650;
 
     .cardContainer {
       display: flex;
-      height: 33%;
+      height: 40%;
       .cardImage, .pAndButtons {
         width: 50%;
         display: inline-flex;
@@ -266,18 +147,26 @@ $logosize: 1650;
       }
       .pAndButtons {
         flex-direction: column;
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto;
-        div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px;
+        p{
+          margin: 5px;
+        }
+        .buttons {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding: 10px auto;
+          height: 100% !important;
+          .cardButton {
+            div {
+              line-height: normal;
+              text-align: center;
+              margin: -10px auto;
+              padding: 5px auto;
+            }
+          }
         }
       }
+
     }
   }
 
@@ -341,789 +230,7 @@ $logosize: 1650;
   .description {
     display: flex;
     height: auto;
-    margin: 1px;
-
-    .photo {
-      display: inline-block;
-      width: 50%;
-      height: 50%;
-      border-radius: 2px 2px 0 0;
-    }
-    .text {
-      margin: 10px auto auto 10px;
-      display: inline-block;
-      font-size: 18px;
-      width: 50%;
-      height: 100%;
-    }
-  }
-
-  .cards {
-    width: 60%;
-    float: right;
-    padding-right: 8.8%;
-
-    input {
-      width: 99.5%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-      border-radius: 2px;
-      margin: 10px auto;
-      text-align: center;
-      border: solid $cardborder;
-      height: 30px;
-    }
-  }
-
-  .formBox {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border: solid $cardborder;
-    width: 40%;
-  }
-
-  .nav-bar-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-  }
-
-}
-@media only screen and (min-width:1440px){
-  /* styles for browsers larger than 1440px; */
-  .main-container {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-
-    @media only screen and (min-width:960px){
-      /* styles for browsers larger than 960px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (min-width:1440px){
-      /* styles for browsers larger than 1440px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (max-device-width:480px){
-      /* styles for mobile browsers smaller than 480px; (iPhone) */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (max-device-width:768px){
-      /* default iPad screens */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          border-top-right-radius: 8px;
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-
-  }
-
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 130px white inset !important;
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
-    background-color: white !important;
-    color: rgba(0, 0, 0, 0.87) !important;
-  }
-
-  .flex-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  .login-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 380px;
-  }
-
-  .drawer {
-
-
-    top: 0 !important;
-    bottom: $logosize*0.15 px !important;
-    width: 40% !important;
-
-
-  }
-
-  .card-media {
-    height: 300px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    img {
-      object-fit: cover;
-      height: 100%;
-      min-width: 50%;
-      float: top;
-    }
-  }
-
-  .cardList {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    display: flex;
-    font-weight: bold;
-    text-align: center;
-    flex-direction: column;
-    border: solid $cardborder;
-    * {
-      padding: 10px;
-      flex: 1 100%;
-    }
-
-    h1 {
-      border-bottom: solid $cardborder;
-      padding: 20px 0 5px 0;
-      margin: 5px;
-      text-align: center;
-    }
-
-    .cardContainer {
-      display: flex;
-      height: 33%;
-      .cardImage, .pAndButtons {
-        width: 50%;
-        display: inline-flex;
-      }
-      .cardImage {
-        width: 150px;
-        overflow: hidden;
-        justify-content: center;
-        img {
-          object-fit: contain;
-          max-height: 33vh;
-        }
-      }
-      .pAndButtons {
-        flex-direction: column;
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto;
-        div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px;
-        }
-      }
-    }
-  }
-
-  .commentDialog {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    font-weight: bold;
-
-    .commentBox {
-      padding: 10px;
-      margin: 5px;
-
-      .addCommentButton {
-        background: $addcomment !important;
-        display: inline-block !important;
-      }
-
-    }
-
-    h3 {
-      border-bottom: solid $cardborder;
-      padding: 5px;
-      margin: 5px;
-      text-align: center;
-    }
-
-    .comment {
-      padding: 5px;
-      margin: 10px;
-      border: solid $cardborder;
-      .username {
-        text-align: right;
-        padding: 5px;
-      }
-      p {
-        padding: 5px;
-      }
-
-      h1 {
-        border-bottom: solid $cardborder;
-        border-left: solid $cardborder;
-        border-right: solid $cardborder;
-        font-size: inherit;
-        text-align: center;
-      }
-    }
-  }
-
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0;
-  }
-
-  .description {
-    display: flex;
-    height: auto;
-    margin: 1px;
-
-    .photo {
-      display: inline-block;
-      width: 50%;
-      height: 50%;
-      border-radius: 2px 2px 0 0;
-    }
-    .text {
-      margin: 10px auto auto 10px;
-      display: inline-block;
-      font-size: 18px;
-      width: 50%;
-      height: 100%;
-    }
-  }
-
-  .cards {
-    width: 60%;
-    float: right;
-    padding-right: 8.8%;
-
-    input {
-      width: 99.5%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-      border-radius: 2px;
-      margin: 10px auto;
-      text-align: center;
-      border: solid $cardborder;
-      height: 30px;
-    }
-  }
-
-  .formBox {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border: solid $cardborder;
-    width: 40%;
-  }
-
-  .nav-bar-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-  }
-
-}
-@media only screen and (max-device-width:480px){
-  /* styles for mobile browsers smaller than 480px; (iPhone) */
-  .main-container {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-
-    @media only screen and (min-width:960px){
-      /* styles for browsers larger than 960px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (min-width:1440px){
-      /* styles for browsers larger than 1440px; */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (max-device-width:480px){
-      /* styles for mobile browsers smaller than 480px; (iPhone) */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-    @media only screen and (max-device-width:768px){
-      /* default iPad screens */
-      header {
-        float: left;
-        position: fixed;
-        width: 270px;
-
-        a {
-          color: $linkhormal;
-          font-weight: bold;
-          text-decoration: none;
-
-          &:hover {
-            color: $linkhover;
-          }
-        }
-      }
-
-      .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0;
-        .logo {
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto;
-        }
-      }
-
-      .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end;
-      }
-    }
-
-  }
-
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 130px white inset !important;
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
-    background-color: white !important;
-    color: rgba(0, 0, 0, 0.87) !important;
-  }
-
-  .flex-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  .login-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 380px;
-  }
-
-  .drawer {
-
-
-    top: 0 !important;
-    bottom: $logosize*0.15 px !important;
-    width: 40% !important;
-
-
-  }
-
-  .card-media {
-    height: 300px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    img {
-      object-fit: cover;
-      height: 100%;
-      min-width: 50%;
-      float: top;
-    }
-  }
-
-  .cardList {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    display: flex;
-    font-weight: bold;
-    text-align: center;
-    flex-direction: column;
-    border: solid $cardborder;
-    * {
-      padding: 10px;
-      flex: 1 100%;
-    }
-
-    h1 {
-      border-bottom: solid $cardborder;
-      padding: 20px 0 5px 0;
-      margin: 5px;
-      text-align: center;
-    }
-
-    .cardContainer {
-      display: flex;
-      height: 33%;
-      .cardImage, .pAndButtons {
-        width: 50%;
-        display: inline-flex;
-      }
-      .cardImage {
-        width: 150px;
-        overflow: hidden;
-        justify-content: center;
-        img {
-          object-fit: contain;
-          max-height: 33vh;
-        }
-      }
-      .pAndButtons {
-        flex-direction: column;
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto;
-        div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px;
-        }
-      }
-    }
-  }
-
-  .commentDialog {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    font-weight: bold;
-
-    .commentBox {
-      padding: 10px;
-      margin: 5px;
-
-      .addCommentButton {
-        background: $addcomment !important;
-        display: inline-block !important;
-      }
-
-    }
-
-    h3 {
-      border-bottom: solid $cardborder;
-      padding: 5px;
-      margin: 5px;
-      text-align: center;
-    }
-
-    .comment {
-      padding: 5px;
-      margin: 10px;
-      border: solid $cardborder;
-      .username {
-        text-align: right;
-        padding: 5px;
-      }
-      p {
-        padding: 5px;
-      }
-
-      h1 {
-        border-bottom: solid $cardborder;
-        border-left: solid $cardborder;
-        border-right: solid $cardborder;
-        font-size: inherit;
-        text-align: center;
-      }
-    }
-  }
-
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0;
-  }
-
-  .description {
-    display: flex;
-    height: auto;
-    margin: 1px;
+    margin: 10px 5px;
 
     .photo {
       display: inline-block;
@@ -1177,13 +284,12 @@ $logosize: 1650;
 
 }
 @media only screen and (max-device-width:768px){
-  /* default iPad screens */
+  /* styles for mobile browsers smaller than 480px; (iPhone) */
   .main-container {
     margin: 0;
     height: 100vh;
     display: flex;
 
-    /* default iPad screens */
     header {
       float: left;
       position: fixed;
@@ -1203,13 +309,18 @@ $logosize: 1650;
     .navbar-container {
       position: fixed;
       float: left;
-      bottom: 0;
-      .logo {
-        bottom: 0;
-        left: 0;
-        width: 15%;
-        height: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      width: 150px;
+      height: 100%;
+      .navbar-contents {
+        height: 100%;
+        .logo {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 50%;
+          height: auto;
+          box-shadow: none;
+        }
       }
     }
 
@@ -1221,6 +332,7 @@ $logosize: 1650;
       width: 100%;
       align-self: flex-end;
     }
+
   }
 
   input:-webkit-autofill {
@@ -1270,13 +382,11 @@ $logosize: 1650;
   }
 
   .drawer {
-
-
-    top: 0 !important;
-    bottom: $logosize*0.15 px !important;
-    width: 40% !important;
-
-
+    height: 100%;
+    & > div {
+      height: 100% !important;
+      width: 150px !important;
+    }
   }
 
   .card-media {
@@ -1285,11 +395,10 @@ $logosize: 1650;
     display: flex;
     justify-content: center;
     img {
-      vertical-align: middle;
       object-fit: cover;
       height: 100%;
       min-width: 50%;
-      float: left;
+      float: top;
     }
   }
 
@@ -1299,7 +408,6 @@ $logosize: 1650;
     border-radius: 2px;
     margin: 10px auto;
     position: relative;
-    left: 20px;
     width: 80%;
     display: flex;
     font-weight: bold;
@@ -1340,16 +448,16 @@ $logosize: 1650;
       .pAndButtons {
         font-size: 12px;
         flex-direction: column;
-      }
-      .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: 2px, auto;
-        div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px;
+        .buttons {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          margin: 5px, auto;
+          div {
+            line-height: normal;
+            text-align: center;
+            padding: 10px;
+          }
         }
       }
     }
@@ -1365,6 +473,10 @@ $logosize: 1650;
     .commentBox {
       padding: 10px;
       margin: 5px;
+
+      .commentTitle{
+        font-size: 22px;
+      }
 
       .addCommentButton {
         background: $addcomment !important;
@@ -1438,7 +550,7 @@ $logosize: 1650;
   .cards {
     width: 84%;
     float: right;
-    padding-right: 8.8%;
+    padding-right: 8%;
 
     input {
       width: 99.5%;
@@ -1461,7 +573,16 @@ $logosize: 1650;
     font-weight: bold;
     text-align: center;
     border: solid $cardborder;
-    width: 40%;
+    width:60% !important;
+    .field{
+      width: 100%;
+      & > div{
+        max-width: 100%;
+        text {
+
+        }
+      }
+    }
   }
 
   .nav-bar-container {
