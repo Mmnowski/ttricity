@@ -49,7 +49,7 @@ class LoginRegisterDialog extends React.Component {
 
   validateRegister = () => {
     const {email_register, password1, password2} = this.state;
-    if (email_register && password1 && password1 === password2) {
+    if (email_register && password1 && password1 === password2 && password1.length > 7) {
       this.setState({error: ''});
       return this.props.registerUser(email_register, password1);
     }
@@ -57,8 +57,11 @@ class LoginRegisterDialog extends React.Component {
     if (!password1 || !password2 || !email_register) {
       this.setState({error: 'Wszystkie pola są wymagane.'});
     }
-    else {
+    else if (password1 !== password2) {
       this.setState({error: 'Podane hasła są różne.'});
+    }
+    else {
+      this.setState({error: 'Hasło musi mieć co najmniej 8 znaków.'});
     }
   };
 
