@@ -13,7 +13,8 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-    }
+    };
+    this.saved = false;
   }
 
   componentWillReceiveProps(newProps) {
@@ -21,6 +22,7 @@ export class MapContainer extends React.Component {
       let marker = newProps.marker;
       marker.position.lat = () => newProps.selectedPlace.lat;
       marker.position.lng = () => newProps.selectedPlace.lon;
+      console.log('FOUND MARKER', marker);
       this.setState({
         selectedPlace: newProps.selectedPlace,
         activeMarker: marker,
@@ -35,6 +37,7 @@ export class MapContainer extends React.Component {
     // console.log(marker);
     // Need to click marker once...
     this.props.saveMarker(marker);
+    console.log('CLICK', marker);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -42,15 +45,31 @@ export class MapContainer extends React.Component {
     });
   };
 
+  simulateClick = (e) => {
+    if (!e) {
+      return;
+    }
+    const {marker} = this.props;
+    if (this.saved || marker) {
+      return;
+    }
+    console.log('E', e);
+    this.saved = true;
+    this.props.saveMarker(e.marker);
+  };
+
 
   renderMarker(place) {
     return (
-      <Marker key={place.name}
-              name={place.name}
-              description={place.description}
-              img={place.img}
-              onClick={this.onMarkerClick}
-              position={{lat: place.lat, lng: place.lon}}/>
+      <Marker
+        key={place.name}
+        name={place.name}
+        description={place.description}
+        ref={this.simulateClick}
+        img={place.img}
+        onClick={this.onMarkerClick}
+        position={{lat: place.lat, lng: place.lon}}
+      />
     );
   }
 
@@ -77,13 +96,16 @@ export class MapContainer extends React.Component {
     }
     const {activeMarker, selectedPlace, showingInfoWindow} = this.state;
     const style = {display: 'inline-block', width: '100%', height: '100%'};
+    console.log('ACTIVE MARKER', activeMarker);
     return (
-      <Map style={style} google={window.google}
-           initialCenter={{
-             lat: 54.439444,
-             lng: 18.5721789,
-           }}
-           zoom={11}>
+      <Map
+        style={style} google={window.google}
+        initialCenter={{
+          lat: 54.439444,
+          lng: 18.5721789,
+        }}
+        zoom={11}
+      >
         {_.map(this.props.places, (place) => this.renderMarker(place))}
         <InfoWindow
           marker={activeMarker}
