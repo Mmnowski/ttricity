@@ -1,9 +1,9 @@
 # TurystyczneTriCity
 
 # Requirements:
-- node v6.x
-- npm v3.x
-- yarn
+- node >=6.0
+- npm >=3.0
+- yarn >=0.2
 
 # Instruction:
 1. git clone
@@ -12,5 +12,12 @@
 4. npm start / yarn start
 
 # Includes:
-- SASS
+- React
 - Redux
+- SASS
+
+# Collaborators:
+- https://github.com/aklein13
+- https://github.com/msojka96
+- https://github.com/mmnowski
+- https://github.com/Naethaniel

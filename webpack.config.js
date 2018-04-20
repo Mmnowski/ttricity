@@ -16,6 +16,7 @@ module.exports = {
   },
   devtool: 'eval',
   plugins: [
+    new webpack.EnvironmentPlugin( { ...process.env } ),
     new PolyfillsPlugin({
       minify: true,
       features: {

@@ -1,128 +1,41 @@
-@media only screen and (min-width: 960px) {
-  /* styles for browsers larger than 960px; */
+@media only screen and (min-width: 769px) {
+  /* styles for browsers larger than 788px (larger than ipad resolution, standard version); */
   .main-container {
     margin: 0;
     height: 100vh;
-    display: flex; } }
-  @media only screen and (min-width: 960px) and (min-width: 960px) {
-    .main-container {
-      /* styles for browsers larger than 960px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
+    display: flex; }
+    .main-container header {
+      float: left;
+      position: fixed;
+      width: 270px; }
+      .main-container header a {
+        color: #39c;
+        font-weight: bold;
+        text-decoration: none; }
+        .main-container header a:hover {
+          color: #94c; }
+    .main-container .navbar-container {
+      position: fixed;
+      float: left;
+      bottom: -5px;
+      width: 180px; }
+      .main-container .navbar-container .navbar-contents .logo {
+        position: relative;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 960px) and (min-width: 1440px) {
-    .main-container {
-      /* styles for browsers larger than 1440px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 960px) and (max-device-width: 480px) {
-    .main-container {
-      /* styles for mobile browsers smaller than 480px; (iPhone) */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 960px) and (max-device-width: 768px) {
-    .main-container {
-      /* default iPad screens */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
+        height: auto;
+        padding-top: -1px;
+        box-shadow: 4px 2px 4px -4px rgba(0, 0, 0, 0.2), 8px 4px 8px -4px rgba(0, 0, 0, 0.19);
+        border-radius: 0 20px 0 0; }
+    .main-container .content-container {
+      position: absolute;
+      top: 0;
+      margin: 0;
+      height: 100vh;
+      width: 100%;
+      align-self: flex-end; }
 
-@media only screen and (min-width: 960px) {
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 130px white inset !important;
     -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
@@ -149,10 +62,8 @@
     align-items: center;
     min-height: 380px; }
 
-  .drawer {
-    top: 0 !important;
-    bottom: 247.5 px !important;
-    width: 40% !important; }
+  .drawer > div {
+    width: 160px !important; }
 
   .card-media {
     height: 300px;
@@ -185,7 +96,7 @@
       text-align: center; }
     .cardList .cardContainer {
       display: flex;
-      height: 33%; }
+      height: 40%; }
       .cardList .cardContainer .cardImage, .cardList .cardContainer .pAndButtons {
         width: 50%;
         display: inline-flex; }
@@ -198,15 +109,19 @@
           max-height: 33vh; }
       .cardList .cardContainer .pAndButtons {
         flex-direction: column; }
-      .cardList .cardContainer .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto; }
-        .cardList .cardContainer .buttons div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px; }
+        .cardList .cardContainer .pAndButtons p {
+          margin: 5px; }
+        .cardList .cardContainer .pAndButtons .buttons {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          padding: 10px auto;
+          height: 100% !important; }
+          .cardList .cardContainer .pAndButtons .buttons .cardButton div {
+            line-height: normal;
+            text-align: center;
+            margin: -10px auto;
+            padding: 5px auto; }
 
   .commentDialog {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -253,605 +168,7 @@
   .description {
     display: flex;
     height: auto;
-    margin: 1px; }
-    .description .photo {
-      display: inline-block;
-      width: 50%;
-      height: 50%;
-      border-radius: 2px 2px 0 0; }
-    .description .text {
-      margin: 10px auto auto 10px;
-      display: inline-block;
-      font-size: 18px;
-      width: 50%;
-      height: 100%; }
-
-  .cards {
-    width: 60%;
-    float: right;
-    padding-right: 8.8%; }
-    .cards input {
-      width: 99.5%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-      border-radius: 2px;
-      margin: 10px auto;
-      text-align: center;
-      border: solid #f4f4f4;
-      height: 30px; }
-
-  .formBox {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border: solid #f4f4f4;
-    width: 40%; }
-
-  .nav-bar-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px; } }
-@media only screen and (min-width: 1440px) {
-  /* styles for browsers larger than 1440px; */
-  .main-container {
-    margin: 0;
-    height: 100vh;
-    display: flex; } }
-  @media only screen and (min-width: 1440px) and (min-width: 960px) {
-    .main-container {
-      /* styles for browsers larger than 960px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 1440px) and (min-width: 1440px) {
-    .main-container {
-      /* styles for browsers larger than 1440px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 1440px) and (max-device-width: 480px) {
-    .main-container {
-      /* styles for mobile browsers smaller than 480px; (iPhone) */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (min-width: 1440px) and (max-device-width: 768px) {
-    .main-container {
-      /* default iPad screens */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          border-top-right-radius: 8px;
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-
-@media only screen and (min-width: 1440px) {
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 130px white inset !important;
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
-    background-color: white !important;
-    color: rgba(0, 0, 0, 0.87) !important; }
-
-  .flex-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; }
-
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0; }
-
-  h1 {
-    text-align: center; }
-
-  .login-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 380px; }
-
-  .drawer {
-    top: 0 !important;
-    bottom: 247.5 px !important;
-    width: 40% !important; }
-
-  .card-media {
-    height: 300px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center; }
-    .card-media img {
-      object-fit: cover;
-      height: 100%;
-      min-width: 50%;
-      float: top; }
-
-  .cardList {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    display: flex;
-    font-weight: bold;
-    text-align: center;
-    flex-direction: column;
-    border: solid #f4f4f4; }
-    .cardList * {
-      padding: 10px;
-      flex: 1 100%; }
-    .cardList h1 {
-      border-bottom: solid #f4f4f4;
-      padding: 20px 0 5px 0;
-      margin: 5px;
-      text-align: center; }
-    .cardList .cardContainer {
-      display: flex;
-      height: 33%; }
-      .cardList .cardContainer .cardImage, .cardList .cardContainer .pAndButtons {
-        width: 50%;
-        display: inline-flex; }
-      .cardList .cardContainer .cardImage {
-        width: 150px;
-        overflow: hidden;
-        justify-content: center; }
-        .cardList .cardContainer .cardImage img {
-          object-fit: contain;
-          max-height: 33vh; }
-      .cardList .cardContainer .pAndButtons {
-        flex-direction: column; }
-      .cardList .cardContainer .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto; }
-        .cardList .cardContainer .buttons div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px; }
-
-  .commentDialog {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    font-weight: bold; }
-    .commentDialog .commentBox {
-      padding: 10px;
-      margin: 5px; }
-      .commentDialog .commentBox .addCommentButton {
-        background: #a3f4b7 !important;
-        display: inline-block !important; }
-    .commentDialog h3 {
-      border-bottom: solid #f4f4f4;
-      padding: 5px;
-      margin: 5px;
-      text-align: center; }
-    .commentDialog .comment {
-      padding: 5px;
-      margin: 10px;
-      border: solid #f4f4f4; }
-      .commentDialog .comment .username {
-        text-align: right;
-        padding: 5px; }
-      .commentDialog .comment p {
-        padding: 5px; }
-      .commentDialog .comment h1 {
-        border-bottom: solid #f4f4f4;
-        border-left: solid #f4f4f4;
-        border-right: solid #f4f4f4;
-        font-size: inherit;
-        text-align: center; }
-
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0; }
-
-  .description {
-    display: flex;
-    height: auto;
-    margin: 1px; }
-    .description .photo {
-      display: inline-block;
-      width: 50%;
-      height: 50%;
-      border-radius: 2px 2px 0 0; }
-    .description .text {
-      margin: 10px auto auto 10px;
-      display: inline-block;
-      font-size: 18px;
-      width: 50%;
-      height: 100%; }
-
-  .cards {
-    width: 60%;
-    float: right;
-    padding-right: 8.8%; }
-    .cards input {
-      width: 99.5%;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-      border-radius: 2px;
-      margin: 10px auto;
-      text-align: center;
-      border: solid #f4f4f4;
-      height: 30px; }
-
-  .formBox {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border: solid #f4f4f4;
-    width: 40%; }
-
-  .nav-bar-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 200px; } }
-@media only screen and (max-device-width: 480px) {
-  /* styles for mobile browsers smaller than 480px; (iPhone) */
-  .main-container {
-    margin: 0;
-    height: 100vh;
-    display: flex; } }
-  @media only screen and (max-device-width: 480px) and (min-width: 960px) {
-    .main-container {
-      /* styles for browsers larger than 960px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (max-device-width: 480px) and (min-width: 1440px) {
-    .main-container {
-      /* styles for browsers larger than 1440px; */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          border-top-right-radius: 8px;
-          bottom: 0;
-          left: 0;
-          width: 22%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (max-device-width: 480px) and (max-device-width: 480px) {
-    .main-container {
-      /* styles for mobile browsers smaller than 480px; (iPhone) */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 0;
-          left: 0;
-          width: 40%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-  @media only screen and (max-device-width: 480px) and (max-device-width: 768px) {
-    .main-container {
-      /* default iPad screens */ }
-      .main-container header {
-        float: left;
-        position: fixed;
-        width: 270px; }
-        .main-container header a {
-          color: #39c;
-          font-weight: bold;
-          text-decoration: none; }
-          .main-container header a:hover {
-            color: #94c; }
-      .main-container .navbar-container {
-        position: fixed;
-        float: left;
-        bottom: 0; }
-        .main-container .navbar-container .logo {
-          bottom: 100%;
-          left: 0;
-          width: 15%;
-          height: auto; }
-      .main-container .content-container {
-        position: absolute;
-        top: 0;
-        margin: 0;
-        height: 100vh;
-        width: 100%;
-        align-self: flex-end; } }
-
-@media only screen and (max-device-width: 480px) {
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 130px white inset !important;
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.87) !important;
-    background-color: white !important;
-    color: rgba(0, 0, 0, 0.87) !important; }
-
-  .flex-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; }
-
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0; }
-
-  h1 {
-    text-align: center; }
-
-  .login-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 380px; }
-
-  .drawer {
-    top: 0 !important;
-    bottom: 247.5 px !important;
-    width: 40% !important; }
-
-  .card-media {
-    height: 300px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center; }
-    .card-media img {
-      object-fit: cover;
-      height: 100%;
-      min-width: 50%;
-      float: top; }
-
-  .cardList {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    display: flex;
-    font-weight: bold;
-    text-align: center;
-    flex-direction: column;
-    border: solid #f4f4f4; }
-    .cardList * {
-      padding: 10px;
-      flex: 1 100%; }
-    .cardList h1 {
-      border-bottom: solid #f4f4f4;
-      padding: 20px 0 5px 0;
-      margin: 5px;
-      text-align: center; }
-    .cardList .cardContainer {
-      display: flex;
-      height: 33%; }
-      .cardList .cardContainer .cardImage, .cardList .cardContainer .pAndButtons {
-        width: 50%;
-        display: inline-flex; }
-      .cardList .cardContainer .cardImage {
-        width: 150px;
-        overflow: hidden;
-        justify-content: center; }
-        .cardList .cardContainer .cardImage img {
-          object-fit: contain;
-          max-height: 33vh; }
-      .cardList .cardContainer .pAndButtons {
-        flex-direction: column; }
-      .cardList .cardContainer .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: auto; }
-        .cardList .cardContainer .buttons div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px; }
-
-  .commentDialog {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    border-radius: 2px;
-    margin: 10px auto;
-    font-weight: bold; }
-    .commentDialog .commentBox {
-      padding: 10px;
-      margin: 5px; }
-      .commentDialog .commentBox .addCommentButton {
-        background: #a3f4b7 !important;
-        display: inline-block !important; }
-    .commentDialog h3 {
-      border-bottom: solid #f4f4f4;
-      padding: 5px;
-      margin: 5px;
-      text-align: center; }
-    .commentDialog .comment {
-      padding: 5px;
-      margin: 10px;
-      border: solid #f4f4f4; }
-      .commentDialog .comment .username {
-        text-align: right;
-        padding: 5px; }
-      .commentDialog .comment p {
-        padding: 5px; }
-      .commentDialog .comment h1 {
-        border-bottom: solid #f4f4f4;
-        border-left: solid #f4f4f4;
-        border-right: solid #f4f4f4;
-        font-size: inherit;
-        text-align: center; }
-
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0; }
-
-  .description {
-    display: flex;
-    height: auto;
-    margin: 1px; }
+    margin: 10px 5px; }
     .description .photo {
       display: inline-block;
       width: 50%;
@@ -894,12 +211,11 @@
     flex-direction: column;
     min-width: 200px; } }
 @media only screen and (max-device-width: 768px) {
-  /* default iPad screens */
+  /* styles for mobile browsers smaller than 480px; (iPhone) */
   .main-container {
     margin: 0;
     height: 100vh;
-    display: flex;
-    /* default iPad screens */ }
+    display: flex; }
     .main-container header {
       float: left;
       position: fixed;
@@ -913,13 +229,17 @@
     .main-container .navbar-container {
       position: fixed;
       float: left;
-      bottom: 0; }
-      .main-container .navbar-container .logo {
-        bottom: 0;
-        left: 0;
-        width: 15%;
-        height: auto;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+      width: 150px;
+      height: 100%; }
+      .main-container .navbar-container .navbar-contents {
+        height: 100%; }
+        .main-container .navbar-container .navbar-contents .logo {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 50%;
+          height: auto;
+          box-shadow: none; }
     .main-container .content-container {
       position: absolute;
       top: 0;
@@ -965,9 +285,10 @@
     min-height: 380px; }
 
   .drawer {
-    top: 0 !important;
-    bottom: 247.5 px !important;
-    width: 40% !important; }
+    height: 100%; }
+    .drawer > div {
+      height: 100% !important;
+      width: 150px !important; }
 
   .card-media {
     height: 300px;
@@ -975,11 +296,10 @@
     display: flex;
     justify-content: center; }
     .card-media img {
-      vertical-align: middle;
       object-fit: cover;
       height: 100%;
       min-width: 50%;
-      float: left; }
+      float: top; }
 
   .cardList {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -987,7 +307,6 @@
     border-radius: 2px;
     margin: 10px auto;
     position: relative;
-    left: 20px;
     width: 80%;
     display: flex;
     font-weight: bold;
@@ -1021,15 +340,15 @@
       .cardList .cardContainer .pAndButtons {
         font-size: 12px;
         flex-direction: column; }
-      .cardList .cardContainer .buttons {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        margin: 2px, auto; }
-        .cardList .cardContainer .buttons div {
-          line-height: normal;
-          text-align: center;
-          padding: 5px; }
+        .cardList .cardContainer .pAndButtons .buttons {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          margin: 5px, auto; }
+          .cardList .cardContainer .pAndButtons .buttons div {
+            line-height: normal;
+            text-align: center;
+            padding: 10px; }
 
   .commentDialog {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1040,6 +359,8 @@
     .commentDialog .commentBox {
       padding: 10px;
       margin: 5px; }
+      .commentDialog .commentBox .commentTitle {
+        font-size: 22px; }
       .commentDialog .commentBox .addCommentButton {
         background: #a3f4b7 !important;
         display: inline-block !important; }
@@ -1095,7 +416,7 @@
   .cards {
     width: 84%;
     float: right;
-    padding-right: 8.8%; }
+    padding-right: 8%; }
     .cards input {
       width: 99.5%;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1115,7 +436,11 @@
     font-weight: bold;
     text-align: center;
     border: solid #f4f4f4;
-    width: 40%; }
+    width: 60% !important; }
+    .formBox .field {
+      width: 100%; }
+      .formBox .field > div {
+        max-width: 100%; }
 
   .nav-bar-container {
     display: flex;

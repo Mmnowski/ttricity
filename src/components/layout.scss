@@ -5,7 +5,7 @@ $commentline: #c2c2c2;
 $addcomment: #a3f4b7;
 $logosize: 1650;
 
-@media only screen and (min-width:769px){
+@media only screen and (min-width: 769px) {
   /* styles for browsers larger than 788px (larger than ipad resolution, standard version); */
   .main-container {
     margin: 0;
@@ -66,7 +66,7 @@ $logosize: 1650;
     color: rgba(0, 0, 0, 0.87) !important;
   }
 
-  .flex-center{
+  .flex-center {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,7 +90,7 @@ $logosize: 1650;
     min-height: 380px;
   }
 
-  .drawer > div{
+  .drawer > div {
     width: 160px !important;
   }
 
@@ -147,7 +147,7 @@ $logosize: 1650;
       }
       .pAndButtons {
         flex-direction: column;
-        p{
+        p {
           margin: 5px;
         }
         .buttons {
@@ -283,7 +283,8 @@ $logosize: 1650;
   }
 
 }
-@media only screen and (max-device-width:768px){
+
+@media only screen and (max-device-width: 768px) {
   /* styles for mobile browsers smaller than 480px; (iPhone) */
   .main-container {
     margin: 0;
@@ -342,24 +343,24 @@ $logosize: 1650;
     color: rgba(0, 0, 0, 0.87) !important;
   }
 
-  .flex-center{
+  .flex-center {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .flex-login-email{
+    .flex-login-email {
       width: 200px !important;
     }
-    .flex-login-password{
+    .flex-login-password {
       width: 200px !important;
     }
-    .flex-register-email{
+    .flex-register-email {
       width: 200px !important;
     }
-    .flex-register-password{
+    .flex-register-password {
       width: 200px !important;
     }
-    .flex-register-repassword{
+    .flex-register-repassword {
       width: 200px !important;
     }
   }
@@ -474,7 +475,7 @@ $logosize: 1650;
       padding: 10px;
       margin: 5px;
 
-      .commentTitle{
+      .commentTitle {
         font-size: 22px;
       }
 
@@ -573,10 +574,10 @@ $logosize: 1650;
     font-weight: bold;
     text-align: center;
     border: solid $cardborder;
-    width:60% !important;
-    .field{
+    width: 60% !important;
+    .field {
       width: 100%;
-      & > div{
+      & > div {
         max-width: 100%;
         text {
 

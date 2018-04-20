@@ -58,6 +58,6 @@ const mapDispatchToProps = {
   fetchAdmins,
 };
 
-const LayoutAPI = GoogleApiWrapper({apiKey: 'GOOGLE_API_KEY'})(Layout);
+const LayoutAPI = GoogleApiWrapper({apiKey: process.env.MAP_KEY})(Layout);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutAPI);

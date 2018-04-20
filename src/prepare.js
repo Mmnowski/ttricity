@@ -31,7 +31,7 @@ const logger = createLogger({
 function configureStore(initialState) {
   // Init firebase connection
   const firebaseConfig = {
-    apiKey: "FIREBASE_API_KEY",
+    apiKey: process.env.FIREBASE_KEY,
     authDomain: "turystycznetricity-8a97c.firebaseapp.com",
     databaseURL: "https://turystycznetricity-8a97c.firebaseio.com",
     projectId: "turystycznetricity-8a97c",

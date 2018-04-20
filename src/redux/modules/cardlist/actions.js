@@ -1,6 +1,6 @@
 import {API_ACTIONS} from '../../actionTypes';
 import {startRequest} from '../../api';
-import firebase from "firebase/index";
+import firebase from 'firebase/index';
 
 export function selectPlace(place) {
   return {
@@ -38,7 +38,7 @@ export function fetchGeo() {
   const action = API_ACTIONS.GEOLOCATE;
   const postData = {};
   const attrs = {};
-  const params = {key: 'GOOGLE_API_KEY'};
+  const params = {key: process.env.MAP_KEY};
   return startRequest({}, action, attrs, params, 'POST', postData);
 }
 

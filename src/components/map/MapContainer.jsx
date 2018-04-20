@@ -144,7 +144,7 @@ const mapDispatchToProps = {
 
 // Doubles it's fine
 const MapComponent = GoogleApiWrapper({
-  apiKey: 'GOOGLE_API_KEY',
+  apiKey: process.env.MAP_KEY,
 })(MapContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);
