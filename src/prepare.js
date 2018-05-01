@@ -23,9 +23,7 @@ const reducer = combineReducers({
   map,
 });
 
-const logger = createLogger({
-  // ...options
-});
+const logger = createLogger({});
 
 /* Initial the store */
 function configureStore(initialState) {
@@ -39,12 +37,14 @@ function configureStore(initialState) {
     messagingSenderId: "250882144902"
   };
   firebase.initializeApp(firebaseConfig);
-  // Initial the redux devtools for Chrome
-  const createdStore = createStore(reducer, initialState,
-    compose(
-      applyMiddleware(logger, ReduxPromise, thunk),
-      window.devToolsExtension ? window.devToolsExtension() : (f) => f)
-  );
+  // Production should be without logger
+  const createdStore = process.env.NODE_ENV === 'production' ?
+    createStore(reducer, initialState, compose(applyMiddleware(ReduxPromise, thunk)))
+    :
+    createStore(reducer, initialState,
+      compose(applyMiddleware(logger, ReduxPromise, thunk),
+        window.devToolsExtension ? window.devToolsExtension() : (f) => f)
+    );
   const {hot} = module;
   if (hot) {
     hot.accept('./reducers', () => {
