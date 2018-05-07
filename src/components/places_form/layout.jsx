@@ -66,7 +66,6 @@ class PlacesForm extends React.Component {
     }
     if (check === 0) {
       this.props.createPlace(desc, img, lat, lon, name);
-      console.log(name);
       this.setState({info: name, desc: '', img: '', lat: '', lon: '', name: ''});
     }
   };

@@ -13,11 +13,9 @@ let config = {
 
 /* Construct configs from environment */
 if (process && typeof process.env.NODE_ENV !== 'undefined') {
-  console.log(process.env);
   config = {...config, ...require(`./${process.env.NODE_ENV}`).default};
 }
 
-console.log(process.env);
 /* Freezed the config object, make it not able to be modified */
 Object.freeze(config);
 
