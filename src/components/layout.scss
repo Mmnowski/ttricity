@@ -7,10 +7,40 @@ $logosize: 1650;
 
 .marker-container {
   position: relative;
-  img {
+  .marker {
     top: -42px;
     left: 4px;
     position: absolute;
+  }
+  #marker-popup {
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    padding: 5px;
+    width: 520px;
+    top: -185px;
+    left: -260px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 1px;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  .close {
+    cursor: pointer;
+    padding: 4px 15px;
+    box-sizing: content-box;
+    position: absolute;
+    user-select: none;
+    top: 0;
+    right: 0;
+    font-size: 30px;
   }
 }
 
@@ -43,7 +73,6 @@ $logosize: 1650;
       bottom: -5px;
       width: 180px;
       .navbar-contents {
-
         .logo {
           position: relative;
           bottom: 0;
@@ -226,16 +255,6 @@ $logosize: 1650;
     }
   }
 
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0;
-  }
-
   .description {
     display: flex;
     height: auto;
@@ -248,7 +267,7 @@ $logosize: 1650;
       border-radius: 2px 2px 0 0;
     }
     .text {
-      margin: 10px auto auto 10px;
+      margin-left: 10px;
       display: inline-block;
       font-size: 18px;
       width: 50%;
@@ -524,16 +543,6 @@ $logosize: 1650;
     }
   }
 
-  .title {
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background-color: #48b5e9;
-    color: white;
-    margin: 1px;
-    border-radius: 2px 2px 0 0;
-  }
-
   .description {
     display: flex;
     flex-direction: column;
@@ -549,7 +558,7 @@ $logosize: 1650;
       border-radius: 2px 2px 0 0;
     }
     .text {
-      margin: 10px auto auto 10px;
+      margin-left: -10px;
       display: inline-block;
       font-size: 12px;
       width: 95%;
