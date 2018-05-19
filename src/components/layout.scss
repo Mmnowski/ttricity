@@ -5,6 +5,15 @@ $commentline: #c2c2c2;
 $addcomment: #a3f4b7;
 $logosize: 1650;
 
+.marker-container {
+  position: relative;
+  img {
+    top: -42px;
+    left: 4px;
+    position: absolute;
+  }
+}
+
 @media only screen and (min-width: 769px) {
   /* styles for browsers larger than 788px (larger than ipad resolution, standard version); */
   .main-container {

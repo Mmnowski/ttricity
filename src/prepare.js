@@ -6,14 +6,12 @@ import {routerReducer, syncHistoryWithStore} from 'react-router-redux';
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import firebase from 'firebase';
 /* React Router */
-import {browserHistory, hashHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 import ReduxPromise from 'redux-promise';
 /* Reducers */
 import {createLogger} from 'redux-logger';
 // const reducers = require('./reducers');
 import thunk from 'redux-thunk';
-/* App configs */
-import config from './config';
 
 /* Combine Reducers */
 const reducer = combineReducers({
@@ -75,10 +73,5 @@ store.subscribe(() => {
   localStorage.setItem('reduxState', JSON.stringify(tempState));
 });
 /* Initial history */
-let routerHistory;
-if (config.historyBackend === 'browserHistory') {
-  routerHistory = browserHistory;
-} else {
-  routerHistory = hashHistory;
-}
+const routerHistory = hashHistory;
 export const history = syncHistoryWithStore(routerHistory, store);
