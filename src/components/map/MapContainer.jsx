@@ -6,7 +6,7 @@ import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 
-export class _MapContainer extends React.Component {
+export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -145,6 +145,6 @@ const mapDispatchToProps = {
 // Doubles it's fine
 const MapComponent = GoogleApiWrapper({
   apiKey: process.env.MAP_KEY,
-})(_MapContainer);
+})(MapContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);
