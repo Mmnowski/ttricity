@@ -220,13 +220,16 @@ class PlaceList extends React.Component {
     return _.map(placesToRender, (place) => this.renderPlace(place));
   }
 
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   renderSearchBar() {
     return (
-      <form className="cards">
+      <form className="cards" onSubmit={this.handleFormSubmit}>
         <Autocomplete
-          onPlaceSelected={(placeToFind) => {
-            this.props.findPlace(placeToFind);
-          }}
+          onPlaceSelected={(placeToFind) => placeToFind.geometry && this.props.findPlace(placeToFind)}
           types={['geocode']}
           componentRestrictions={{country: "pl"}}
           placeholder="Szukaj"
