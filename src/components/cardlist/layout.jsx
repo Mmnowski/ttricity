@@ -3,7 +3,12 @@ import FlatButton from 'material-ui/FlatButton';
 import * as _ from 'lodash';
 import {connect} from 'react-redux';
 import {
-  createComment, fetchGeo, findPlace, rate, removeComment, removePlace,
+  createComment,
+  fetchGeo,
+  findPlace,
+  rate,
+  removeComment,
+  removePlace,
   selectPlace,
 } from '../../redux/modules/cardlist/actions';
 import {history} from '../../prepare';

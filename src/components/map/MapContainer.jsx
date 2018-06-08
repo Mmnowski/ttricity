@@ -17,14 +17,13 @@ export class MapContainer extends React.Component {
     this.saved = false;
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.selectedPlace && newProps.marker) {
-      let marker = newProps.marker;
-      marker.position.lat = () => newProps.selectedPlace.lat;
-      marker.position.lng = () => newProps.selectedPlace.lon;
-      console.log('FOUND MARKER', marker);
+  componentDidMount() {
+    const {selectedPlace, marker} = this.props;
+    if (selectedPlace && marker) {
+      marker.position.lat = () => selectedPlace.lat;
+      marker.position.lng = () => selectedPlace.lon;
       this.setState({
-        selectedPlace: newProps.selectedPlace,
+        selectedPlace: selectedPlace,
         activeMarker: marker,
         showingInfoWindow: true,
       });
@@ -32,12 +31,8 @@ export class MapContainer extends React.Component {
     }
   }
 
-  onMarkerClick = (props, marker, e) => {
-    // console.log(JSON.stringify(JSON.decycle(marker)));
-    // console.log(marker);
-    // Need to click marker once...
+  onMarkerClick = (props, marker) => {
     this.props.saveMarker(marker);
-    console.log('CLICK', marker);
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -53,7 +48,6 @@ export class MapContainer extends React.Component {
     if (this.saved || marker) {
       return;
     }
-    console.log('E', e);
     this.saved = true;
     this.props.saveMarker(e.marker);
   };
@@ -96,7 +90,6 @@ export class MapContainer extends React.Component {
     }
     const {activeMarker, selectedPlace, showingInfoWindow} = this.state;
     const style = {display: 'inline-block', width: '100%', height: '100%'};
-    console.log('ACTIVE MARKER', activeMarker);
     return (
       <Map
         style={style} google={window.google}
@@ -142,7 +135,6 @@ const mapDispatchToProps = {
   saveMarker,
 };
 
-// Doubles it's fine
 const MapComponent = GoogleApiWrapper({
   apiKey: process.env.MAP_KEY,
 })(MapContainer);
