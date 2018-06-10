@@ -14,7 +14,7 @@ export const EMAIL_ERROR = 'Potwierdź adres email.';
 export const PASSWORD_ERROR = 'Błedny adres email lub hasło.';
 
 export const codeToMsgMap = {
-  'auth/invalid-email': 'Niepoprawny adres email.',
+  'auth/invalid-email': PASSWORD_ERROR,
   'auth/user-not-found': PASSWORD_ERROR,
   'auth/wrong-password': PASSWORD_ERROR,
   'auth/email-already-in-use': 'Adres email jest już w użyciu.',

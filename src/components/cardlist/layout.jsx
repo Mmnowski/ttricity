@@ -170,9 +170,14 @@ class PlaceList extends React.Component {
     return (
       <div key={comment.id} className="comment">
         <div style={{display: 'flex'}}>
-          <h1 style={{flex: 28}}>{comment.title}</h1>
+          <h1 style={{flex: 28, paddingBottom: 5}}>
+            {comment.title}
+          </h1>
           {((admins && user && admins[user.uid]) || (user && comment.user && comment.user === user.uid)) &&
-          <div style={{flex: 1, cursor: 'pointer'}} onClick={() => this.deleteComment(comment)}>
+          <div
+            style={{flex: 1, cursor: 'pointer', marginTop: 10}}
+            onClick={() => this.deleteComment(comment)}
+          >
             <CancelIcon color="red"/>
           </div>}
         </div>
@@ -242,21 +247,28 @@ class PlaceList extends React.Component {
     const {commentToShow} = this.state;
     return (
       <Dialog
-        title={
-          <div className="commentBox">
-            <h1 className="commentTitle">
-              Komentarze dla {commentToShow.name}
-            </h1>
-            <FlatButton className="addCommentButton" label={"Dodaj komentarz"} onClick={this.addComment}/>
-          </div>
-        }
         style={{height: '100%'}}
         modal={false}
         open={true}
         onRequestClose={this.handleClose}
         autoScrollBodyContent={true}
         className="commentDialog"
+        contentClassName="dialog-content"
+        paperClassName="dialog-paper"
       >
+        <FlatButton
+          label="Cofnij"
+          fullWidth
+          primary
+          onClick={this.handleClose}
+          className="dialog-back"
+        />
+        <div className="commentBox">
+          <h1 className="commentTitle">
+            Komentarze dla {commentToShow.name}
+          </h1>
+          <FlatButton className="addCommentButton" label={"Dodaj komentarz"} onClick={this.addComment}/>
+        </div>
         {this.renderComments(commentToShow.id)}
       </Dialog>
     );

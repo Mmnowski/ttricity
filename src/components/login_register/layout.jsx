@@ -223,8 +223,18 @@ class LoginRegisterDialog extends React.Component {
         onRequestClose={this.props.callback}
         actionsContainerStyle={{height: 100}}
         style={{zIndex: 9999}}
+        contentClassName="dialog-content"
+        paperClassName="dialog-paper"
       >
         <div>
+          <FlatButton
+            label="Cofnij"
+            fullWidth
+            primary
+            onClick={this.props.callback}
+            className="dialog-back"
+            style={{marginBottom: 15}}
+          />
           <Tabs
             onChange={this.handleSlide}
             value={this.state.slideIndex}
