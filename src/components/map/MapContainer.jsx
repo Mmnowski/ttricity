@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
+import {MAP_KEY} from '../../../secret';
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -136,7 +137,7 @@ const mapDispatchToProps = {
 };
 
 const MapComponent = GoogleApiWrapper({
-  apiKey: process.env.MAP_KEY,
+  apiKey: MAP_KEY,
 })(MapContainer);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);
