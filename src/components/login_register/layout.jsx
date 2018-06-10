@@ -225,6 +225,9 @@ class LoginRegisterDialog extends React.Component {
         style={{zIndex: 9999}}
         contentClassName="dialog-content"
         paperClassName="dialog-paper"
+        bodyClassName="dialog-body"
+        autoDetectWindowHeight={false}
+        autoScrollBodyContent
       >
         <div>
           <FlatButton

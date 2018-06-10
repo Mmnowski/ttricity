@@ -249,12 +249,14 @@ class PlaceList extends React.Component {
       <Dialog
         style={{height: '100%'}}
         modal={false}
-        open={true}
+        open
         onRequestClose={this.handleClose}
-        autoScrollBodyContent={true}
         className="commentDialog"
         contentClassName="dialog-content"
         paperClassName="dialog-paper"
+        bodyClassName="dialog-body"
+        autoDetectWindowHeight={false}
+        autoScrollBodyContent
       >
         <FlatButton
           label="Cofnij"
