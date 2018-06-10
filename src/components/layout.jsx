@@ -6,6 +6,7 @@ import {fetchAdmins} from '../redux/modules/auth/actions';
 import {fetchPlaces} from '../redux/modules/map/actions';
 import {fetchComments, fetchRatings} from '../redux/modules/cardlist/actions';
 import {GoogleApiWrapper} from 'google-maps-react';
+import {MAP_KEY} from '../../secret';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -28,9 +29,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    // _.map(places, (place) => console.log(place));
     let children = this.props.children;
-    let shouldOpen = this.props.open;
     return (
       <div className="main-container">
         <section className="content-container">
@@ -39,7 +38,6 @@ class Layout extends React.Component {
         <div className="navbar-container">
           <NavBar/>
         </div>
-        {/*{this.mediaCheck()}*/}
       </div>
     );
   };
@@ -58,6 +56,6 @@ const mapDispatchToProps = {
   fetchAdmins,
 };
 
-const LayoutAPI = GoogleApiWrapper({apiKey: process.env.MAP_KEY})(Layout);
+const LayoutAPI = GoogleApiWrapper({apiKey: MAP_KEY})(Layout);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutAPI);

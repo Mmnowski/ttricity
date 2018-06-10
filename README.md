@@ -7,9 +7,10 @@
 
 # Instruction:
 1. git clone
-2. yarn
-3. npm run buildvendor
-4. npm start / yarn start
+2. Include your own Google Maps and Google Firebase API keys in sercret.js file
+3. yarn
+4. npm run buildvendor
+5. npm start / yarn start
 
 # Includes:
 - React

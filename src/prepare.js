@@ -14,6 +14,7 @@ import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
 /* App configs */
 import config from './config';
+import {FIREBASE_KEY, MAP_KEY} from '../secret';
 
 /* Combine Reducers */
 const reducer = combineReducers({
@@ -27,9 +28,11 @@ const logger = createLogger({});
 
 /* Initial the store */
 function configureStore(initialState) {
+  MAP_KEY.includes('Your') && console.error('Include your own Google Map API key in secret.js file');
+  FIREBASE_KEY.includes('Your') && console.error('Include your own Google Firebase API key in secret.js file');
   // Init firebase connection
   const firebaseConfig = {
-    apiKey: process.env.FIREBASE_KEY,
+    apiKey: FIREBASE_KEY,
     authDomain: "turystycznetricity-8a97c.firebaseapp.com",
     databaseURL: "https://turystycznetricity-8a97c.firebaseio.com",
     projectId: "turystycznetricity-8a97c",
