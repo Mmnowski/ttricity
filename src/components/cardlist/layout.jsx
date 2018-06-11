@@ -234,7 +234,7 @@ class PlaceList extends React.Component {
   renderSearchBar() {
     return (
       <div className="cards" style={{display: 'flex'}}>
-        <form onSubmit={this.handleFormSubmit} style={{width: '91%'}}>
+        <form onSubmit={this.handleFormSubmit} style={{width: '92%'}}>
           <Autocomplete
             onPlaceSelected={(placeToFind) => placeToFind.geometry && this.props.findPlace(placeToFind)}
             types={['geocode']}
@@ -242,10 +242,19 @@ class PlaceList extends React.Component {
             placeholder="Szukaj"
           />
         </form>
-        <MyLocationIcon
-          style={{marginLeft: 12, marginTop: 17, cursor: 'pointer'}}
+        <div
+          style={{
+            display: 'flex',
+            width: '8%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            marginLeft: 11,
+          }}
           onClick={this.props.fetchGeo}
-        />
+        >
+          <MyLocationIcon/>
+        </div>
       </div>
     );
   }
