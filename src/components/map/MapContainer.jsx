@@ -6,6 +6,7 @@ import {selectPlace} from '../../redux/modules/cardlist/actions';
 import {saveMarker} from '../../redux/modules/map/actions';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import {MAP_KEY} from '../../../secret';
+import {SOPOT_CENTRUM} from '../../redux/actionTypes';
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -95,8 +96,8 @@ export class MapContainer extends React.Component {
       <Map
         style={style} google={window.google}
         initialCenter={{
-          lat: 54.439444,
-          lng: 18.5721789,
+          lat: SOPOT_CENTRUM.lat,
+          lng: SOPOT_CENTRUM.lon,
         }}
         zoom={11}
       >

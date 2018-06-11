@@ -1,23 +1,24 @@
 import * as _ from 'lodash';
-import {API_ACTIONS} from '../../actionTypes';
+import {API_ACTIONS, SOPOT_CENTRUM} from '../../actionTypes';
 
 const initialState = {
   activePlace: null,
   queryPlace: null,
   comments: null,
-  geolocate: null,
+  geolocate: {...SOPOT_CENTRUM},
   ratings: null,
 };
 
 export const cardList = (state = initialState, action) => {
   switch (action.type) {
-    case API_ACTIONS.GEOLOCATE.successRequest:
+    case API_ACTIONS.GEOLOCATE:
       return {
         ...state,
         geolocate: {
-          lat: action.res.location.lat,
-          lon: action.res.location.lng,
+          lat: action.payload.lat,
+          lon: action.payload.lon,
         },
+        queryPlace: null,
       };
     case API_ACTIONS.SELECT_PLACE:
       return {

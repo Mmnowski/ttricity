@@ -36,11 +36,20 @@ export const fetchRatings = () => {
 };
 
 export function fetchGeo() {
-  const action = API_ACTIONS.GEOLOCATE;
-  const postData = {};
-  const attrs = {};
-  const params = {key: MAP_KEY};
-  return startRequest({}, action, attrs, params, 'POST', postData);
+  return (dispatch) => {
+    if (!navigator.geolocation) {
+      return console.log('Geolocation not supported');
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      dispatch({
+        type: API_ACTIONS.GEOLOCATE,
+        payload: {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        },
+      });
+    });
+  }
 }
 
 export function createComment(title, description, placeId) {

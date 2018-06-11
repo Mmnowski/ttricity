@@ -1,13 +1,6 @@
-import config from '../config/index';
-
-export const ROOT_URL = config.apiRootUrl;
 export const API_ACTIONS = {
   GEOLOCATE: {
     action: 'geolocate',
-    url: `https://www.googleapis.com/geolocation/v1/geolocate`,
-    startRequest: 'geolocate/REQUEST_STARTED',
-    successRequest: 'geolocate/REQUEST_SUCCESS',
-    failureRequest: 'geolocate/REQUEST_FAILURE',
   },
   FIREBASE_LOGIN: {
     action: 'firebase_login',
@@ -54,4 +47,9 @@ export const API_ACTIONS = {
   ADMIN_FETCH_SUCCESS: {
     action: 'admin_fetch_success',
   },
+};
+
+export const SOPOT_CENTRUM = {
+  lat: 54.4408414,
+  lon: 18.5615787,
 };

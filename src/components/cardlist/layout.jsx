@@ -19,6 +19,7 @@ import StarRatings from 'react-star-ratings';
 import {Dialog, TextField} from "material-ui";
 import {LoginRegisterDialog} from "../login_register/index"
 import CancelIcon from 'material-ui/svg-icons/navigation/cancel';
+import MyLocationIcon from 'material-ui/svg-icons/maps/my-location';
 
 class PlaceList extends React.Component {
 
@@ -232,14 +233,20 @@ class PlaceList extends React.Component {
 
   renderSearchBar() {
     return (
-      <form className="cards" onSubmit={this.handleFormSubmit}>
-        <Autocomplete
-          onPlaceSelected={(placeToFind) => placeToFind.geometry && this.props.findPlace(placeToFind)}
-          types={['geocode']}
-          componentRestrictions={{country: "pl"}}
-          placeholder="Szukaj"
+      <div className="cards" style={{display: 'flex'}}>
+        <form onSubmit={this.handleFormSubmit} style={{width: '91%'}}>
+          <Autocomplete
+            onPlaceSelected={(placeToFind) => placeToFind.geometry && this.props.findPlace(placeToFind)}
+            types={['geocode']}
+            componentRestrictions={{country: "pl"}}
+            placeholder="Szukaj"
+          />
+        </form>
+        <MyLocationIcon
+          style={{marginLeft: 12, marginTop: 17, cursor: 'pointer'}}
+          onClick={this.props.fetchGeo}
         />
-      </form>
+      </div>
     );
   }
 

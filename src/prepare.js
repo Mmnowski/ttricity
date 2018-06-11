@@ -15,6 +15,7 @@ import thunk from 'redux-thunk';
 /* App configs */
 import config from './config';
 import {FIREBASE_KEY, MAP_KEY} from '../secret';
+import {SOPOT_CENTRUM} from "./redux/actionTypes";
 
 /* Combine Reducers */
 const reducer = combineReducers({
@@ -73,8 +74,9 @@ initState['map'] = initialState;
 
 export const store = configureStore(initState);
 store.subscribe(() => {
-  let tempState = {...store.getState()};
+  const tempState = {...store.getState()};
   tempState.map = {...tempState.map, marker: null};
+  tempState.cardList = {...tempState.cardList, queryPlace: null, geolocate: SOPOT_CENTRUM};
   localStorage.setItem('reduxState', JSON.stringify(tempState));
 });
 /* Initial history */
